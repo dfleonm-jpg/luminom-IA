@@ -87,20 +87,32 @@
 
 
     /* SPHERE */
-    .hero-visual{display:flex;align-items:center;justify-content:center;position:relative;height:440px;}
-    .sphere-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
+    .hero-visual{display:flex;align-items:center;justify-content:center;position:relative;height:460px;}
+    .sphere-wrap{position:relative;width:360px;height:360px;display:flex;align-items:center;justify-content:center;}
     .s-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(201,168,76,0.2);animation:orbit linear infinite;}
     .s-ring:nth-child(1){width:200px;height:200px;animation-duration:12s;}
     .s-ring:nth-child(2){width:280px;height:280px;animation-duration:20s;animation-direction:reverse;}
     .s-ring:nth-child(3){width:360px;height:360px;animation-duration:30s;border-color:rgba(201,168,76,0.08);}
     @keyframes orbit{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
     .s-core{width:110px;height:110px;background:linear-gradient(135deg,var(--navy-light),var(--navy));border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2.8rem;font-weight:700;color:var(--gold);z-index:3;box-shadow:0 0 50px rgba(201,168,76,0.2);}
-    .fc{position:absolute;background:rgba(10,22,40,0.75);backdrop-filter:blur(16px);border:1.5px solid rgba(201,168,76,0.35);border-radius:var(--radius-md);padding:0.9rem 1.2rem;display:flex;align-items:center;gap:0.75rem;color:var(--white);min-width:180px;box-shadow:0 8px 32px rgba(0,0,0,0.4);}
-    .fc:nth-child(4){top:20px;left:-30px;animation:f1 6s ease-in-out infinite;}
-    .fc:nth-child(5){top:50%;right:-40px;transform:translateY(-50%);animation:f2 7s ease-in-out -2s infinite;}
-    .fc:nth-child(6){bottom:30px;left:20px;animation:f1 5s ease-in-out -4s infinite;}
-    @keyframes f1{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-    @keyframes f2{0%,100%{transform:translateY(-50%);}50%{transform:translateY(calc(-50% - 12px));}}
+    .fc{position:absolute;top:50%;left:50%;background:rgba(10,22,40,0.82);backdrop-filter:blur(16px);border:1.5px solid rgba(201,168,76,0.35);border-radius:var(--radius-md);padding:0.85rem 1.1rem;display:flex;align-items:center;gap:0.7rem;color:var(--white);width:190px;box-shadow:0 8px 32px rgba(0,0,0,0.45);}
+    /* Cada tarjeta se ancla al centro y se empuja hacia su órbita (como un planeta),
+       repartidas alrededor del logo. El float suave conserva el centrado con translate(-50%,-50%). */
+    .fc:nth-child(4){animation:orbit1 6s ease-in-out infinite;}        /* arriba-izquierda */
+    .fc:nth-child(5){animation:orbit2 7s ease-in-out -2.3s infinite;} /* derecha */
+    .fc:nth-child(6){animation:orbit3 6.5s ease-in-out -4s infinite;} /* abajo-izquierda */
+    @keyframes orbit1{
+      0%,100%{transform:translate(-50%,-50%) translate(-170px,-120px);}
+      50%{transform:translate(-50%,-50%) translate(-170px,-132px);}
+    }
+    @keyframes orbit2{
+      0%,100%{transform:translate(-50%,-50%) translate(150px,10px);}
+      50%{transform:translate(-50%,-50%) translate(150px,-4px);}
+    }
+    @keyframes orbit3{
+      0%,100%{transform:translate(-50%,-50%) translate(-150px,130px);}
+      50%{transform:translate(-50%,-50%) translate(-150px,118px);}
+    }
     .fc-ico{font-size:1.35rem;width:38px;height:38px;background:rgba(201,168,76,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;}
     .fc-t{font-weight:700;font-size:0.87rem;margin-bottom:0.12rem;color:var(--white);}
     .fc-s{font-size:0.72rem;color:rgba(255,255,255,0.58);}
