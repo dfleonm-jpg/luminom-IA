@@ -10,5 +10,5 @@
  * en el servidor) en cuanto esta URL tenga valor.
  */
 window.LUMINOM_CONFIG = {
-  BACKEND_URL: ""
+  BACKEND_URL: "https://luminom-ia.onrender.com"
 };
