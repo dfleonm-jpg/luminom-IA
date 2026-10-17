@@ -1,157 +1,198 @@
 /**
- * Cliente de Ollama (IA local) — equivalente a backend/app/ai.py.
- * Usa fetch nativo de Node y el mismo esquema de modelos/fallbacks.
+ * Cliente de IA — Groq (nube, por defecto) con fallback a Ollama (local).
+ *
+ * Mantiene la MISMA interfaz que usaba el backend original:
+ *   - generate(prompt, { system, model, temperature, timeout })
+ *   - vision(imageB64, prompt, { model, timeout })
+ *   - health()
+ * así que routes/core.js y services/tutor.js funcionan sin cambios.
+ *
+ * La API key de Groq se lee SOLO del entorno (.env) — nunca va en el código
+ * ni se expone al navegador (las llamadas salen desde el servidor).
  */
-import fs from 'node:fs'
-import path from 'node:path'
-import { spawn } from 'node:child_process'
-import { OLLAMA_URL, CHAT_MODEL, VISION_MODEL } from '../config/env.js'
+import {
+  AI_PROVIDER,
+  GROQ_API_KEY,
+  GROQ_BASE_URL,
+  GROQ_CHAT_MODEL,
+  GROQ_VISION_MODEL,
+} from '../config/env.js'
+import * as ollama from './ollama.js'
 
-const FALLBACK_MODELS = ['qwen2.5:7b', 'qwen2.5:3b', 'llama3.2:3b', 'gemma2:2b', 'llama3.2:1b']
-const FALLBACK_VISION = ['qwen2.5vl:3b', 'qwen2.5vl:7b', 'llava:7b', 'llava:13b']
+// Orden de preferencia de modelos de chat (del mejor al más ligero).
+// Se elige el primero que esté habilitado en TU cuenta de Groq.
+const GROQ_CHAT_PREFS = [
+  'llama-3.3-70b-versatile',
+  'openai/gpt-oss-120b',
+  'openai/gpt-oss-20b',
+  'qwen/qwen3-32b',
+  'llama-3.1-8b-instant',
+  'gemma2-9b-it',
+]
 
-const url = (p) => OLLAMA_URL.replace(/\/$/, '') + p
+// Modelos multimodales (visión) de Groq, por preferencia.
+const GROQ_VISION_PREFS = [
+  'meta-llama/llama-4-scout-17b-16e-instruct',
+  'meta-llama/llama-4-maverick-17b-128e-instruct',
+]
 
-async function fetchJson(u, { method = 'GET', body, timeoutMs = 5000 } = {}) {
+const useGroq = () => AI_PROVIDER === 'groq' && Boolean(GROQ_API_KEY)
+const base = () => GROQ_BASE_URL.replace(/\/$/, '')
+
+let modelCache = null // lista de ids de modelos disponibles en la cuenta
+let chatModelCache = null
+let visionModelCache = null
+
+async function groqFetch(pathname, { method = 'GET', body, timeoutMs = 60000 } = {}) {
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
   try {
-    const res = await fetch(u, {
+    const res = await fetch(base() + pathname, {
       method,
-      headers: body ? { 'Content-Type': 'application/json' } : undefined,
+      headers: {
+        Authorization: `Bearer ${GROQ_API_KEY}`,
+        ...(body ? { 'Content-Type': 'application/json' } : {}),
+      },
       body: body ? JSON.stringify(body) : undefined,
       signal: controller.signal,
     })
-    if (!res.ok) throw new Error(`Ollama respondió ${res.status}`)
-    return await res.json()
+    const text = await res.text()
+    let json
+    try {
+      json = text ? JSON.parse(text) : {}
+    } catch {
+      json = { raw: text }
+    }
+    if (!res.ok) {
+      const msg = json?.error?.message || json?.raw || `Groq respondió ${res.status}`
+      const err = new Error(msg)
+      err.status = res.status === 401 ? 502 : res.status
+      throw err
+    }
+    return json
   } finally {
     clearTimeout(timer)
   }
 }
 
-function ollamaExe() {
-  if (process.platform !== 'win32') return ''
-  return path.join(process.env.LOCALAPPDATA || '', 'Programs', 'Ollama', 'ollama.exe')
-}
-
-export function ollamaInstalled() {
-  const exe = ollamaExe()
-  return Boolean(exe) && fs.existsSync(exe)
-}
-
-export function startOllama() {
-  const exe = ollamaExe()
-  if (!exe || !fs.existsSync(exe)) return
+/** Lista de modelos habilitados en la cuenta (cacheada). */
+async function listModels() {
+  if (modelCache) return modelCache
   try {
-    const child = spawn(exe, [], { detached: true, stdio: 'ignore', windowsHide: false })
-    child.unref()
+    const data = await groqFetch('/models', { timeoutMs: 8000 })
+    modelCache = (data.data || []).map((m) => m.id)
   } catch {
-    /* noop */
+    modelCache = []
   }
+  return modelCache
 }
 
-export async function isAvailable() {
-  try {
-    await fetchJson(url('/api/tags'), { timeoutMs: 3000 })
-    return true
-  } catch {
-    return false
-  }
+function pick(prefs, available, fallback) {
+  for (const p of prefs) if (available.includes(p)) return p
+  // Si no detectamos lista (cuenta sin /models accesible), usa la 1ª preferencia
+  return available.length === 0 ? prefs[0] : fallback || prefs[0]
 }
 
-export async function getModels() {
-  try {
-    const data = await fetchJson(url('/api/tags'), { timeoutMs: 5000 })
-    return (data.models || []).map((m) => m.name)
-  } catch {
-    return []
-  }
+async function resolveChatModel() {
+  if (GROQ_CHAT_MODEL) return GROQ_CHAT_MODEL
+  if (chatModelCache) return chatModelCache
+  const available = await listModels()
+  chatModelCache = pick(GROQ_CHAT_PREFS, available)
+  return chatModelCache
 }
 
-export function pickChatModel(models = []) {
-  for (const pref of FALLBACK_MODELS) {
-    const found = models.find((m) => m.startsWith(pref))
-    if (found) return found
-  }
-  return CHAT_MODEL
+async function resolveVisionModel() {
+  if (GROQ_VISION_MODEL) return GROQ_VISION_MODEL
+  if (visionModelCache !== null) return visionModelCache
+  const available = await listModels()
+  // Solo devolvemos un modelo de visión si realmente está habilitado en la cuenta.
+  const found = GROQ_VISION_PREFS.find((p) => available.includes(p))
+  visionModelCache = found || '' // '' => la cuenta no tiene visión disponible
+  return visionModelCache
 }
 
-export function pickVisionModel(models = []) {
-  for (const pref of FALLBACK_VISION) {
-    const found = models.find((m) => m.startsWith(pref))
-    if (found) return found
-  }
-  return VISION_MODEL
-}
+/** Generación de texto. Devuelve la respuesta completa. */
+export async function generate(prompt, { system, model, temperature = 0.7, timeout = 120 } = {}) {
+  if (!useGroq()) return ollama.generate(prompt, { system, model, temperature, timeout })
 
-let bootstrapped = false
+  const messages = []
+  if (system) messages.push({ role: 'system', content: system })
+  messages.push({ role: 'user', content: prompt })
 
-async function ensureStarted() {
-  if (bootstrapped) return
-  if (!(await isAvailable())) startOllama()
-  bootstrapped = true
-}
-
-/** Generación de texto. Devuelve la respuesta completa (stream: false). */
-export async function generate(prompt, { system, model, temperature = 0.7, timeout = 300 } = {}) {
-  await ensureStarted()
-  const models = await getModels()
-  const useModel = model || pickChatModel(models)
-
-  const payload = {
-    model: useModel,
-    prompt,
-    stream: false,
-    options: { temperature, num_ctx: 8192 },
-  }
-  if (system) payload.system = system
-
-  const data = await fetchJson(url('/api/generate'), {
-    method: 'POST',
-    body: payload,
-    timeoutMs: timeout * 1000,
-  })
-  return (data.response || '').trim()
-}
-
-/** Modelo de visión: recibe imagen en base64. */
-export async function vision(imageB64, prompt, { model, timeout = 300 } = {}) {
-  await ensureStarted()
-  const models = await getModels()
-  const useModel = model || pickVisionModel(models)
-
-  const data = await fetchJson(url('/api/chat'), {
+  const data = await groqFetch('/chat/completions', {
     method: 'POST',
     body: {
-      model: useModel,
-      messages: [{ role: 'user', content: prompt, images: [imageB64] }],
-      stream: false,
-      options: { temperature: 0.2, num_ctx: 8192 },
+      model: model || (await resolveChatModel()),
+      messages,
+      temperature,
     },
     timeoutMs: timeout * 1000,
   })
-  return (data.message?.content || '').trim()
+  return (data.choices?.[0]?.message?.content || '').trim()
+}
+
+/** Modelo de visión: recibe imagen en base64 (sin el prefijo data:). */
+export async function vision(imageB64, prompt, { model, timeout = 180 } = {}) {
+  if (!useGroq()) return ollama.vision(imageB64, prompt, { model, timeout })
+
+  const visionModel = model || (await resolveVisionModel())
+  if (!visionModel) {
+    const err = new Error('No hay modelo de visión disponible en tu cuenta de Groq.')
+    err.status = 502
+    throw err
+  }
+
+  const dataUrl = imageB64.startsWith('data:') ? imageB64 : `data:image/jpeg;base64,${imageB64}`
+  const data = await groqFetch('/chat/completions', {
+    method: 'POST',
+    body: {
+      model: visionModel,
+      messages: [
+        {
+          role: 'user',
+          content: [
+            { type: 'text', text: prompt },
+            { type: 'image_url', image_url: { url: dataUrl } },
+          ],
+        },
+      ],
+      temperature: 0.2,
+    },
+    timeoutMs: timeout * 1000,
+  })
+  return (data.choices?.[0]?.message?.content || '').trim()
+}
+
+/** ¿Está disponible el proveedor de IA? */
+export async function isAvailable() {
+  if (!useGroq()) return ollama.isAvailable()
+  const models = await listModels()
+  return models.length > 0
 }
 
 /** Estado de la IA para GET /api/health. */
 export async function health() {
-  if (!bootstrapped) {
-    if (!(await isAvailable())) startOllama()
-    bootstrapped = true
+  if (!useGroq()) {
+    const h = await ollama.health()
+    return { provider: 'ollama', ...h }
   }
 
-  const available = await isAvailable()
-  const models = available ? await getModels() : []
-  const chat = models.length ? pickChatModel(models) : null
-  const visionModel = models.length ? pickVisionModel(models) : null
+  const models = await listModels()
+  const available = models.length > 0
+  const chat = available ? await resolveChatModel() : GROQ_CHAT_MODEL || null
+  const visionModel = available ? await resolveVisionModel() : GROQ_VISION_MODEL || null
 
   return {
-    ollama_available: available,
-    ollama_installed: ollamaInstalled(),
+    provider: 'groq',
+    ai_available: available || Boolean(GROQ_API_KEY),
+    groq_key_configured: Boolean(GROQ_API_KEY),
     models,
     chat_model: chat,
-    vision_model: visionModel,
-    has_chat: chat !== null,
-    has_vision: visionModel !== null,
+    vision_model: visionModel || null,
+    has_chat: Boolean(chat),
+    has_vision: Boolean(visionModel),
+    // Campos legacy para compatibilidad con el frontend antiguo:
+    ollama_available: false,
+    ollama_installed: false,
   }
 }

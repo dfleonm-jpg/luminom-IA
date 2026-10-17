@@ -11,7 +11,8 @@ así que el frontend (`frontend/`) funciona sin cambiar una sola línea.
 | Node.js | 24.x (mínimo 18) | `node -v` |
 | npm | 11.x | `npm.cmd install` |
 | MongoDB | 8.2.4 (Community) | Ver "Instalar MongoDB" |
-| Ollama | opcional | IA local: `qwen2.5:7b` (texto) y `qwen2.5vl:3b` (visión) |
+| Groq API | recomendado | IA en la nube (por defecto). Key gratis en <https://console.groq.com/keys> |
+| Ollama | opcional | IA local alternativa (`AI_PROVIDER=ollama`) |
 
 ## Instalación rápida
 
@@ -56,7 +57,7 @@ npm run reset   # borra la BD y deja solo el contenido base
 
 ```
 backend/
-├── .env                    # configuración (puerto, Mongo, Ollama)
+├── .env                    # configuración (puerto, Mongo, Groq/Ollama)
 ├── data/
 │   ├── content.json        # lecciones y quizzes base      (era tutor_content.py)
 │   ├── icfes_bank.json     # 250 preguntas ICFES            (era banco_icfes.py)
@@ -84,7 +85,8 @@ backend/
     │   ├── icfes.js        # /icfes/bank /icfes/submit /icfes/predict
     │   └── pdfs.js         # /pdfs (subir, listar, descargar, borrar)
     ├── services/
-    │   ├── ai.js           # cliente de Ollama (era ai.py)
+    │   ├── ai.js           # cliente de IA: Groq (nube) con fallback a Ollama
+    │   ├── ollama.js       # cliente de Ollama local (fallback)
     │   ├── tutor.js        # prompts y lógica del tutor (era tutor.py)
     │   ├── icfes.js        # puntaje Saber 11 (era icfes.py)
     │   ├── seed.js         # datos iniciales
@@ -145,19 +147,28 @@ Los errores respetan el formato de FastAPI: `{ "detail": "mensaje" }` con su có
 - El modelo `Flashcard` (repaso espaciado Leitner) está definido como en el esquema original,
   pero el endpoint `/api/flashcards` sigue generando y devolviendo tarjetas sin persistirlas,
   igual que en el backend Python (el SRS quedó sin exponer).
-- La IA sigue siendo local (Ollama), igual que antes: si no responde, los endpoints devuelven 502.
+- La IA usa **Groq** por defecto (nube, compatible con OpenAI). El modelo se **autodetecta**
+  entre los habilitados en tu cuenta (p. ej. `openai/gpt-oss-120b`). Pon `AI_PROVIDER=ollama`
+  para usar IA local. Si la IA no responde, los endpoints devuelven 502.
+- **Visión:** solo funciona si tu cuenta de Groq tiene un modelo multimodal habilitado; si no,
+  `/api/scan` devolverá 502 con un mensaje claro.
 
 ## .env
 
 ```ini
 PORT=8000
+CORS_ORIGIN=*
 MONGODB_URI=mongodb://127.0.0.1:27017/astra
-MONGOD_PATH=C:\Users\<usuario>\AppData\Local\Programs\MongoDB\mongodb-win32-x86_64-windows-8.2.4\bin\mongod.exe
-MONGO_DBPATH=C:\Users\<usuario>\AppData\Local\Programs\MongoDB\data\db
-OLLAMA_URL=http://127.0.0.1:11434
-CHAT_MODEL=qwen2.5:7b
-VISION_MODEL=qwen2.5vl:3b
+MONGOD_PATH=
+MONGO_DBPATH=
+AI_PROVIDER=groq
+GROQ_API_KEY=gsk_tu_api_key_aqui
+GROQ_BASE_URL=https://api.groq.com/openai/v1
+GROQ_CHAT_MODEL=
+GROQ_VISION_MODEL=
 ```
+
+Consulta `.env.example` para la plantilla completa (incluye la config de Ollama local).
 
 Para usar **MongoDB Atlas** en lugar de local: pega tu cadena en `MONGODB_URI`
 (`mongodb+srv://usuario:clave@cluster.mongodb.net/astra`) y deja `MONGOD_PATH` vacío.
@@ -178,12 +189,14 @@ con IP pública. Pasos generales (ejemplo con **Render**):
 3. Define las variables de entorno (pestaña *Environment*):
    - `MONGODB_URI` = tu cadena de Atlas
    - `CORS_ORIGIN` = `https://dfleonm-jpg.github.io`
+   - `AI_PROVIDER` = `groq`
+   - `GROQ_API_KEY` = tu key de Groq
    - `MONGOD_PATH` y `MONGO_DBPATH` → **vacías** (no se auto-arranca mongod en la nube)
    - `PORT` → la plataforma la inyecta sola; no la fijes a mano.
 4. Deploy. La API quedará en algo como `https://tu-servicio.onrender.com/api/health`.
 
-> La IA (Ollama) es **local**: en la nube los endpoints de IA devolverán 502 salvo que
-> apuntes `OLLAMA_URL` a un host de Ollama accesible o migres a otro proveedor.
+> Con **Groq** la IA funciona también en la nube (es una API remota), solo necesitas
+> la `GROQ_API_KEY` en las variables de entorno. Nunca la pongas en el código.
 
 ## Conectar el frontend
 
