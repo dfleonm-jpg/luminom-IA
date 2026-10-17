@@ -67,18 +67,26 @@
         document.getElementById('meta').textContent = '⚠️ Conversación no encontrada';
         document.getElementById('messages').innerHTML = '<p style="text-align:center;color:var(--text-secondary);">Esta conversación no existe o ha expirado.</p>';
       } else {
+        // Escapar HTML para evitar inyección (XSS) desde el contenido guardado
+        const escapeHTML = (str) => String(str ?? '')
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+        const sharedBy = (chat.sharedBy || 'Anónimo');
+        const initial = sharedBy.trim() ? sharedBy.trim()[0].toUpperCase() : '?';
+
         document.getElementById('meta').innerHTML = `
-          Compartido por <strong>${chat.sharedBy}</strong> • 
+          Compartido por <strong>${escapeHTML(sharedBy)}</strong> &bull; 
           ${new Date(chat.sharedAt).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}
         `;
-        
+
         const messagesDiv = document.getElementById('messages');
-        messagesDiv.innerHTML = chat.messages.map(msg => {
+        messagesDiv.innerHTML = (chat.messages || []).map(msg => {
           const isUser = msg.role === 'user';
           return `
             <div class="message ${isUser ? 'user' : 'bot'}">
-              <div class="avatar">${isUser ? chat.sharedBy[0].toUpperCase() : 'L'}</div>
-              <div class="bubble">${msg.content.replace(/\n/g, '<br>')}</div>
+              <div class="avatar">${isUser ? escapeHTML(initial) : 'L'}</div>
+              <div class="bubble">${escapeHTML(msg.content).replace(/\n/g, '<br>')}</div>
             </div>
           `;
         }).join('');

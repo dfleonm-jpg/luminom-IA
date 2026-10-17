@@ -131,14 +131,20 @@ sequenceDiagram
 ## 🚀 Estructura del Proyecto
 
 ```
-luminam-ia/
+luminom-ia/
 ├── index.html              → Página principal (landing)
 ├── login.html              → Login y registro
 ├── tutor.html              → Chat con IA (requiere login)
 ├── admin.html              → Panel de administración
 ├── servicios.html          → Planes y precios
-├── COMO_ACCEDER_ADMIN.md  → Guía del panel admin
-└── README.md              → Este archivo
+├── payment-success.html    → Confirmación de pago
+├── shared.html             → Vista de conversación compartida
+├── firebase-config.js      → Configuración de Firebase
+├── firestore.rules         → Reglas de seguridad de Firestore
+├── advanced-features*.js   → Funciones del tutor (voz, PDF, plan de estudio)
+├── manifest.json / sw.js   → PWA (instalable + offline)
+├── docs/                   → Documentación del proyecto
+└── README.md               → Este archivo
 ```
 
 ---
