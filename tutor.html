@@ -157,10 +157,46 @@
     .skeleton-stats-line{height:16px;background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;border-radius:4px;margin-bottom:0.5rem;animation:skeleton-loading 1.5s infinite;}
     .skeleton-stats-line:last-child{margin-bottom:0;width:80%;}
     
+    /* ===== DARK MODE =====
+       Redefine las variables de color para invertir el tema
+       preservando el dorado como color de acento. */
+    body.dark-mode{
+      --navy:#0A1628;
+      --white:#15202E;          /* superficies (tarjetas, barras) */
+      --off-white:#0D1620;      /* fondo general */
+      --text-primary:#E8ECF1;   /* texto principal claro */
+      --text-secondary:#A4B0BE;
+      --text-muted:#6B7A8C;
+      --border:rgba(255,255,255,0.08);
+      --shadow-sm:0 2px 12px rgba(0,0,0,0.3);
+      --shadow-md:0 8px 32px rgba(0,0,0,0.45);
+    }
+    body.dark-mode{background:var(--off-white);color:var(--text-primary);}
+    body.dark-mode .message.bot .bubble{background:var(--white);border-color:var(--border);color:var(--text-primary);}
+    body.dark-mode code{background:rgba(201,168,76,0.15);color:var(--gold-light);}
+    body.dark-mode pre{background:#0A121C;border-color:var(--border);}
+    body.dark-mode .input-wrapper textarea{background:var(--white);color:var(--text-primary);}
+    body.dark-mode .btn-attach{background:var(--white);}
+    body.dark-mode .history-item{background:#0D1620;}
+    body.dark-mode .skeleton,
+    body.dark-mode .skeleton-avatar,
+    body.dark-mode .skeleton-line,
+    body.dark-mode .skeleton-history-title,
+    body.dark-mode .skeleton-history-date,
+    body.dark-mode .skeleton-stats-line{background:linear-gradient(90deg,#1b2735 25%,#243244 50%,#1b2735 75%);background-size:200% 100%;}
+
     @media(max-width:900px){
       .chat-layout{flex-direction:column;}
       .sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border);padding:1rem;}
       .quick-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:560px){
+      .nav{padding:0.9rem 1rem;}
+      .nav-actions{gap:0.5rem;}
+      .nav-user-name{max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+      .messages{padding:1.2rem;}
+      .bubble{max-width:82%;}
+      .input-area{padding:1rem;}
     }
   </style>
 </head>
