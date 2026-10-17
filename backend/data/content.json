@@ -1,0 +1,1879 @@
+{
+ "BASE_LESSONS": {
+  "Matemáticas": [
+   {
+    "title": "Fracciones: suma y resta",
+    "summary": "Aprende a sumar y restar fracciones con diferente denominador.",
+    "duration_min": 12,
+    "content": "# Suma y resta de fracciones\n\n## Concepto básico\nUna fracción es una parte de un todo: el **numerador** (arriba) indica cuántas partes tomas y el **denominador** (abajo) en cuántas partes se divide el todo.\n\n## Mismo denominador\nSi las fracciones comparten denominador, solo se suman/restan los numeradores:\n`1/5 + 2/5 = 3/5`\n\n## Diferente denominador\nSe usa el **mínimo común múltiplo (MCM)** de los denominadores:\n1. Calcula el MCM de 4 y 6 = 12.\n2. Convierte: 3/4 = 9/12 y 1/6 = 2/12.\n3. Opera: 9/12 + 2/12 = 11/12.\n\n## Fracción irreducible\nSiempre simplifica: divide numerador y denominador por su MCD.\n`6/8 = 3/4`\n\n## Truco rápido (método cruzado)\n`a/b + c/d = (a*d + c*b) / (b*d)` y luego simplificas.\n\n## Ejemplo paso a paso\nSuma 2/3 + 1/6:\n- MCM(3, 6) = 6\n- 2/3 = 4/6\n- 4/6 + 1/6 = 5/6 ✓\n\n## Practica\n1. 1/2 + 1/4 = ?\n2. 5/8 - 1/4 = ?\n3. 3/7 + 2/7 = ?"
+   },
+   {
+    "title": "Ecuaciones de primer grado",
+    "summary": "Resuelve ecuaciones lineales paso a paso.",
+    "duration_min": 15,
+    "content": "# Ecuaciones de primer grado\n\n## Qué es\nUna ecuación es una igualdad con una incógnita (x) que debes encontrar.\n\n## Reglas de oro\n1. Lo que se suma pasa restando (y viceversa).\n2. Lo que multiplica pasa dividiendo (y viceversa).\n3. Lo que está en un miembro pasa al otro **con signo contrario**.\n\n## Ejemplo: 3x + 5 = 20\n1. Resta 5 a ambos lados: 3x = 20 - 5 → 3x = 15\n2. Divide entre 3: x = 15 / 3 → **x = 5**\n3. Comprueba: 3(5) + 5 = 20 ✓\n\n## Con paréntesis: 2(x + 3) = 14\n1. Distribuye: 2x + 6 = 14\n2. 2x = 14 - 6 → 2x = 8\n3. x = 8 / 2 → **x = 4**\n\n## Con fracciones: x/2 + 3 = 7\n1. x/2 = 7 - 3 → x/2 = 4\n2. Multiplica por 2: **x = 8**\n\n## Practica\n1. 2x - 4 = 10\n2. 5x + 7 = 2x + 22\n3. 3(x - 1) = 12"
+   },
+   {
+    "title": "Regla de tres (proporcionalidad)",
+    "summary": "Resuelve problemas de proporción directa.",
+    "duration_min": 10,
+    "content": "# Regla de tres simple\n\n## Concepto\nSi dos magnitudes son **directamente proporcionales**, al aumentar una aumenta la otra.\n\n## Fórmula\nSi `A → B` entonces `C → X`:\n**X = (C × B) / A**\n\n## Ejemplo\nSi 3 manzanas cuestan 15 pesos, ¿cuánto cuestan 5 manzanas?\n- 3 → 15\n- 5 → X\n- X = (5 × 15) / 3 = 75 / 3 = **25 pesos**\n\n## Proporcionalidad inversa\nAl aumentar una, la otra disminuye: **X = (A × B) / C**\nEjemplo: 4 obreros tardan 6 días; 8 obreros tardarán (4×6)/8 = 3 días.\n\n## Practica\n1. Un auto recorre 120 km en 2 horas. ¿Cuánto recorre en 5 horas?\n2. 6 libros cuestan 90 pesos. ¿Cuánto cuestan 10 libros?"
+   },
+   {
+    "title": "Porcentajes e interés",
+    "summary": "Calcula porcentajes, descuentos e interés simple.",
+    "duration_min": 10,
+    "content": "# Porcentajes\n\n## Cálculo básico\nPorcentaje de un número: `(número × porcentaje) / 100`\n- 15% de 200 = (200 × 15) / 100 = 30\n\n## Descuentos\nPrecio con 20% de descuento: precio × 0.80\n- 500 × 0.80 = **400**\n\n## Aumentos\nPrecio con 10% de aumento: precio × 1.10\n- 500 × 1.10 = **550**\n\n## Interés simple\nI = C × r × t\n- C = capital, r = tasa anual (en decimal), t = tiempo en años\n- 1000 al 5% anual durante 2 años: 1000 × 0.05 × 2 = **100**\n\n## Practica\n1. ¿Cuánto es el 30% de 250?\n2. Una camisa de 800 tiene 25% de descuento. ¿Cuánto pagas?\n3. Interés simple de 2000 al 4% en 3 años."
+   },
+   {
+    "title": "Álgebra: binomios y factorización",
+    "summary": "Productos notables y factor común.",
+    "duration_min": 12,
+    "content": "# Productos notables\n\n## Cuadrado de un binomio\n(a + b)² = a² + 2ab + b²\n(a - b)² = a² - 2ab + b²\n- (x + 3)² = x² + 6x + 9\n\n## Diferencia de cuadrados\n(a + b)(a - b) = a² - b²\n- (x + 5)(x - 5) = x² - 25\n\n## Binomio por trinomio\n(x + 2)(x + 3) = x² + 5x + 6\n(se multiplica término a término)\n\n## Factor común\nSacar lo que se repite:\n6x² + 4x = 2x(3x + 2)\n\n## Practica\n1. Desarrolla (x + 4)²\n2. Factoriza x² - 16\n3. Factoriza 9x² + 3x"
+   }
+  ],
+  "Inglés": [
+   {
+    "title": "Verbo to be (ser/estar)",
+    "summary": "Formas afirmativa, negativa e interrogativa.",
+    "duration_min": 10,
+    "content": "# Verbo TO BE\n\n## Formas\n- I **am** / You, we, they **are** / He, she, it **is**\n\n## Afirmativo\n- I **am** a student.\n- She **is** my friend.\n\n## Negativo (contracciones)\n- I'm not / isn't / aren't\n- He **isn't** here.\n\n## Interrogativo\n- **Are** you ready?\n- **Is** she a doctor?\n\n## Contracciones comunes\nI am → I'm, you are → you're, he is → he's, we are → we're, they are → they're\n\n## Practica\n1. ___ you at home? (Are)\n2. She ___ my sister. (is)\n3. We ___ students. (are)"
+   },
+   {
+    "title": "Present simple",
+    "summary": "Acciones habituales y rutinas.",
+    "duration_min": 12,
+    "content": "# Presente simple\n\n## Uso\nAcciones habituales, rutinas y hechos generales.\n\n## Afirmativo\n- I/you/we/they + verbo: I **work**\n- he/she/it + verbo + s: She **works**\n\n## Negativo\n- do/does + not: I **don't work** / She **doesn't work**\n\n## Interrogativo\n- **Do** you work? / **Does** she work?\n\n## Regla de la -s\nVerbos terminados en s, x, ch, o → +es: watch → watches\nConsonante + y → ies: study → studies\n\n## Ejemplo\nEvery day I get up at 7, I have breakfast and I go to school.\n\n## Practica\n1. She ___ (watch) TV every night.\n2. ___ he play football? (Does)\n3. They ___ (not/like) coffee."
+   },
+   {
+    "title": "Pasado simple",
+    "summary": "Verbos regulares e irregulares.",
+    "duration_min": 12,
+    "content": "# Pasado simple\n\n## Uso\nAcciones terminadas en un momento del pasado.\n\n## Verbos regulares: +ed\n- work → worked, play → played\n- Terminado en -e: +d (like → liked)\n- Consonante + y: -y +ied (study → studied)\n\n## Verbos irregulares (¡memoriza!)\n- go → went, eat → ate, see → saw, have → had, do → did\n\n## Negativo e interrogativo (con did)\n- I **didn't** go to school.\n- **Did** you see the movie?\n\n## Palabras clave\nyesterday, last week, two days ago, in 2020\n\n## Ejemplo\nYesterday I went to the park and I played football.\n\n## Practica\n1. She ___ (eat) pizza last night.\n2. ___ you ___ (study) for the exam?\n3. We ___ (not/go) to the party."
+   },
+   {
+    "title": "Vocabulario: comida y restaurante",
+    "summary": "Palabras y frases útiles para pedir comida.",
+    "duration_min": 8,
+    "content": "# Comida y restaurante\n\n## Alimentos\n- Bread: pan, Rice: arroz, Eggs: huevos, Cheese: queso, Chicken: pollo, Fish: pescado, Salad: ensalada, Fruit: fruta, Water: agua, Juice: zumo, Coffee: café, Tea: té\n\n## Frases útiles\n- I would like a coffee, please.\n- Could I see the menu?\n- The bill, please.\n- It's delicious.\n\n## En el restaurante (diálogo)\n- Waiter: Are you ready to order?\n- You: Yes, I'd like the chicken salad, please.\n\n## Practica\nTraduce: Quiero agua, por favor. / Me gustaría ver el menú."
+   },
+   {
+    "title": "Present perfect",
+    "summary": "Experiencias y acciones con relevancia en el presente.",
+    "duration_min": 12,
+    "content": "# Presente perfecto\n\n## Forma\nhave/has + participio pasado\n- I **have finished** / She **has finished**\n\n## Uso\n1. Experiencias: I have visited Paris.\n2. Acciones que acaban de pasar: She has just arrived.\n3. Situaciones que continúan: We have lived here for 5 years.\n\n## Participios irregulares\n- see → seen, go → gone, eat → eaten, do → done, write → written\n\n## Negativo e interrogativo\n- I haven't seen it.\n- Have you ever been to London?\n\n## Practica\n1. She ___ (travel) to Japan.\n2. ___ you ever ___ (eat) sushi?\n3. I ___ (not/finish) my homework."
+   }
+  ],
+  "Programación": [
+   {
+    "title": "Qué es programar y Python básico",
+    "summary": "Variables, tipos de datos y print.",
+    "duration_min": 12,
+    "content": "# Introducción a Python\n\n## Qué es programar\nDar instrucciones a una computadora para resolver un problema.\n\n## Variables\nEspacios de memoria con nombre:\n```python\nnombre = \"Ana\"\nedad = 20\naltura = 1.65\n```\n\n## Tipos de datos\n- Texto (str): \"hola\"\n- Número entero (int): 42\n- Decimal (float): 3.14\n- Booleano (bool): True/False\n\n## Imprimir en pantalla\n```python\nprint(\"Hola, mundo\")\nprint(\"Tengo\", edad, \"años\")\n```\n\n## Entrada del usuario\n```python\nnombre = input(\"¿Cómo te llamas? \")\nprint(\"Hola,\", nombre)\n```\n\n## Practica\n1. Crea una variable con tu edad y imprímela.\n2. Pide el nombre y saluda."
+   },
+   {
+    "title": "Condicionales (if/else)",
+    "summary": "Toma decisiones en tu código.",
+    "duration_min": 10,
+    "content": "# Condicionales\n\n## if / elif / else\n```python\nedad = 18\nif edad >= 18:\n    print(\"Eres mayor de edad\")\nelif edad >= 13:\n    print(\"Eres adolescente\")\nelse:\n    print(\"Eres niño/a\")\n```\n\n## Operadores de comparación\n- == igual, != distinto, > mayor, < menor, >= mayor o igual, <= menor o igual\n\n## Operadores lógicos\n- and, or, not\n\n## Ejemplo completo\n```python\nnota = float(input(\"Tu nota: \"))\nif nota >= 6:\n    print(\"¡Aprobado!\")\nelse:\n    print(\"Reprobado\")\n```\n\n## Practica\n1. Pide un número y di si es par o impar.\n2. Pide la edad y clasifícala."
+   },
+   {
+    "title": "Bucles (for y while)",
+    "summary": "Repite acciones de forma eficiente.",
+    "duration_min": 10,
+    "content": "# Bucles\n\n## For (recorrer)\n```python\nfor i in range(5):        # 0,1,2,3,4\n    print(i)\n\nfor letra in \"hola\":\n    print(letra)\n\nfor num in [1, 2, 3]:\n    print(num * 2)\n```\n\n## While (mientras)\n```python\ncontador = 0\nwhile contador < 5:\n    print(contador)\n    contador += 1\n```\n\n## Sumar del 1 al 100\n```python\ntotal = 0\nfor i in range(1, 101):\n    total += i\nprint(total)   # 5050\n```\n\n## break y continue\n- break: sale del bucle\n- continue: salta a la siguiente vuelta\n\n## Practica\n1. Imprime los números pares del 1 al 20.\n2. Pide números hasta que el usuario escriba 0."
+   },
+   {
+    "title": "Funciones",
+    "summary": "Organiza tu código en bloques reutilizables.",
+    "duration_min": 10,
+    "content": "# Funciones\n\n## Definir y llamar\n```python\ndef saludar(nombre):\n    return \"Hola, \" + nombre\n\nprint(saludar(\"Ana\"))\n```\n\n## Parámetros y retorno\n```python\ndef suma(a, b):\n    return a + b\n\nresultado = suma(5, 3)\nprint(resultado)  # 8\n```\n\n## Parámetros por defecto\n```python\ndef multiplicar(a, b=2):\n    return a * b\n\nprint(multiplicar(5))     # 10\nprint(multiplicar(5, 3))  # 15\n```\n\n## ¿Por qué usar funciones?\n- Evitas repetir código.\n- Es más fácil de corregir y mantener.\n\n## Practica\n1. Crea una función que diga si un número es par.\n2. Crea una función que calcule el área de un rectángulo."
+   },
+   {
+    "title": "Listas y diccionarios",
+    "summary": "Estructuras de datos esenciales.",
+    "duration_min": 12,
+    "content": "# Listas y diccionarios\n\n## Listas (ordenadas y modificables)\n```python\nfrutas = [\"manzana\", \"banana\", \"naranja\"]\nfrutas.append(\"uva\")        # añadir\nprint(frutas[0])            # manzana\nprint(len(frutas))          # 4\n```\n\n## Diccionarios (clave → valor)\n```python\nalumno = {\"nombre\": \"Ana\", \"edad\": 20, \"nota\": 9.5}\nprint(alumno[\"nombre\"])\nalumno[\"nota\"] = 10\n```\n\n## Recorrer listas de diccionarios\n```python\nalumnos = [\n    {\"nombre\": \"Ana\", \"nota\": 9},\n    {\"nombre\": \"Luis\", \"nota\": 6},\n]\nfor a in alumnos:\n    print(a[\"nombre\"], a[\"nota\"])\n```\n\n## Practica\n1. Crea una lista de 5 números y muestra el mayor.\n2. Crea un diccionario con tus datos."
+   }
+  ],
+  "Física": [
+   {
+    "title": "Movimiento rectilíneo uniforme (MRU)",
+    "summary": "Velocidad constante: d = v × t.",
+    "duration_min": 10,
+    "content": "# Movimiento rectilíneo uniforme\n\n## Fórmula principal\n**d = v × t** (distancia = velocidad × tiempo)\n\n## Unidades (SI)\n- Distancia en metros (m)\n- Tiempo en segundos (s)\n- Velocidad en m/s\n\n## Ejemplo\nUn auto viaja a 20 m/s durante 30 s.\nd = 20 × 30 = **600 metros**\n\n## Despejes\n- v = d / t\n- t = d / v\n\n## Ejemplo inverso\n¿Cuánto tarda en recorrer 1000 m a 25 m/s?\nt = 1000 / 25 = **40 s**\n\n## Practica\n1. Un corredor va a 8 m/s durante 25 s. ¿Qué distancia recorre?\n2. ¿A qué velocidad viaja un auto que recorre 300 m en 15 s?"
+   },
+   {
+    "title": "Leyes de Newton",
+    "summary": "Las tres leyes del movimiento.",
+    "duration_min": 12,
+    "content": "# Leyes de Newton\n\n## 1ª ley (Inercia)\nUn objeto sigue en reposo o movimiento uniforme salvo que una fuerza actúe sobre él.\n*Ejemplo: un pasajero sale despedido hacia delante al frenar el bus.*\n\n## 2ª ley (Fuerza = masa × aceleración)\n**F = m × a** (unidad: Newton, N)\n*Ejemplo: empujar un carrito pesado requiere más fuerza que uno liviano.*\n\n## 3ª ley (Acción-reacción)\nToda fuerza tiene una fuerza igual y opuesta.\n*Ejemplo: al saltar, empujas el suelo y el suelo te empuja a ti.*\n\n## Ejemplo numérico\nUna masa de 5 kg acelera a 2 m/s².\nF = 5 × 2 = **10 N**\n\n## Practica\n1. ¿Qué fuerza acelera una masa de 8 kg a 3 m/s²?\n2. Una fuerza de 20 N mueve una masa de 4 kg. ¿Cuál es su aceleración?"
+   },
+   {
+    "title": "Energía cinética y potencial",
+    "summary": "Las dos formas básicas de energía mecánica.",
+    "duration_min": 10,
+    "content": "# Energía mecánica\n\n## Energía cinética (movimiento)\n**Ec = ½ × m × v²**\n- m en kg, v en m/s, resultado en Joules (J)\n\n## Energía potencial (posición/altura)\n**Ep = m × g × h**\n- g = 9.8 m/s², h en metros\n\n## Ejemplo\nUna pelota de 2 kg se mueve a 3 m/s:\nEc = ½ × 2 × 3² = ½ × 2 × 9 = **9 J**\n\nUn objeto de 5 kg a 2 m de altura:\nEp = 5 × 9.8 × 2 = **98 J**\n\n## Conservación de la energía\nLa energía mecánica total se conserva (sin fricción): Ec + Ep = constante.\n\n## Practica\n1. Ec de una masa de 4 kg a 5 m/s.\n2. Ep de una masa de 10 kg a 3 m de altura."
+   }
+  ],
+  "Química": [
+   {
+    "title": "Tabla periódica y elementos",
+    "summary": "Estructura y cómo leerla.",
+    "duration_min": 10,
+    "content": "# Tabla periódica\n\n## Qué indica cada elemento\n- Número atómico (Z): número de protones\n- Masa atómica: protones + neutrones\n- Símbolo: abreviatura (H, He, O, Na...)\n\n## Grupos y períodos\n- Grupos (columnas): elementos con propiedades similares\n- Períodos (filas): número de capas de electrones\n\n## Metales, no metales y gases nobles\n- Metales: buenos conductores (Na, Fe, Cu)\n- No metales: malos conductores (O, N, Cl)\n- Gases nobles: estables (He, Ne, Ar)\n\n## Elementos esenciales\n- H (1), C (6), N (7), O (8), Na (11), Cl (17), Ca (20), Fe (26)\n\n## Practica\n1. ¿Cuántos protones tiene el oxígeno (Z=8)?\n2. ¿Qué grupo contiene los gases nobles?"
+   },
+   {
+    "title": "Balanceo de ecuaciones químicas",
+    "summary": "Iguala el número de átomos en cada lado.",
+    "duration_min": 12,
+    "content": "# Balanceo de ecuaciones\n\n## Regla de oro\nEl número de átomos de cada elemento debe ser igual en reactivos y productos.\n\n## Pasos\n1. Cuenta los átomos de cada elemento a ambos lados.\n2. Ajusta coeficientes (números delante de las fórmulas).\n3. NO cambies los subíndices.\n4. Verifica al final.\n\n## Ejemplo: H₂ + O₂ → H₂O\n- H: 2 → 2, O: 2 → 1 (¡desbalanceado!)\n- Pon coeficiente 2 al agua: H₂ + O₂ → 2H₂O\n- Ahora H: 2 → 4. Pon 2 al H₂: 2H₂ + O₂ → 2H₂O ✓\n\n## Ejemplo: CH₄ + O₂ → CO₂ + H₂O\n1. Balancea C: 1=1 ✓\n2. Balancea H: 4 → 2, pon 2 al H₂O: CH₄ + O₂ → CO₂ + 2H₂O\n3. Balancea O: 2 → 4, pon 2 al O₂: CH₄ + 2O₂ → CO₂ + 2H₂O ✓\n\n## Practica\nBalancea: N₂ + H₂ → NH₃ y Fe + O₂ → Fe₂O₃"
+   },
+   {
+    "title": "Ácidos, bases y pH",
+    "summary": "Escala de acidez y neutralización.",
+    "duration_min": 10,
+    "content": "# Ácidos y bases\n\n## Escala de pH (0 a 14)\n- pH < 7: ácido (pH 0-2 muy ácido)\n- pH = 7: neutro (agua pura)\n- pH > 7: base (pH 12-14 muy básico)\n\n## Ejemplos\n- Ácidos: jugo de limón (2), vinagre (3), café (5)\n- Neutro: agua (7)\n- Bases: jabón (9), amoniaco (11), lejía (13)\n\n## Neutralización\nÁcido + base → sal + agua\nHCl + NaOH → NaCl + H₂O\n\n## Practica\n1. ¿Es el jabón ácido o básico?\n2. ¿Qué pH tiene la sustancia más corrosiva, 1 o 13?"
+   }
+  ],
+  "Historia": [
+   {
+    "title": "Las civilizaciones antiguas",
+    "summary": "Egipto, Mesopotamia y Grecia.",
+    "duration_min": 10,
+    "content": "# Civilizaciones antiguas\n\n## Mesopotamia (entre ríos)\n- Tigris y Éufrates (~3500 a.C.)\n- Inventos: escritura cuneiforme, rueda, código de Hammurabi\n\n## Egipto\n- Río Nilo, faraones y pirámides\n- Escritura jeroglífica, papiro\n- Grandes obras: Pirámide de Keops\n\n## Grecia\n- Cuna de la democracia (Atenas)\n- Filosofía: Sócrates, Platón, Aristóteles\n- Olimpiadas, teatro, matemáticas (Euclides, Pitágoras)\n\n## Practica\n1. ¿Dónde surgió la escritura cuneiforme?\n2. ¿Qué civilización inventó la democracia?"
+   },
+   {
+    "title": "La Revolución Francesa (1789)",
+    "summary": "Causas, etapas y consecuencias.",
+    "duration_min": 10,
+    "content": "# Revolución Francesa\n\n## Causas\n- Desigualdad social (clero, nobleza, tercer estado)\n- Crisis económica y malas cosechas\n- Ideas de la Ilustración\n\n## Hechos clave\n- 14 julio 1789: Toma de la Bastilla\n- 1789: Declaración de los Derechos del Hombre y del Ciudadano\n- 1793: Ejecución de Luis XVI\n- 1799: Napoleón toma el poder\n\n## Consecuencias\n- Fin del absolutismo\n- Nacimiento de la república\n- Idea de derechos individuales se expande por el mundo\n\n## Practica\n1. ¿Qué se conmemora el 14 de julio?\n2. Nombra dos causas de la revolución."
+   },
+   {
+    "title": "La Revolución Industrial",
+    "summary": "Máquinas, fábricas y cambios sociales.",
+    "duration_min": 10,
+    "content": "# Revolución Industrial\n\n## Primera etapa (Inglaterra, s. XVIII)\n- Máquina de vapor (Watt)\n- Industria textil y del carbón\n- El trabajo pasa del campo a la fábrica\n\n## Segunda etapa (s. XIX)\n- Electricidad, petróleo, acero\n- Automóvil y avión\n- Grandes empresas y bancos\n\n## Consecuencias sociales\n- Crecimiento de las ciudades\n- Nuevas clases: burguesía industrial y proletariado\n- Movimientos obreros y sindicatos\n\n## Practica\n1. ¿Qué invento impulsó la primera revolución industrial?\n2. ¿Qué nueva clase social surgió en las fábricas?"
+   }
+  ],
+  "Español": [
+   {
+    "title": "Sujeto y predicado",
+    "summary": "Partes esenciales de la oración.",
+    "duration_min": 10,
+    "content": "# Sujeto y predicado\n\n## Sujeto\nQuién realiza la acción (o de quién se habla).\n*La niña lee un libro* → sujeto: **La niña**\n\n## Predicado\nQué se dice del sujeto (contiene el verbo).\n→ predicado: **lee un libro**\n\n## Núcleos\n- Núcleo del sujeto: sustantivo o pronombre (niña)\n- Núcleo del predicado: el verbo (lee)\n\n## Sujeto omitido\n\"Corremos por el parque\" → sujeto implícito: nosotros\n\n## Practica\n1. Identifica sujeto y predicado: \"El perro ladra fuerte\".\n2. ¿Cuál es el núcleo del predicado en \"Los niños juegan en el patio\"?"
+   },
+   {
+    "title": "Los verbos y tiempos",
+    "summary": "Conjugaciones y tiempos verbales.",
+    "duration_min": 12,
+    "content": "# Los verbos\n\n## Tiempos principales\n- Presente: Yo **hablo**\n- Pretérito perfecto simple: Yo **hablé**\n- Pretérito imperfecto: Yo **hablaba**\n- Futuro: Yo **hablaré**\n\n## Tres conjugaciones\n- -ar: hablar, amar, cantar\n- -er: comer, leer, beber\n- -ir: vivir, subir, partir\n\n## Modos\n- Indicativo: hechos reales (\"hoy estudio\")\n- Subjuntivo: deseos/dudas (\"espero que estudies\")\n- Imperativo: órdenes (\"estudia\")\n\n## Ejemplo de verbos irregulares\nser: soy, fui, era, seré\n\n## Practica\n1. Conjuga \"comer\" en presente.\n2. ¿En qué tiempo está \"cantaré\"?"
+   },
+   {
+    "title": "Figuras literarias",
+    "summary": "Metáfora, símil, hipérbole y más.",
+    "duration_min": 8,
+    "content": "# Figuras literarias\n\n## Metáfora\nComparación sin \"como\": *tus ojos son dos luceros*\n\n## Símil / comparación\nCon \"como\": *sus ojos brillan como estrellas*\n\n## Hipérbole\nExageración: *tengo un millón de cosas que hacer*\n\n## Personificación\nDar cualidades humanas a objetos: *el viento susurraba*\n\n## Onomatopeya\nSonido de la realidad: *tic-tac, miau, boom*\n\n## Practica\n1. ¿Qué figura es \"su risa es música para mis oídos\"?\n2. Crea un ejemplo de hipérbole."
+   }
+  ],
+  "Biología": [
+   {
+    "title": "La célula",
+    "summary": "Tipos, partes y funciones.",
+    "duration_min": 10,
+    "content": "# La célula\n\n## Tipos\n- Procariota: sin núcleo (bacterias)\n- Eucariota: con núcleo (animal, vegetal)\n\n## Partes principales\n- Membrana: controla lo que entra y sale\n- Citoplasma: gel interior con orgánulos\n- Núcleo: guarda el ADN\n- Mitocondrias: producen energía\n- Ribosomas: fabrican proteínas\n\n## Célula animal vs vegetal\n- Vegetal: tiene pared celular y cloroplastos (fotosíntesis)\n\n## Practica\n1. ¿Qué orgánulo produce energía?\n2. ¿En qué se diferencia una célula vegetal de una animal?"
+   },
+   {
+    "title": "Fotosíntesis",
+    "summary": "Cómo las plantas producen alimento.",
+    "duration_min": 8,
+    "content": "# Fotosíntesis\n\n## Ecuación\nCO₂ + H₂O + luz → glucosa + O₂\n\n## Dónde ocurre\nEn los **cloroplastos** de las células vegetales, usando el pigmento **clorofila**.\n\n## Qué necesita\n1. Dióxido de carbono (CO₂) del aire\n2. Agua (H₂O) de las raíces\n3. Luz solar\n\n## Qué produce\n- Glucosa (alimento de la planta)\n- Oxígeno (O₂) que libera al aire\n\n## Importancia\nProduce casi todo el oxígeno del planeta y es la base de la cadena alimentaria.\n\n## Practica\n1. ¿Qué gas libera la planta durante la fotosíntesis?\n2. ¿Dónde ocurre la fotosíntesis?"
+   },
+   {
+    "title": "Sistema digestivo",
+    "summary": "El recorrido de los alimentos.",
+    "duration_min": 10,
+    "content": "# Sistema digestivo\n\n## Recorrido del alimento\n1. Boca (masticación y saliva)\n2. Esófago (conduce al estómago)\n3. Estómago (jugos gástricos)\n4. Intestino delgado (absorbe nutrientes)\n5. Intestino grueso (absorbe agua)\n6. Expulsión\n\n## Órganos auxiliares\n- Hígado (produce bilis)\n- Páncreas (enzimas digestivas)\n\n## Nutrientes esenciales\n- Carbohidratos, proteínas, grasas, vitaminas, minerales, agua\n\n## Practica\n1. ¿Dónde se absorben los nutrientes?\n2. Nombra dos órganos auxiliares del sistema digestivo."
+   }
+  ],
+  "Alemán": [
+   {
+    "title": "Saludos y presentaciones",
+    "summary": "Aprende a saludar y presentarte en alemán.",
+    "duration_min": 10,
+    "content": "# Saludos y presentaciones en alemán\n\n## Saludos\n- Guten Morgen: buenos días (mañana)\n- Guten Tag: buenas tardes\n- Guten Abend: buenas noches (noche)\n- Hallo / Hi: hola\n\n## Presentarte\n- Ich heiße Ana → Me llamo Ana\n- Ich komme aus Spanien → Vengo de España\n- Ich bin 16 Jahre alt → Tengo 16 años\n\n## Preguntar\n- Wie heißt du? → ¿Cómo te llamas?\n- Woher kommst du? → ¿De dónde eres?\n- Wie alt bist du? → ¿Cuántos años tienes?\n\n## Despedidas\n- Tschüss / Auf Wiedersehen → Adiós\n- Bis später → Hasta luego\n\n## Practica\n1. ¿Cómo se dice \"buenos días\" en alemán?\n2. Traduce: \"Me llamo Ana y tengo 16 años\"."
+   },
+   {
+    "title": "Verbo sein (ser/estar)",
+    "summary": "La conjugación del verbo ser en alemán.",
+    "duration_min": 10,
+    "content": "# Verbo SEIN (ser/estar)\n\n## Conjugación\n- ich **bin** → yo soy\n- du **bist** → tú eres\n- er/sie/es **ist** → él/ella es\n- wir **sind** → nosotros somos\n- ihr **seid** → vosotros sois\n- sie/Sie **sind** → ellos son / usted es\n\n## Ejemplos\n- Ich bin ein Student → Soy estudiante\n- Sie ist meine Freundin → Ella es mi amiga\n- Wir sind hier → Estamos aquí\n\n## Preguntas\n- Bist du müde? → ¿Estás cansado?\n- Wo bist du? → ¿Dónde estás?\n\n## Practica\n1. Completa: Ich ___ aus Spanien. (bin)\n2. Completa: Wir ___ Schüler. (sind)"
+   }
+  ],
+  "Geografía": [
+   {
+    "title": "Continentes y océanos",
+    "summary": "Los continentes y océanos del mundo.",
+    "duration_min": 8,
+    "content": "# Continentes y océanos\n\n## Los 7 continentes\n1. Asia (el más grande)\n2. África\n3. América del Norte\n4. América del Sur\n5. Antártida\n6. Europa\n7. Oceanía (el más pequeño)\n\n## Los 5 océanos\n1. Pacífico (el más grande y profundo)\n2. Atlántico\n3. Índico\n4. Antártico (Sur)\n5. Ártico (el más pequeño)\n\n## Dato curioso\nLos océanos cubren el 71% de la superficie de la Tierra, pero solo conocemos bien un 20% de ellos.\n\n## Practica\n1. ¿Cuál es el continente más grande?\n2. ¿Cuál es el océano más profundo?"
+   },
+   {
+    "title": "Relieve y mapas",
+    "summary": "Formas del relieve y lectura de mapas.",
+    "duration_min": 10,
+    "content": "# Relieve y mapas\n\n## Formas de relieve\n- Montaña: elevación grande\n- Cordillera: conjunto de montañas\n- Llanura: terreno plano\n- Meseta: terreno elevado y plano\n- Depresión: terreno por debajo del nivel del mar\n\n## En mapas\n- Curvas de nivel: unen puntos con la misma altitud\n- Escala: relación entre el mapa y la realidad (1:100.000)\n- Rosa de los vientos: orientación (N, S, E, O)\n\n## Coordenadas\n- Latitud: distancia al ecuador (N/S)\n- Longitud: distancia al meridiano de Greenwich (E/O)\n\n## Practica\n1. ¿Qué es una meseta?\n2. ¿Qué indican las curvas de nivel en un mapa?"
+   }
+  ],
+  "Economía": [
+   {
+    "title": "Oferta y demanda",
+    "summary": "El principio que mueve los mercados.",
+    "duration_min": 10,
+    "content": "# Oferta y demanda\n\n## Demanda\nCantidad de un producto que los consumidores están dispuestos a comprar a cada precio.\n- A menor precio → mayor demanda\n\n## Oferta\nCantidad que los productores están dispuestos a vender a cada precio.\n- A mayor precio → mayor oferta\n\n## Punto de equilibrio\nDonde la oferta y la demanda se cruzan: el precio al que se iguala lo que se vende y lo que se compra.\n\n## Ejemplo\nSi sube el precio del café, la demanda baja; si baja, la demanda sube.\n\n## Practica\n1. Si baja el precio de un videojuego, ¿qué pasa con la demanda?\n2. ¿Qué es el punto de equilibrio?"
+   },
+   {
+    "title": "Dinero, inflación y ahorro",
+    "summary": "Conceptos básicos de finanzas personales.",
+    "duration_min": 10,
+    "content": "# Dinero, inflación y ahorro\n\n## Funciones del dinero\n- Medio de cambio: para comprar\n- Unidad de cuenta: para valorar precios\n- Depósito de valor: para guardar riqueza\n\n## Inflación\nSubida general de los precios.\n- Con inflación, tu dinero compra menos con el tiempo.\n\n## Ahorro\nParte de los ingresos que no se gasta.\n- Regla 50/30/20: 50% necesidades, 30% deseos, 20% ahorro\n\n## Interés compuesto\nInterés que se calcula sobre el capital + intereses acumulados.\n- Ahorrar temprano aprovecha el interés compuesto.\n\n## Practica\n1. ¿Qué es la inflación?\n2. ¿En qué consiste la regla 50/30/20?"
+   }
+  ],
+  "Filosofía": [
+   {
+    "title": "Los presocráticos y Sócrates",
+    "summary": "Los primeros filósofos y el método socrático.",
+    "duration_min": 10,
+    "content": "# Filosofía antigua\n\n## Presocráticos\nBuscaban el \"arché\" (principio) de la realidad:\n- Tales: el agua\n- Anaxímenes: el aire\n- Heráclito: el cambio constante (\"todo fluye\")\n- Pitágoras: los números\n\n## Sócrates (470-399 a.C.)\n- \"Solo sé que no sé nada\"\n- Método socrático: aprender haciendo preguntas (mayéutica)\n- Priorizó la ética y el autoconocimiento\n\n## Diferencia clave\nLos presocráticos estudiaban la naturaleza; Sócrates centró la filosofía en el ser humano.\n\n## Practica\n1. ¿Qué es el arché?\n2. ¿En qué consiste el método socrático?"
+   },
+   {
+    "title": "Ética: Platón, Aristóteles y Kant",
+    "summary": "Tres grandes visiones de la moral.",
+    "duration_min": 12,
+    "content": "# Grandes teorías éticas\n\n## Platón\n- El bien es el valor supremo\n- La justicia es dar a cada uno lo suyo\n- Alegoría de la caverna: la educación libera\n\n## Aristóteles\n- Ética de la virtud: ser virtuoso = punto medio entre extremos\n- La felicidad (eudaimonía) es el fin último\n- \"Somos lo que hacemos repetidamente\"\n\n## Kant\n- Imperativo categórico: actúa como quisieras que actuaran todos\n- La moral se basa en el deber, no en las consecuencias\n\n## Practica\n1. ¿Qué es la eudaimonía para Aristóteles?\n2. ¿Qué plantea el imperativo categórico de Kant?"
+   }
+  ],
+  "Psicología": [
+   {
+    "title": "La memoria: tipos y procesos",
+    "summary": "Cómo funciona la memoria humana.",
+    "duration_min": 10,
+    "content": "# La memoria\n\n## Tipos de memoria\n- Sensorial: dura segundos (lo que ves/oyes al instante)\n- A corto plazo: dura ~30 segundos (ej. un número de teléfono)\n- A largo plazo: información almacenada de forma duradera\n\n## Procesos\n1. Codificación: convertir la información en recuerdo\n2. Almacenamiento: mantenerla\n3. Recuperación: acceder a ella cuando la necesitas\n\n## Memoria a largo plazo\n- Declarativa: hechos y eventos (qué)\n- Procedimental: habilidades (cómo montar en bici)\n\n## Consejo para estudiar\nRepaso espaciado (repetir en intervalos) fija mejor la memoria a largo plazo.\n\n## Practica\n1. ¿Cuánto dura la memoria a corto plazo?\n2. ¿Qué diferencia hay entre memoria declarativa y procedimental?"
+   },
+   {
+    "title": "Aprendizaje: condicionamiento y refuerzo",
+    "summary": "Cómo aprendemos conductas.",
+    "duration_min": 10,
+    "content": "# El aprendizaje\n\n## Condicionamiento clásico (Pavlov)\nUn estímulo neutro se asocia a una respuesta.\n- Ejemplo: el perro salivaba con la campana que anunciaba comida\n\n## Condicionamiento operante (Skinner)\nLa conducta se refuerza o castiga.\n- Refuerzo positivo: dar algo bueno (premio) → repite la conducta\n- Castigo: consecuencia negativa → reduce la conducta\n\n## Aprendizaje por observación (Bandura)\nAprendemos viendo a otros (modelos).\n\n## En el estudio\n- Dividir el material en bloques pequeños\n- Refuerza cada avance con una recompensa corta\n\n## Practica\n1. ¿Quién descubrió el condicionamiento clásico?\n2. ¿Qué es un refuerzo positivo?"
+   }
+  ],
+  "Francés": [
+   {
+    "title": "Saludos y frases básicas",
+    "summary": "Preséntate y conversa en francés.",
+    "duration_min": 10,
+    "content": "# Francés básico: saludos\n\n## Saludos\n- Bonjour: buenos días / hola\n- Bonsoir: buenas tardes/noches\n- Salut: hola (informal)\n- Au revoir: adiós\n\n## Presentarte\n- Je m'appelle Ana → Me llamo Ana\n- J'ai 16 ans → Tengo 16 años\n- Je suis espagnol(e) → Soy español(a)\n\n## Cortesía\n- S'il vous plaît: por favor\n- Merci: gracias\n- De rien: de nada\n- Excusez-moi: perdón/disculpe\n\n## Practica\n1. ¿Cómo se dice \"gracias\" en francés?\n2. Traduce: \"Je m'appelle Ana\"."
+   },
+   {
+    "title": "Verbo être (ser/estar)",
+    "summary": "La conjugación del verbo ser en francés.",
+    "duration_min": 10,
+    "content": "# Verbo ÊTRE (ser/estar)\n\n## Conjugación\n- je **suis** → yo soy\n- tu **es** → tú eres\n- il/elle **est** → él/ella es\n- nous **sommes** → nosotros somos\n- vous **êtes** → usted es / vosotros sois\n- ils/elles **sont** → ellos son\n\n## Ejemplos\n- Je suis étudiant → Soy estudiante\n- Elle est française → Ella es francesa\n- Nous sommes prêts → Estamos listos\n\n## Negación\nne + verbo + pas\n- Je ne suis pas fatigué → No estoy cansado\n\n## Practica\n1. Completa: Elle ___ ma sœur. (est)\n2. ¿Cómo se dice \"no estoy cansado\"?"
+   }
+  ],
+  "Estructuras de Datos": [
+   {
+    "title": "Arreglos, listas y pilas",
+    "summary": "Estructuras lineales básicas y su complejidad.",
+    "duration_min": 14,
+    "content": "# Estructuras lineales\n\n## Arreglos (arrays)\nElementos contiguos en memoria con índice.\n- Acceso: O(1)\n- Búsqueda: O(n)\n- Inserción al final: O(1) amortizado\n- Inserción en medio: O(n)\n\n## Listas enlazadas\nNodos con dato + puntero al siguiente.\n- Acceso/búsqueda: O(n)\n- Inserción/borrado si tienes el nodo: O(1)\n\n## Pilas (stacks)\nLIFO (Last In, First Out). Operaciones: push, pop, peek.\n- Útil: llamado de funciones, backtracking, navegador (atrás/adelante).\n\n## Colas (queues)\nFIFO (First In, First Out). Operaciones: enqueue, dequeue.\n- Útil: planificación de procesos, BFS.\n\n## Colas con prioridad (heaps)\nExtrae siempre el máximo/mínimo en O(log n).\n\n## Regla de oro\nElige estructura según la operación crítica:\n- Acceso rápido → arreglo\n- Inserciones/borrados frecuentes → lista enlazada\n- Recorrido por capas → cola\n- Reversa → pila"
+   },
+   {
+    "title": "Árboles, grafos y hashing",
+    "summary": "Estructuras jerárquicas, grafos y tablas hash.",
+    "duration_min": 16,
+    "content": "# Árboles, grafos y hashing\n\n## Árboles binarios de búsqueda (BST)\nNodo izquierdo menor, derecho mayor.\n- Búsqueda promedio: O(log n)\n- Peor caso (desbalanceado): O(n)\n- Solución: árboles balanceados (AVL, Red-Black).\n\n## Heaps (montículos)\nÁrbol binario casi completo con propiedad de orden (max-heap/min-heap).\n- Insertar y extraer: O(log n)\n- Base del HeapSort y de colas de prioridad.\n\n## Grafos\nNodos (vértices) + aristas.\n- Representación: matriz de adyacencia (O(V²) memoria) o lista de adyacencia (O(V+E)).\n- Recorridos: DFS (profundidad) y BFS (anchura).\n- BFS da caminos más cortos en grafos sin peso.\n- Dijkstra: caminos más cortos con pesos (greedy).\n\n## Tablas hash\nMapa clave→valor con función hash.\n- Promedio: O(1) insertar, buscar, borrar.\n- Colisiones: encadenamiento o sondeo lineal.\n\n## Complejidad útil a memorizar\n- MergeSort/HeapSort: O(n log n)\n- QuickSort promedio: O(n log n), peor O(n²)\n- DFS/BFS: O(V+E)"
+   }
+  ],
+  "Algoritmos": [
+   {
+    "title": "Análisis de complejidad (Big O)",
+    "summary": "Cómo medir y hablar de la eficiencia de algoritmos.",
+    "duration_min": 13,
+    "content": "# Complejidad algorítmica\n\n## Qué es Big O\nDescribe cómo crece el tiempo/memoria cuando crece la entrada n, ignorando constantes.\n\n## Ordenes típicos (de mejor a peor)\n- O(1): constante (acceso a arreglo)\n- O(log n): logarítmico (búsqueda binaria)\n- O(n): lineal (recorrido)\n- O(n log n): casi lineal (MergeSort)\n- O(n²): cuadrático (dobles loops)\n- O(2ⁿ): exponencial (backtracking)\n- O(n!): factorial (permutaciones)\n\n## Reglas rápidas\n- Ignora constantes: 3n = O(n)\n- Domina el mayor término: n² + n = O(n²)\n- Loops anidados multiplican: n*n = O(n²)\n- Dividir a la mitad suma un log: O(log n)\n\n## Análisis amortizado\nPromedia el costo de una secuencia de operaciones.\nEjemplo: append en array dinámico es O(1) amortizado (duplica capacidad).\n\n## Consejo para entrevistas\nSiempre menciona la complejidad antes de escribir el código."
+   },
+   {
+    "title": "Divide y vencerás + programación dinámica",
+    "summary": "Las dos técnicas más poderosas para resolver problemas.",
+    "duration_min": 17,
+    "content": "# Divide y vencerás y DP\n\n## Divide y vencerás\n1. Divide el problema en subproblemas iguales.\n2. Resuélvelos recursivamente.\n3. Combina las soluciones.\n- Ejemplos: MergeSort, QuickSort, búsqueda binaria.\n\n## Programación dinámica (DP)\nUsa subproblemas **superpuestos** y los resuelve una sola vez guardando resultados (memoización).\n\n## Tab o memo\n- Memoización (top-down): recursión + caché.\n- Tabulación (bottom-up): arreglo iterativo.\n\n## Problema clásico: Fibonacci\n- Naive recursivo: O(2ⁿ)\n- Con memo: O(n)\n\n## Problema clásico: mochila (knapsack)\nCapacidad W, n items con peso y valor. Maximiza valor.\n- DP: O(n·W)\n- Subestructura: dp[i][w] = max(dp[i-1][w], dp[i-1][w-peso[i]] + valor[i])\n\n## Clave para detectar DP\n- El problema pide óptimo (max/min).\n- Tiene subproblemas que se repiten.\n- \"¿Cuántas formas de...?\" muchas veces es DP.\n\n## Plantilla\n1. Definir estado dp[i].\n2. Transición (fórmula).\n3. Caso base.\n4. Orden de llenado.\n5. Respuesta final."
+   }
+  ],
+  "Bases de Datos": [
+   {
+    "title": "Modelo relacional y SQL",
+    "summary": "Tablas, claves y el lenguaje SQL.",
+    "duration_min": 14,
+    "content": "# Bases de datos relacionales\n\n## Modelo relacional\nDatos en tablas (relaciones) con filas (tuplas) y columnas (atributos).\n\n## Claves\n- Clave primaria (PK): identifica cada fila (única y NOT NULL).\n- Clave foránea (FK): referencia la PK de otra tabla (integridad referencial).\n\n## Normalización\n- 1FN: atributos atómicos, sin grupos repetidos.\n- 2FN: 1FN + sin dependencias parciales.\n- 3FN: 2FN + sin dependencias transitivas.\n\n## SQL esencial\n```sql\nSELECT c.nombre, c.correo\nFROM clientes c\nJOIN pedidos p ON c.id = p.cliente_id\nWHERE c.ciudad = 'Bogotá'\nGROUP BY c.id\nHAVING COUNT(p.id) > 2\nORDER BY c.nombre;\n```\n\n## JOINs\n- INNER: solo coincidencias.\n- LEFT: todas las filas de la izquierda.\n- RIGHT: todas las de la derecha.\n- FULL: todas de ambas.\n\n## Índices\nEstructura (B-tree) que acelera búsquedas: SELECT por columna indexada pasa de O(n) a O(log n).\nCosto: escrituras más lentas y más espacio.\n\n## Transacciones (ACID)\n- Atomicity: todo o nada.\n- Consistency: estado válido.\n- Isolation: operaciones no interfieren.\n- Durability: persistente tras fallo."
+   },
+   {
+    "title": "Normalización y diseño",
+    "summary": "Cómo diseñar un esquema sin redundancia.",
+    "duration_min": 13,
+    "content": "# Diseño de esquemas\n\n## Por qué normalizar\nEvitar redundancia y anomalías (inserción, actualización, borrado).\n\n## Formas normales (resumen)\n- 1FN: columnas atómicas.\n- 2FN: 1FN + toda columna no clave depende de TODA la PK compuesta.\n- 3FN: 2FN + sin dependencias transitivas (columna no clave que depende de otra no clave).\n- BCNF: para cada dependencia X→Y, X es superclave.\n\n## Proceso de diseño\n1. Identificar entidades y sus atributos.\n2. Definir relaciones y cardinalidades (1:1, 1:N, N:M).\n3. Para N:M crea tabla puente con dos FK.\n4. Aplicar formas normales.\n5. Modelo físico: índices, tipos, constraints.\n\n## Errores comunes\n- Guardar datos calculados (edad si ya hay fecha de nacimiento).\n- Tabla con múltiples valores en una columna.\n- No usar FK en relaciones.\n\n## Anti-patrón\n\"Tabla universal\" con todas las columnas = casi siempre un error."
+   }
+  ],
+  "Redes": [
+   {
+    "title": "Modelo OSI y TCP/IP",
+    "summary": "Las capas de red y sus protocolos.",
+    "duration_min": 15,
+    "content": "# Redes: capas y protocolos\n\n## Modelo OSI (7 capas)\n1. Física: bits, cables, señales.\n2. Enlace: tramas, MAC, Ethernet, switches.\n3. Red: paquetes, IP, enrutamiento.\n4. Transporte: TCP/UDP, puertos.\n5. Sesión: diálogo entre hosts.\n6. Presentación: codificación/compresión.\n7. Aplicación: HTTP, DNS, SMTP, FTP.\n\n## Modelo TCP/IP (4 capas)\n1. Acceso a red\n2. Internet (IP, ICMP)\n3. Transporte (TCP, UDP)\n4. Aplicación\n\n## TCP vs UDP\n- TCP: orientado a conexión, confiable, ordenado, más lento (handshake de 3 vías).\n- UDP: sin conexión, rápido, sin garantía (streaming, juegos, DNS).\n\n## Direccionamiento IP\n- IPv4: 32 bits (4 octetos). Ej: 192.168.2.3\n- IPv6: 128 bits (hexadecimal).\n- Máscara separa red de host: 255.255.255.0 = /24.\n\n## DNS\nTraduce nombres a IPs. Jerárquico: raíz → TLD (.com) → dominio.\n\n## HTTP\n- GET: leer. POST: crear. PUT: actualizar. DELETE: borrar.\n- Códigos: 200 OK, 201 creado, 301 redirección, 400 bad request, 401/403 sin autorización, 404, 500 error de servidor."
+   },
+   {
+    "title": "HTTP, TCP y seguridad",
+    "summary": "Protocolos clave de transporte y aplicación.",
+    "duration_min": 14,
+    "content": "# TCP en detalle y seguridad\n\n## Handshake de 3 vías\n1. Cliente → SYN\n2. Servidor → SYN-ACK\n3. Cliente → ACK\nLuego comienza la transferencia confiable.\n\n## Control de congestión\n- Ventana de congestión, slow start, additive increase / multiplicative decrease.\n\n## Capas de seguridad\n- HTTPS: HTTP + TLS (cifrado). Puerto 443.\n- TLS: intercambio de claves + certificados (PKI).\n- Firewall: filtra tráfico por reglas.\n\n## Ataques comunes que debes conocer\n- MITM: intercepción de comunicaciones → se mitiga con TLS.\n- SQL Injection: nunca concatenes input en SQL (usa prepared statements).\n- XSS: inyección de scripts → sanitiza input.\n- CSRF: peticiones falsas → usa tokens.\n\n## Conceptos\n- Puertos conocidos: 80 (HTTP), 443 (HTTPS), 22 (SSH), 53 (DNS), 3306 (MySQL).\n- NAT: traduce IPs privadas a pública.\n- VPN: túnel cifrado."
+   }
+  ],
+  "Sistemas Operativos": [
+   {
+    "title": "Procesos, hilos y planificación",
+    "summary": "Cómo el SO gestiona la ejecución de programas.",
+    "duration_min": 15,
+    "content": "# Procesos e hilos\n\n## Proceso vs hilo\n- Proceso: programa en ejecución, con su propio espacio de memoria.\n- Hilo: unidad mínima de ejecución dentro de un proceso (comparten memoria).\n\n## Ciclo de vida de un proceso\nNew → Ready → Running → Waiting/Blocked → Terminated\n\n## Planificación (scheduling)\n- FCFS: primero en llegar.\n- SJF: el más corto primero (minimiza tiempo de espera promedio).\n- Round Robin: turnos con quantum (bueno para interactividad).\n- Prioridades: pueden causar inanición (starvation).\n\n## Concurrencia\n- Secciones críticas protegidas con locks/mutex.\n- Semáforos: contador para acceso a recursos.\n- Deadlock: 4 condiciones (mutua exclusión, espera, no apropiación, espera circular). Rompe una para evitarlo.\n\n## Memoria\n- Paginación: memoria dividida en páginas/tramas.\n- Swap: mover páginas a disco cuando falta RAM.\n- Page fault: página no está en RAM → traer de disco.\n\n## Race condition\nDos hilos modifican datos compartidos sin sincronización → resultado impredecible."
+   },
+   {
+    "title": "Memoria virtual y archivos",
+    "summary": "Gestión de memoria y del sistema de archivos.",
+    "duration_min": 13,
+    "content": "# Memoria virtual y archivos\n\n## Memoria virtual\nCombina RAM + disco para dar la ilusión de más memoria.\n- Direcciones virtuales → físicas (tabla de páginas / TLB).\n\n## Algoritmos de reemplazo\n- FIFO: saca la página más antigua.\n- LRU: saca la menos usada recientemente (mejor).\n- Clock: aproximación a LRU.\n\n## Fragmentación\n- Interna: espacio desperdiciado dentro de un bloque.\n- Externa: huecos dispersos entre bloques.\n\n## Sistema de archivos\n- Inodos: guardan metadatos y dónde están los bloques del archivo.\n- Directorios: mapean nombre → inodo.\n- Permisos Unix: rwx para owner/grupo/otros (chmod 755 = rwxr-xr-x).\n\n## Syscall\nInterfaz programa→SO: open, read, write, close, fork, exec.\n\n## Fork\nCrea una copia del proceso (padre e hijo). exec reemplaza el proceso por otro programa."
+   }
+  ],
+  "Ingeniería de Software": [
+   {
+    "title": "Metodologías ágiles y Scrum",
+    "summary": "Cómo se organiza el desarrollo profesional.",
+    "duration_min": 13,
+    "content": "# Metodologías ágiles\n\n## Manifiesto Ágil (2001)\n- Individuos e interacciones > procesos y herramientas.\n- Software funcionando > documentación exhaustiva.\n- Colaboración con el cliente > negociación de contrato.\n- Responder al cambio > seguir un plan.\n\n## Scrum\n- Sprint: iteración de 1-4 semanas con entregable funcional.\n- Roles: Product Owner, Scrum Master, Dev Team.\n- Eventos: Sprint Planning, Daily Standup (15 min), Sprint Review, Retrospective.\n- Artefactos: Product Backlog, Sprint Backlog, incremento.\n\n## Kanban\nTablero con columnas (To Do, In Progress, Done). Limita trabajo en progreso (WIP).\nFlujo continuo, sin sprints fijos.\n\n## Historias de usuario\n\"Como [rol], quiero [función], para [beneficio]\".\nCriterios de aceptación + puntos de historia.\n\n## Diferencia clave\nScrum es iterativo con roles y ceremonias; Kanban es flujo continuo con WIP."
+   },
+   {
+    "title": "Arquitectura, testing y Git",
+    "summary": "Diseño de software y calidad de código.",
+    "duration_min": 16,
+    "content": "# Arquitectura y testing\n\n## Patrones de arquitectura\n- MVC: Model (datos) - View (UI) - Controller (lógica).\n- Cliente-servidor / API REST.\n- Microservicios: servicios independientes comunicados por red.\n- Capas: presentación → lógica de negocio → datos.\n\n## SOLID\n- S: Single responsibility (una clase, una razón de cambio).\n- O: Open/Closed (abierto a extensión, cerrado a modificación).\n- L: Liskov (los subtipos sustituyen al padre sin romper).\n- I: Interface segregation.\n- D: Dependency inversion (depende de abstracciones).\n\n## Testing\n- Unit tests: una unidad aislada.\n- Integration tests: módulos juntos.\n- E2E: flujo completo del usuario.\n- TDD: escribir el test primero, verlo fallar, implementar, refactorizar.\n\n## Git esencial\n```bash\ngit add . ; git commit -m \"mensaje\" ; git push\ngit pull ; git merge ; git rebase\ngit checkout -b feature/rama\ngit log --oneline ; git status\n```\n\n## Code review\nPares revisan el cambio antes de merge. Menos bugs, más aprendizaje."
+   }
+  ],
+  "Matemáticas Discretas": [
+   {
+    "title": "Lógica y teoría de conjuntos",
+    "summary": "Las bases matemáticas de la computación.",
+    "duration_min": 14,
+    "content": "# Lógica y conjuntos\n\n## Conectivos lógicos\n- ¬ : negación\n- ∧ : y (conjunción)\n- ∨ : o (disyunción)\n- → : implicación (p → q es falsa solo si p=V y q=F)\n- ↔ : bicondicional (igualdad de valores)\n\n## Equivalencias útiles\n- De Morgan: ¬(p∧q) = ¬p ∨ ¬q ; ¬(p∨q) = ¬p ∧ ¬q\n- Contrapositiva: p→q ≡ ¬q→¬p\n- Leyes distributivas.\n\n## Conjuntos\n- Unión A∪B: elementos en A o B.\n- Intersección A∩B: en ambos.\n- Complemento: lo que no está en A.\n- Diferencia A∖B: en A pero no en B.\n\n## Cardinalidad / conteo\n- |A∪B| = |A| + |B| − |A∩B| (principio inclusión-exclusión).\n\n## Relaciones y funciones\n- Función inyectiva: cada elemento del dominio va a distinto codominio.\n- Sobreyectiva: cubre todo el codominio.\n- Biyectiva: ambas (permite invertir).\n\n## Importancia\nEs la base para circuitos, SQL (lógica), teoría de autómatas y pruebas."
+   },
+   {
+    "title": "Combinatoria y teoría de grafos",
+    "summary": "Conteo, probabilidad discreta y grafos.",
+    "duration_min": 15,
+    "content": "# Combinatoria y grafos\n\n## Conteo básico\n- Permutaciones de n: n!\n- Arreglos (orden importa): P(n,k) = n!/(n−k)!\n- Combinaciones (no importa orden): C(n,k) = n!/(k!(n−k)!)\n\n## Regla del producto / suma\n- Producto: si hay m formas de A y n de B, hay m·n de A y B.\n- Suma: eventos excluyentes se suman.\n\n## Teorema del binomio\n(x + y)ⁿ = Σ C(n,k)·xⁿ⁻ᵏ·yᵏ\n\n## Grafos\n- Grafo simple: sin lazos ni aristas paralelas.\n- Euleriano: recorrer todas las aristas una vez → todos los grados pares.\n- Hamiltoniano: visitar todos los vértices una vez.\n- Árbol: grafo conexo sin ciclos. Aristas = vértices − 1.\n\n## Fórmulas clave\n- C(n,k) = C(n, n−k)\n- Suma de grados = 2·aristas\n- Un árbol con n vértices tiene exactamente n−1 aristas."
+   }
+  ],
+  "Álgebra Lineal": [
+   {
+    "title": "Vectores, matrices y sistemas",
+    "summary": "Operaciones fundamentales de Álgebra Lineal.",
+    "duration_min": 15,
+    "content": "# Vectores y matrices\n\n## Vector\nCantidad con magnitud y dirección. En ℝⁿ es una lista de n números.\n- Suma y multiplicación por escalar: componente a componente.\n- Producto punto: a·b = Σ aᵢbᵢ (resultado escalar). Indica similitud de dirección.\n- Norma: |a| = √(a·a).\n\n## Matriz\nTabla de números m×n.\n- Multiplicación: A(m×k) · B(k×n) = C(m×n). Deben coincidir las dimensiones internas.\n- Identidad I: elemento neutro.\n\n## Sistemas lineales Ax = b\n- Matriz aumentada → Gauss-Jordan (eliminación).\n- Sin solución: filas inconsistentes.\n- Infinitas soluciones: variables libres.\n- Solución única: rango = n.\n\n## Determinante\n- Solo matrices cuadradas.\n- det ≠ 0 → la matriz es invertible y el sistema tiene solución única.\n- |AB| = |A|·|B| ; |Aᵀ| = |A|\n\n## Inversa A⁻¹\nAA⁻¹ = I. Solo existe si det ≠ 0.\nA⁻¹ = adj(A)/det(A)."
+   },
+   {
+    "title": "Espacios vectoriales y eigenvalores",
+    "summary": "Base, dimensión, eigen y su uso en computación.",
+    "duration_min": 16,
+    "content": "# Espacios vectoriales y eigenvalores\n\n## Espacio vectorial\nConjunto con suma y multiplicación escalar cerradas, más axiomas.\n\n## Base y dimensión\n- Base: conjunto de vectores linealmente independientes que generan el espacio.\n- Dimensión: número de vectores en la base.\n- Vectores LI: ninguno es combinación de los otros.\n\n## Eigenvalores y eigenvectores\nAv = λv donde λ es eigenvalor y v eigenvector.\n- Se hallan resolviendo det(A − λI) = 0.\n- Diagonalización: A = PDP⁻¹ con D diagonal de eigenvalores.\n\n## Aplicaciones en computación\n- Google PageRank usa eigenvectores.\n- PCA (reducción de dimensiones) usa eigen de la matriz de covarianza.\n- Compresión de imágenes (SVD).\n- Solución de sistemas con mínimos cuadrados: AᵀAx = Aᵀb.\n\n## Rango\nDimensión del espacio columna. Rank(A) ≤ min(m, n)."
+   }
+  ],
+  "Probabilidad": [
+   {
+    "title": "Probabilidad, Bayes y variables",
+    "summary": "Reglas de probabilidad y variables aleatorias.",
+    "duration_min": 15,
+    "content": "# Probabilidad\n\n## Reglas básicas\n- P(A) entre 0 y 1. P(Ω) = 1.\n- Complemento: P(Aᶜ) = 1 − P(A).\n- Unión: P(A∪B) = P(A) + P(B) − P(A∩B).\n\n## Probabilidad condicional\nP(A|B) = P(A∩B)/P(B)\n\n## Teorema de Bayes\nP(A|B) = P(B|A)·P(A) / P(B)\n- Base de clasificadores y diagnóstico.\n\n## Independencia\nA y B independientes ⟺ P(A∩B) = P(A)·P(B).\n\n## Variable aleatoria\nAsigna números a resultados.\n- Discreta: binomial, Poisson, geométrica.\n- Continua: normal, uniforme, exponencial.\n\n## Esperanza y varianza\n- E[X] = media (centro).\n- Var(X) = E[X²] − (E[X])² (dispersión).\n- Var(aX + b) = a²·Var(X).\n\n## Distribución normal\nCampana, simétrica. Regla 68-95-99.7.\nSe estandariza: Z = (X − μ)/σ."
+   },
+   {
+    "title": "Inferencia, regresión y ML",
+    "summary": "De los datos a las decisiones y al machine learning.",
+    "duration_min": 16,
+    "content": "# Inferencia y ML\n\n## Estadística vs ML\nLa estadística explica; el ML predice.\n\n## Muestreo y sesgo\n- Media muestral ≈ media poblacional si la muestra es representativa.\n- Sesgo de selección: muestra no aleatoria → conclusiones falsas.\n\n## Intervalos de confianza\nRango donde está el parámetro con cierta confianza (95% → 2 desviaciones).\n\n## Regresión lineal\ny = β₀ + β₁x. Minimiza error cuadrático (mínimos cuadrados).\n- R²: qué fracción de la varianza explica el modelo.\n\n## Sobreajuste (overfitting)\nModelo demasiado complejo → memoriza datos de entrenamiento y falla en nuevos.\nSolución: validación cruzada, regularización (L1/L2), más datos.\n\n## Conceptos ML\n- Train/validation/test split.\n- Sesgo-varianza tradeoff.\n- Clasificación vs regresión.\n- Métricas: precisión, recall, F1, accuracy.\n\n## Modelo naîve Bayes\nAplica Bayes asumiendo independencia de características: rápido y efectivo en texto."
+   }
+  ],
+  "IA y ML": [
+   {
+    "title": "Fundamentos de ML y redes neuronales",
+    "summary": "De los datos al aprendizaje profundo.",
+    "duration_min": 17,
+    "content": "# Machine Learning\n\n## Tipos de aprendizaje\n- Supervisado: datos etiquetados (regresión, clasificación).\n- No supervisado: sin etiquetas (clustering, PCA).\n- Refuerzo: agente aprende por recompensas.\n\n## Red neuronal\nNeurona: suma ponderada + activación (ReLU, sigmoid).\n- Capas: entrada → ocultas → salida.\n- Forward pass: calcular salida.\n- Backpropagation: propagar el error y ajustar pesos con gradiente descendente.\n\n## Conceptos clave\n- Pérdida (loss): qué tan mal predice.\n- Optimizador: Adam, SGD.\n- Época: una pasada completa por los datos.\n- Batch: subconjunto por paso.\n\n## Sobreajuste en redes\nDropout (apaga neuronas), early stopping, regularización, data augmentation.\n\n## CNN (visión)\nCapas convolucionales detectan patrones (bordes → texturas → objetos).\n\n## RNN / Transformers (texto)\n- RNN: secuencias.\n- Transformer: atención (base de GPT).\n- Embeddings: representar palabras como vectores.\n\n## Ética\nSesgos en datos → sesgos en modelos. Transparencia y privacidad importan."
+   },
+   {
+    "title": "Pipeline de ML y modelos clásicos",
+    "summary": "Cómo llevar un modelo de datos a producción.",
+    "duration_min": 15,
+    "content": "# Pipeline de ML\n\n## Pasos del pipeline\n1. Recolección de datos.\n2. Limpieza y EDA (valores nulos, outliers).\n3. Preprocesado: escalado (StandardScaler), codificación, split.\n4. Entrenamiento.\n5. Evaluación (métricas, matriz de confusión).\n6. Despliegue y monitoreo.\n\n## Modelos clásicos\n- Regresión lineal/logística.\n- K-NN: clasifica por vecinos cercanos.\n- Árboles de decisión y Random Forest (ensemble).\n- SVM: encuentra el margen máximo.\n- K-means: clustering por centroides.\n\n## Métricas\n- Accuracy = (TP+TN)/total (cuidado con clases desbalanceadas).\n- Precision = TP/(TP+FP) (de lo que predice positivo, cuánto acierta).\n- Recall = TP/(TP+FN) (de lo positivo real, cuánto captura).\n- F1: media armónica de precision y recall.\n\n## Matriz de confusión\nTN FP\nFN TP\n\n## Despliegue\n- Guardar el modelo (pickle/ONNX).\n- API: FastAPI, Flask.\n- Monitorear deriva de datos (el mundo cambia → el modelo se degrada)."
+   }
+  ]
+ },
+ "BASE_QUIZZES": {
+  "Matemáticas": [
+   {
+    "title": "Fracciones",
+    "questions": [
+     {
+      "q": "¿Cuánto es 1/2 + 1/4?",
+      "options": [
+       "3/4",
+       "1/6",
+       "2/6",
+       "1/4"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "¿Cuál es el resultado de 5/8 - 1/4?",
+      "options": [
+       "1/2",
+       "3/8",
+       "4/8",
+       "5/4"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Simplifica 6/8:",
+      "options": [
+       "3/4",
+       "2/3",
+       "3/8",
+       "1/2"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "¿Cuánto es 3/7 + 2/7?",
+      "options": [
+       "5/14",
+       "6/7",
+       "5/7",
+       "1"
+      ],
+      "correct": 2
+     }
+    ]
+   },
+   {
+    "title": "Ecuaciones de primer grado",
+    "questions": [
+     {
+      "q": "Resuelve: 2x - 4 = 10",
+      "options": [
+       "x = 7",
+       "x = 3",
+       "x = 12",
+       "x = 5"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Resuelve: 3(x - 1) = 12",
+      "options": [
+       "x = 3",
+       "x = 5",
+       "x = 4",
+       "x = 6"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Resuelve: x/2 + 3 = 7",
+      "options": [
+       "x = 8",
+       "x = 5",
+       "x = 10",
+       "x = 2"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Resuelve: 5x + 7 = 2x + 22",
+      "options": [
+       "x = 3",
+       "x = 5",
+       "x = 15",
+       "x = 7"
+      ],
+      "correct": 1
+     }
+    ]
+   },
+   {
+    "title": "Regla de tres y porcentajes",
+    "questions": [
+     {
+      "q": "3 manzanas cuestan 15 pesos. ¿Cuánto cuestan 5?",
+      "options": [
+       "20",
+       "25",
+       "30",
+       "15"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Un auto recorre 120 km en 2 h. ¿Cuánto en 5 h?",
+      "options": [
+       "240 km",
+       "360 km",
+       "300 km",
+       "600 km"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "¿Cuánto es el 30% de 250?",
+      "options": [
+       "75",
+       "85",
+       "65",
+       "100"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Una camisa de 800 con 25% de descuento cuesta:",
+      "options": [
+       "600",
+       "650",
+       "550",
+       "700"
+      ],
+      "correct": 0
+     }
+    ]
+   }
+  ],
+  "Inglés": [
+   {
+    "title": "Verbo to be",
+    "questions": [
+     {
+      "q": "___ you at home?",
+      "options": [
+       "Am",
+       "Is",
+       "Are",
+       "Be"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "She ___ my sister.",
+      "options": [
+       "am",
+       "are",
+       "is",
+       "be"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "We ___ students.",
+      "options": [
+       "am",
+       "are",
+       "is",
+       "be"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "He ___ here. (negativo)",
+      "options": [
+       "isn't",
+       "aren't",
+       "am not",
+       "not is"
+      ],
+      "correct": 0
+     }
+    ]
+   },
+   {
+    "title": "Present simple",
+    "questions": [
+     {
+      "q": "She ___ TV every night.",
+      "options": [
+       "watch",
+       "watches",
+       "watching",
+       "watched"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "___ he play football?",
+      "options": [
+       "Do",
+       "Is",
+       "Does",
+       "Are"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "They ___ coffee. (negativo)",
+      "options": [
+       "don't like",
+       "doesn't like",
+       "not like",
+       "aren't like"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "I ___ to school every day.",
+      "options": [
+       "go",
+       "goes",
+       "going",
+       "went"
+      ],
+      "correct": 0
+     }
+    ]
+   },
+   {
+    "title": "Pasado simple",
+    "questions": [
+     {
+      "q": "She ___ pizza last night.",
+      "options": [
+       "eats",
+       "ate",
+       "eaten",
+       "eat"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "___ you ___ the movie?",
+      "options": [
+       "Did/see",
+       "Do/saw",
+       "Does/saw",
+       "Did/seen"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "We ___ to the party. (negativo)",
+      "options": [
+       "didn't go",
+       "don't went",
+       "didn't went",
+       "not go"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Yesterday I ___ to the park.",
+      "options": [
+       "go",
+       "went",
+       "gone",
+       "going"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Programación": [
+   {
+    "title": "Python básico",
+    "questions": [
+     {
+      "q": "¿Qué imprime print(2 * 3)?",
+      "options": [
+       "23",
+       "6",
+       "5",
+       "error"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "¿Cuál es un tipo de dato de texto?",
+      "options": [
+       "int",
+       "float",
+       "str",
+       "bool"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "¿Qué función lee datos del usuario?",
+      "options": [
+       "print()",
+       "input()",
+       "len()",
+       "range()"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "¿Cuál es el operador de igualdad?",
+      "options": [
+       "=",
+       "==",
+       "!=",
+       ">="
+      ],
+      "correct": 1
+     }
+    ]
+   },
+   {
+    "title": "Condicionales y bucles",
+    "questions": [
+     {
+      "q": "¿Qué hace el bucle 'for i in range(3)'?",
+      "options": [
+       "Repite 3 veces",
+       "Repite 2 veces",
+       "Repite infinito",
+       "No hace nada"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "¿Qué palabra detiene un bucle?",
+      "options": [
+       "stop",
+       "break",
+       "end",
+       "exit"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "¿Cuál es el resultado de: for i in range(1,4): print(i)?",
+      "options": [
+       "1,2,3",
+       "0,1,2",
+       "1,2,3,4",
+       "1,2"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "La estructura para decidir es:",
+      "options": [
+       "for",
+       "if",
+       "def",
+       "return"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Física": [
+   {
+    "title": "MRU y fuerzas",
+    "questions": [
+     {
+      "q": "d = v × t. ¿Distancia con v=20 m/s y t=30 s?",
+      "options": [
+       "600 m",
+       "60 m",
+       "50 m",
+       "6000 m"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "¿Cuánto tarda en recorrer 1000 m a 25 m/s?",
+      "options": [
+       "40 s",
+       "25 s",
+       "100 s",
+       "4 s"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "F = m × a. Fuerza de una masa de 8 kg a 3 m/s²:",
+      "options": [
+       "24 N",
+       "11 N",
+       "18 N",
+       "32 N"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "¿Qué ley dice que acción y reacción son iguales y opuestas?",
+      "options": [
+       "1ª",
+       "2ª",
+       "3ª",
+       "Ninguna"
+      ],
+      "correct": 2
+     }
+    ]
+   }
+  ],
+  "Química": [
+   {
+    "title": "Balanceo y pH",
+    "questions": [
+     {
+      "q": "¿Cuántos protones tiene el oxígeno (Z=8)?",
+      "options": [
+       "6",
+       "8",
+       "16",
+       "10"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Balancea: H₂ + O₂ → H₂O. Coeficiente del agua:",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "El pH de una base está entre:",
+      "options": [
+       "0 y 7",
+       "7 y 14",
+       "0 y 14",
+       "exactamente 7"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "El agua pura tiene pH:",
+      "options": [
+       "2",
+       "7",
+       "11",
+       "0"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Historia": [
+   {
+    "title": "Revoluciones",
+    "questions": [
+     {
+      "q": "¿Qué se conmemora el 14 de julio de 1789?",
+      "options": [
+       "Toma de la Bastilla",
+       "Fin de la guerra",
+       "Napoleón",
+       "Declaración de independencia"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "¿Qué inventó Watt?",
+      "options": [
+       "El teléfono",
+       "La máquina de vapor",
+       "El automóvil",
+       "La electricidad"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "¿Dónde surgió la democracia?",
+      "options": [
+       "Egipto",
+       "Roma",
+       "Atenas",
+       "Babilonia"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "La Revolución Industrial comenzó en:",
+      "options": [
+       "Francia",
+       "Alemania",
+       "Inglaterra",
+       "Italia"
+      ],
+      "correct": 2
+     }
+    ]
+   }
+  ],
+  "Español": [
+   {
+    "title": "Oración y verbos",
+    "questions": [
+     {
+      "q": "En 'El perro ladra fuerte', el sujeto es:",
+      "options": [
+       "El perro",
+       "ladra fuerte",
+       "fuerte",
+       "El perro ladra"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "El núcleo del predicado es:",
+      "options": [
+       "el sustantivo",
+       "el verbo",
+       "el adjetivo",
+       "el artículo"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "¿En qué tiempo está 'cantaré'?",
+      "options": [
+       "Presente",
+       "Pretérito",
+       "Futuro",
+       "Imperativo"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "'Tus ojos son luceros' es una:",
+      "options": [
+       "Metáfora",
+       "Símil",
+       "Hipérbole",
+       "Personificación"
+      ],
+      "correct": 0
+     }
+    ]
+   }
+  ],
+  "Biología": [
+   {
+    "title": "Célula y fotosíntesis",
+    "questions": [
+     {
+      "q": "¿Qué orgánulo produce energía?",
+      "options": [
+       "Ribosoma",
+       "Mitocondria",
+       "Núcleo",
+       "Membrana"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "La fotosíntesis libera:",
+      "options": [
+       "CO₂",
+       "Nitrógeno",
+       "Oxígeno",
+       "Metano"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Las células vegetales tienen:",
+      "options": [
+       "Cloroplastos",
+       "Solo mitocondrias",
+       "Nada especial",
+       "Flagelos"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "¿Dónde se absorben los nutrientes?",
+      "options": [
+       "Estómago",
+       "Intestino delgado",
+       "Boca",
+       "Esófago"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Alemán": [
+   {
+    "title": "Alemán básico",
+    "questions": [
+     {
+      "q": "¿Cómo se dice 'buenos días'?",
+      "options": [
+       "Guten Morgen",
+       "Guten Abend",
+       "Hallo",
+       "Tschüss"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Ich ___ aus Spanien.",
+      "options": [
+       "bin",
+       "bist",
+       "ist",
+       "sind"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Wir ___ Schüler.",
+      "options": [
+       "bin",
+       "bist",
+       "seid",
+       "sind"
+      ],
+      "correct": 3
+     },
+     {
+      "q": "¿Qué significa 'Wie heißt du?'",
+      "options": [
+       "¿Cuántos años tienes?",
+       "¿Cómo te llamas?",
+       "¿De dónde eres?",
+       "¿Cómo estás?"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Geografía": [
+   {
+    "title": "Geografía básica",
+    "questions": [
+     {
+      "q": "¿Cuál es el continente más grande?",
+      "options": [
+       "África",
+       "Asia",
+       "Europa",
+       "América del Norte"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "¿Cuál es el océano más profundo?",
+      "options": [
+       "Atlántico",
+       "Índico",
+       "Pacífico",
+       "Ártico"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Los océanos cubren el ___% de la Tierra.",
+      "options": [
+       "50",
+       "61",
+       "71",
+       "80"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Las curvas de nivel unen puntos con la misma:",
+      "options": [
+       "Temperatura",
+       "Altitud",
+       "Distancia",
+       "Latitud"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Economía": [
+   {
+    "title": "Economía básica",
+    "questions": [
+     {
+      "q": "Si baja el precio de un producto, la demanda:",
+      "options": [
+       "Sube",
+       "Baja",
+       "No cambia",
+       "Desaparece"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "¿Qué es el punto de equilibrio?",
+      "options": [
+       "El precio máximo",
+       "Donde oferta = demanda",
+       "El precio mínimo",
+       "Donde no hay ventas"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "La subida general de los precios se llama:",
+      "options": [
+       "Deflación",
+       "Inflación",
+       "Ahorro",
+       "Interés"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Regla 50/30/20: el 20% es para:",
+      "options": [
+       "Necesidades",
+       "Deseos",
+       "Ahorro",
+       "Impuestos"
+      ],
+      "correct": 2
+     }
+    ]
+   }
+  ],
+  "Filosofía": [
+   {
+    "title": "Filosofía antigua y ética",
+    "questions": [
+     {
+      "q": "¿Qué es el 'arché'?",
+      "options": [
+       "El fin",
+       "El principio de la realidad",
+       "La felicidad",
+       "La duda"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "¿Quién dijo 'solo sé que no sé nada'?",
+      "options": [
+       "Platón",
+       "Aristóteles",
+       "Sócrates",
+       "Kant"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Para Aristóteles, el fin último es:",
+      "options": [
+       "El placer",
+       "La eudaimonía (felicidad)",
+       "El poder",
+       "El saber"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "El imperativo categórico es de:",
+      "options": [
+       "Platón",
+       "Sócrates",
+       "Aristóteles",
+       "Kant"
+      ],
+      "correct": 3
+     }
+    ]
+   }
+  ],
+  "Psicología": [
+   {
+    "title": "Psicología básica",
+    "questions": [
+     {
+      "q": "La memoria a corto plazo dura:",
+      "options": [
+       "Segundos",
+       "~30 segundos",
+       "Horas",
+       "Días"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "El condicionamiento clásico lo descubrió:",
+      "options": [
+       "Skinner",
+       "Bandura",
+       "Pavlov",
+       "Freud"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Montar en bicicleta es memoria:",
+      "options": [
+       "Declarativa",
+       "Procedimental",
+       "Sensorial",
+       "Eidética"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Aprender viendo a otros es:",
+      "options": [
+       "Condicionamiento operante",
+       "Condicionamiento clásico",
+       "Observación",
+       "Refuerzo"
+      ],
+      "correct": 2
+     }
+    ]
+   }
+  ],
+  "Francés": [
+   {
+    "title": "Francés básico",
+    "questions": [
+     {
+      "q": "¿Cómo se dice 'gracias'?",
+      "options": [
+       "Merci",
+       "Bonjour",
+       "Au revoir",
+       "Salut"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Elle ___ française.",
+      "options": [
+       "suis",
+       "es",
+       "est",
+       "sommes"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Je ___ étudiant.",
+      "options": [
+       "suis",
+       "es",
+       "est",
+       "êtes"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "La negación en francés usa:",
+      "options": [
+       "no + verbo",
+       "ne + verbo + pas",
+       "pas + verbo",
+       "verbo + ne"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Estructuras de Datos": [
+   {
+    "title": "Estructuras lineales",
+    "questions": [
+     {
+      "q": "Complejidad de acceder a un arreglo por índice:",
+      "options": [
+       "O(n)",
+       "O(log n)",
+       "O(1)",
+       "O(n²)"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Una pila es estructura:",
+      "options": [
+       "FIFO",
+       "LIFO",
+       "Aleatoria",
+       "Ordenada"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Búsqueda en árbol binario balanceado:",
+      "options": [
+       "O(n)",
+       "O(log n)",
+       "O(1)",
+       "O(n log n)"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Estructura para extraer siempre el máximo en O(log n):",
+      "options": [
+       "Pila",
+       "Cola",
+       "Heap",
+       "Hash"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Dijkstra calcula:",
+      "options": [
+       "Caminos más cortos en grafos con peso",
+       "Orden topológico",
+       "Árbol de expansión",
+       "Componentes conexas"
+      ],
+      "correct": 0
+     }
+    ]
+   }
+  ],
+  "Algoritmos": [
+   {
+    "title": "Complejidad y técnicas",
+    "questions": [
+     {
+      "q": "La búsqueda binaria es:",
+      "options": [
+       "O(n)",
+       "O(log n)",
+       "O(1)",
+       "O(n²)"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "MergeSort en el peor caso:",
+      "options": [
+       "O(n²)",
+       "O(n log n)",
+       "O(log n)",
+       "O(n)"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Programación dinámica resuelve subproblemas:",
+      "options": [
+       "Dependientes y superpuestos",
+       "Solo independientes",
+       "Nunca repetidos",
+       "De tamaño fijo"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Fibonacci naive recursivo es:",
+      "options": [
+       "O(n)",
+       "O(n log n)",
+       "O(2ⁿ)",
+       "O(log n)"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Mochila (knapsack) clásica con DP cuesta:",
+      "options": [
+       "O(n·W)",
+       "O(n²)",
+       "O(2ⁿ)",
+       "O(n log n)"
+      ],
+      "correct": 0
+     }
+    ]
+   }
+  ],
+  "Bases de Datos": [
+   {
+    "title": "SQL y diseño",
+    "questions": [
+     {
+      "q": "JOIN que devuelve solo coincidencias:",
+      "options": [
+       "LEFT",
+       "RIGHT",
+       "INNER",
+       "FULL"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "En 2FN no debe haber dependencias:",
+      "options": [
+       "Transitivas",
+       "Parciales",
+       "Funcionales",
+       "Reflexivas"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Clave que referencia otra tabla:",
+      "options": [
+       "Primaria",
+       "Foránea",
+       "Alterna",
+       "Compuesta"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Índice B-tree hace la búsqueda:",
+      "options": [
+       "O(1)",
+       "O(n)",
+       "O(log n)",
+       "O(n²)"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "'Todo o nada' corresponde a la propiedad:",
+      "options": [
+       "Consistency",
+       "Durability",
+       "Isolation",
+       "Atomicity"
+      ],
+      "correct": 3
+     }
+    ]
+   }
+  ],
+  "Redes": [
+   {
+    "title": "Protocolos y capas",
+    "questions": [
+     {
+      "q": "Capa de Internet del modelo TCP/IP maneja:",
+      "options": [
+       "HTTP",
+       "IP",
+       "Ethernet",
+       "TLS"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "TCP es:",
+      "options": [
+       "Sin conexión y rápido",
+       "Orientado a conexión y confiable",
+       "No confiable",
+       "Solo para streaming"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Puerto estándar de HTTPS:",
+      "options": [
+       "80",
+       "22",
+       "443",
+       "3306"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "Ataque que se mitiga con TLS:",
+      "options": [
+       "SQL injection",
+       "MITM",
+       "XSS",
+       "DDoS"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Traduce nombres a direcciones IP:",
+      "options": [
+       "DHCP",
+       "DNS",
+       "ARP",
+       "NAT"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Sistemas Operativos": [
+   {
+    "title": "Procesos y memoria",
+    "questions": [
+     {
+      "q": "Unidad mínima de ejecución dentro de un proceso:",
+      "options": [
+       "Hilo",
+       "Módulo",
+       "Interrupción",
+       "Syscall"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Algoritmo que minimiza el tiempo de espera promedio:",
+      "options": [
+       "FCFS",
+       "SJF",
+       "Round Robin",
+       "Aleatorio"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Mutex protege:",
+      "options": [
+       "Un disco",
+       "Una sección crítica",
+       "La RAM",
+       "El CPU"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Page fault ocurre cuando:",
+      "options": [
+       "El proceso termina",
+       "La página no está en RAM",
+       "El CPU falla",
+       "Se cierra el SO"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Algoritmo de reemplazo de páginas mejor en la práctica:",
+      "options": [
+       "FIFO",
+       "LRU",
+       "Aleatorio",
+       "Cronológico"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Ingeniería de Software": [
+   {
+    "title": "Ágil, SOLID y testing",
+    "questions": [
+     {
+      "q": "Iteración de Scrum con entregable:",
+      "options": [
+       "Sprint",
+       "Backlog",
+       "Standup",
+       "Review"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "'Una clase con una sola razón de cambio' es:",
+      "options": [
+       "Open/Closed",
+       "Liskov",
+       "Single Responsibility",
+       "Interface Segregation"
+      ],
+      "correct": 2
+     },
+     {
+      "q": "TDD dice que el test se escribe:",
+      "options": [
+       "Después del código",
+       "Antes de la implementación",
+       "Solo en producción",
+       "Nunca"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Patrón que separa datos, vista y lógica:",
+      "options": [
+       "Singleton",
+       "MVC",
+       "Factory",
+       "Proxy"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Limitar el trabajo en progreso es idea de:",
+      "options": [
+       "Scrum",
+       "Kanban",
+       "Waterfall",
+       "XP"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Matemáticas Discretas": [
+   {
+    "title": "Lógica y combinatoria",
+    "questions": [
+     {
+      "q": "De Morgan: ¬(p∧q) =",
+      "options": [
+       "¬p ∧ ¬q",
+       "¬p ∨ ¬q",
+       "p ∨ q",
+       "p ∧ q"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "|A∪B| =",
+      "options": [
+       "|A|+|B|+|A∩B|",
+       "|A|+|B|−|A∩B|",
+       "|A|·|B|",
+       "|A∩B|"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "C(n,k) =",
+      "options": [
+       "n!/(n−k)!",
+       "n!/(k!(n−k)!)",
+       "n!·k!",
+       "k!/(n−k)!"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Un árbol con n vértices tiene aristas:",
+      "options": [
+       "n",
+       "n−1",
+       "n+1",
+       "n/2"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Grafo que recorre todas las aristas una vez:",
+      "options": [
+       "Hamiltoniano",
+       "Euleriano",
+       "Bipartito",
+       "Completo"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "Álgebra Lineal": [
+   {
+    "title": "Matrices y eigen",
+    "questions": [
+     {
+      "q": "A(m×k) por B(k×n) da matriz:",
+      "options": [
+       "m×n",
+       "k×m",
+       "n×m",
+       "m×k"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "det(A) ≠ 0 implica que A es:",
+      "options": [
+       "Singular",
+       "Invertible",
+       "Rectangular",
+       "Simétrica"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "La dimensión de un espacio es:",
+      "options": [
+       "El número de vectores totales",
+       "El número de vectores de una base",
+       "El rango de la matriz nula",
+       "Siempre 3"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Eigenvector satisface:",
+      "options": [
+       "Av = λv",
+       "v = λA",
+       "Aλ = v",
+       "λv = 0"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Mínimos cuadrados resuelve:",
+      "options": [
+       "Ax = b sin solución",
+       "Sistemas con infinitas soluciones",
+       "A² = I",
+       "det(A)=0"
+      ],
+      "correct": 0
+     }
+    ]
+   }
+  ],
+  "Probabilidad": [
+   {
+    "title": "Probabilidad y Bayes",
+    "questions": [
+     {
+      "q": "P(A∪B) =",
+      "options": [
+       "P(A)+P(B)+P(A∩B)",
+       "P(A)+P(B)−P(A∩B)",
+       "P(A)·P(B)",
+       "P(A)/P(B)"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "P(A|B) =",
+      "options": [
+       "P(A∩B)/P(B)",
+       "P(B)/P(A)",
+       "P(A)·P(B)",
+       "P(A∪B)/P(B)"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "A y B independientes ⟺",
+      "options": [
+       "P(A∩B)=P(A)+P(B)",
+       "P(A∩B)=P(A)·P(B)",
+       "P(A|B)=0",
+       "A=B"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Var(aX + b) =",
+      "options": [
+       "a·Var(X)",
+       "a²·Var(X)",
+       "Var(X)+b",
+       "a²·Var(X)+b"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Regla 68-95-99.7 aplica a:",
+      "options": [
+       "Binomial",
+       "Normal",
+       "Poisson",
+       "Uniforme"
+      ],
+      "correct": 1
+     }
+    ]
+   }
+  ],
+  "IA y ML": [
+   {
+    "title": "Machine learning",
+    "questions": [
+     {
+      "q": "Aprender con datos etiquetados es:",
+      "options": [
+       "No supervisado",
+       "Supervisado",
+       "Por refuerzo",
+       "Semi-secuencial"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Backpropagation ajusta:",
+      "options": [
+       "Los datos",
+       "Los pesos",
+       "Las etiquetas",
+       "Las épocas"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Técnica que apaga neuronas aleatorias:",
+      "options": [
+       "Dropout",
+       "Pooling",
+       "Padding",
+       "Flatten"
+      ],
+      "correct": 0
+     },
+     {
+      "q": "Recall =",
+      "options": [
+       "TP/(TP+FP)",
+       "TP/(TP+FN)",
+       "TN/(TN+FP)",
+       "FP/(FP+FN)"
+      ],
+      "correct": 1
+     },
+     {
+      "q": "Modelo que asume independencia de características:",
+      "options": [
+       "Random Forest",
+       "SVM",
+       "Naïve Bayes",
+       "K-means"
+      ],
+      "correct": 2
+     }
+    ]
+   }
+  ]
+ }
+}

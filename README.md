@@ -143,9 +143,14 @@ luminom-ia/
 ├── firestore.rules         → Reglas de seguridad de Firestore
 ├── advanced-features*.js   → Funciones del tutor (voz, PDF, plan de estudio)
 ├── manifest.json / sw.js   → PWA (instalable + offline)
+├── backend/                → API Node.js + Express + MongoDB (ver backend/README.md)
 ├── docs/                   → Documentación del proyecto
 └── README.md               → Este archivo
 ```
+
+> **Backend:** la carpeta [`backend/`](backend/) contiene una API en **Node.js + Express + MongoDB (Mongoose)**.
+> Para ejecutarla: `cd backend && npm install && npm start`. Consulta [`backend/README.md`](backend/README.md)
+> para configuración, endpoints y despliegue en la nube.
 
 ---
 

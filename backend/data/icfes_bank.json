@@ -1,0 +1,3502 @@
+[
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 1,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 2,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 3,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 4,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 5,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 6,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 7,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 8,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 9,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 10,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 11,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 12,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 13,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 14,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 15,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 16,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 17,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 18,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 19,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 20,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 21,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 22,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 23,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 24,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 25,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 26,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 27,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 28,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 29,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 30,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 31,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 32,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 33,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 34,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 35,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 36,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 37,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 38,
+  "area": "lectura"
+ },
+ {
+  "q": "La palabra 'paradigma' en el texto significa:",
+  "options": [
+   "Modelo o enfoque",
+   "Error frecuente",
+   "Método de copia",
+   "Herramienta digital"
+  ],
+  "correct": 0,
+  "explain": "'Paradigma' se refiere a un modelo de referencia.",
+  "producto": "P3",
+  "id": 39,
+  "area": "lectura"
+ },
+ {
+  "q": "¿Cuál es la idea principal del texto?",
+  "options": [
+   "Los beneficios de la lectura",
+   "La historia de la imprenta",
+   "Las desventajas de la tecnología",
+   "La enseñanza de la escritura"
+  ],
+  "correct": 0,
+  "explain": "El texto desarrolla las ventajas de la lectura.",
+  "producto": "P1",
+  "id": 40,
+  "area": "lectura"
+ },
+ {
+  "q": "Según el texto, ¿qué se puede inferir sobre el autor?",
+  "options": [
+   "Que es escéptico frente a la lectura",
+   "Que valora positivamente la lectura",
+   "Que rechaza la tecnología",
+   "Que es crítico con la educación"
+  ],
+  "correct": 1,
+  "explain": "El tono del autor es favorable hacia la lectura.",
+  "producto": "P2",
+  "id": 41,
+  "area": "lectura"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explain": "3x = 12 → x = 4.",
+  "producto": "P1",
+  "id": 42,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "10 cm²",
+   "20 cm²",
+   "25 cm²",
+   "50 cm²"
+  ],
+  "correct": 2,
+  "explain": "Área = lado² = 25 cm².",
+  "producto": "P2",
+  "id": 43,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "20",
+   "21",
+   "22",
+   "23"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P3",
+  "id": 44,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explain": "3x = 12 → x = 4.",
+  "producto": "P1",
+  "id": 45,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "40",
+   "41",
+   "42",
+   "43"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P2",
+  "id": 46,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "12",
+   "13",
+   "14",
+   "15"
+  ],
+  "correct": 2,
+  "explain": "Diferencia +3 → 11+3=14.",
+  "producto": "P3",
+  "id": 47,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "60",
+   "61",
+   "62",
+   "63"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P1",
+  "id": 48,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "10 cm²",
+   "20 cm²",
+   "25 cm²",
+   "50 cm²"
+  ],
+  "correct": 2,
+  "explain": "Área = lado² = 25 cm².",
+  "producto": "P2",
+  "id": 49,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "80",
+   "81",
+   "82",
+   "83"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P3",
+  "id": 50,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explain": "3x = 12 → x = 4.",
+  "producto": "P1",
+  "id": 51,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "100",
+   "101",
+   "102",
+   "103"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P2",
+  "id": 52,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "12",
+   "13",
+   "14",
+   "15"
+  ],
+  "correct": 2,
+  "explain": "Diferencia +3 → 11+3=14.",
+  "producto": "P3",
+  "id": 53,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "120",
+   "121",
+   "122",
+   "123"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P1",
+  "id": 54,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "10 cm²",
+   "20 cm²",
+   "25 cm²",
+   "50 cm²"
+  ],
+  "correct": 2,
+  "explain": "Área = lado² = 25 cm².",
+  "producto": "P2",
+  "id": 55,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "140",
+   "141",
+   "142",
+   "143"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P3",
+  "id": 56,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explain": "3x = 12 → x = 4.",
+  "producto": "P1",
+  "id": 57,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "160",
+   "161",
+   "162",
+   "163"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P2",
+  "id": 58,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "12",
+   "13",
+   "14",
+   "15"
+  ],
+  "correct": 2,
+  "explain": "Diferencia +3 → 11+3=14.",
+  "producto": "P3",
+  "id": 59,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "180",
+   "181",
+   "182",
+   "183"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P1",
+  "id": 60,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "10 cm²",
+   "20 cm²",
+   "25 cm²",
+   "50 cm²"
+  ],
+  "correct": 2,
+  "explain": "Área = lado² = 25 cm².",
+  "producto": "P2",
+  "id": 61,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "200",
+   "201",
+   "202",
+   "203"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P3",
+  "id": 62,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explain": "3x = 12 → x = 4.",
+  "producto": "P1",
+  "id": 63,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "220",
+   "221",
+   "222",
+   "223"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P2",
+  "id": 64,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "12",
+   "13",
+   "14",
+   "15"
+  ],
+  "correct": 2,
+  "explain": "Diferencia +3 → 11+3=14.",
+  "producto": "P3",
+  "id": 65,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "240",
+   "241",
+   "242",
+   "243"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P1",
+  "id": 66,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "10 cm²",
+   "20 cm²",
+   "25 cm²",
+   "50 cm²"
+  ],
+  "correct": 2,
+  "explain": "Área = lado² = 25 cm².",
+  "producto": "P2",
+  "id": 67,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "260",
+   "261",
+   "262",
+   "263"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P3",
+  "id": 68,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explain": "3x = 12 → x = 4.",
+  "producto": "P1",
+  "id": 69,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "280",
+   "281",
+   "282",
+   "283"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P2",
+  "id": 70,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "12",
+   "13",
+   "14",
+   "15"
+  ],
+  "correct": 2,
+  "explain": "Diferencia +3 → 11+3=14.",
+  "producto": "P3",
+  "id": 71,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "300",
+   "301",
+   "302",
+   "303"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P1",
+  "id": 72,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "10 cm²",
+   "20 cm²",
+   "25 cm²",
+   "50 cm²"
+  ],
+  "correct": 2,
+  "explain": "Área = lado² = 25 cm².",
+  "producto": "P2",
+  "id": 73,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "320",
+   "321",
+   "322",
+   "323"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P3",
+  "id": 74,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explain": "3x = 12 → x = 4.",
+  "producto": "P1",
+  "id": 75,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "340",
+   "341",
+   "342",
+   "343"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P2",
+  "id": 76,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "12",
+   "13",
+   "14",
+   "15"
+  ],
+  "correct": 2,
+  "explain": "Diferencia +3 → 11+3=14.",
+  "producto": "P3",
+  "id": 77,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "360",
+   "361",
+   "362",
+   "363"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P1",
+  "id": 78,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "10 cm²",
+   "20 cm²",
+   "25 cm²",
+   "50 cm²"
+  ],
+  "correct": 2,
+  "explain": "Área = lado² = 25 cm².",
+  "producto": "P2",
+  "id": 79,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "380",
+   "381",
+   "382",
+   "383"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P3",
+  "id": 80,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explain": "3x = 12 → x = 4.",
+  "producto": "P1",
+  "id": 81,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "400",
+   "401",
+   "402",
+   "403"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P2",
+  "id": 82,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "12",
+   "13",
+   "14",
+   "15"
+  ],
+  "correct": 2,
+  "explain": "Diferencia +3 → 11+3=14.",
+  "producto": "P3",
+  "id": 83,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "420",
+   "421",
+   "422",
+   "423"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P1",
+  "id": 84,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "10 cm²",
+   "20 cm²",
+   "25 cm²",
+   "50 cm²"
+  ],
+  "correct": 2,
+  "explain": "Área = lado² = 25 cm².",
+  "producto": "P2",
+  "id": 85,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "440",
+   "441",
+   "442",
+   "443"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P3",
+  "id": 86,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explain": "3x = 12 → x = 4.",
+  "producto": "P1",
+  "id": 87,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "460",
+   "461",
+   "462",
+   "463"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P2",
+  "id": 88,
+  "area": "mate"
+ },
+ {
+  "q": "En una progresión aritmética 2, 5, 8, 11, … el siguiente término es:",
+  "options": [
+   "12",
+   "13",
+   "14",
+   "15"
+  ],
+  "correct": 2,
+  "explain": "Diferencia +3 → 11+3=14.",
+  "producto": "P3",
+  "id": 89,
+  "area": "mate"
+ },
+ {
+  "q": "Si 3x + 6 = 18, el valor de x es:",
+  "options": [
+   "480",
+   "481",
+   "482",
+   "483"
+  ],
+  "correct": 0,
+  "explain": "Pregunta de práctica con valores variados.",
+  "producto": "P1",
+  "id": 90,
+  "area": "mate"
+ },
+ {
+  "q": "El área de un cuadrado de lado 5 cm es:",
+  "options": [
+   "10 cm²",
+   "20 cm²",
+   "25 cm²",
+   "50 cm²"
+  ],
+  "correct": 2,
+  "explain": "Área = lado² = 25 cm².",
+  "producto": "P2",
+  "id": 91,
+  "area": "mate"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 92,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 93,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 94,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 95,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 96,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 97,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 98,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 99,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 100,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 101,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 102,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 103,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 104,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 105,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 106,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 107,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 108,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 109,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 110,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 111,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 112,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 113,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 114,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 115,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 116,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 117,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 118,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 119,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 120,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 121,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 122,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 123,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 124,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 125,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 126,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 127,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 128,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 129,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 130,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 131,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 132,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 133,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 134,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 135,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 136,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 137,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 138,
+  "area": "sociales"
+ },
+ {
+  "q": "El término 'globalización' hace referencia a:",
+  "options": [
+   "La interdependencia económica mundial",
+   "El aislacionismo de los países",
+   "La guerra comercial",
+   "El fin de los estados nacionales"
+  ],
+  "correct": 0,
+  "explain": "Implica creciente integración e interdependencia.",
+  "producto": "P2",
+  "id": 139,
+  "area": "sociales"
+ },
+ {
+  "q": "La Revolución Industrial se caracterizó principalmente por:",
+  "options": [
+   "El desarrollo del comercio marítimo",
+   "La mecanización de la producción",
+   "La expansión del feudalismo",
+   "El auge de la agricultura"
+  ],
+  "correct": 1,
+  "explain": "Fue la transición a la producción mecanizada.",
+  "producto": "P1",
+  "id": 140,
+  "area": "sociales"
+ },
+ {
+  "q": "La Constitución Política de Colombia busca garantizar:",
+  "options": [
+   "Los derechos fundamentales de los ciudadanos",
+   "La centralización del poder",
+   "La abolición de los partidos",
+   "El control externo del Estado"
+  ],
+  "correct": 0,
+  "explain": "Consagra derechos y deberes de los ciudadanos.",
+  "producto": "P3",
+  "id": 141,
+  "area": "sociales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 142,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 143,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 144,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 145,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 146,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 147,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 148,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 149,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 150,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 151,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 152,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 153,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 154,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 155,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 156,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 157,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 158,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 159,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 160,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 161,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 162,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 163,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 164,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 165,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 166,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 167,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 168,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 169,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 170,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 171,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 172,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 173,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 174,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 175,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 176,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 177,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 178,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 179,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 180,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 181,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 182,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 183,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 184,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 185,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 186,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 187,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 188,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 189,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 190,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 191,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 192,
+  "area": "naturales"
+ },
+ {
+  "q": "La fotosíntesis la realizan principalmente:",
+  "options": [
+   "Los animales",
+   "Las plantas",
+   "Los hongos",
+   "Las bacterias del suelo"
+  ],
+  "correct": 1,
+  "explain": "Las plantas convierten luz en energía química.",
+  "producto": "P1",
+  "id": 193,
+  "area": "naturales"
+ },
+ {
+  "q": "La energía cinética de un cuerpo aumenta cuando:",
+  "options": [
+   "Aumenta su masa y rapidez",
+   "Disminuye su velocidad",
+   "Se enfría",
+   "Permanece en reposo"
+  ],
+  "correct": 0,
+  "explain": "Ec = ½·m·v², depende de masa y velocidad.",
+  "producto": "P2",
+  "id": 194,
+  "area": "naturales"
+ },
+ {
+  "q": "Para probar si una planta necesita luz, un experimento adecuado es:",
+  "options": [
+   "Colocar una planta en la luz y otra en la oscuridad",
+   "Regar plantas con agua salada",
+   "Someter ambas plantas al mismo tratamiento",
+   "Medir solo el peso"
+  ],
+  "correct": 0,
+  "explain": "Se compara un grupo experimental y uno control.",
+  "producto": "P3",
+  "id": 195,
+  "area": "naturales"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 196,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 197,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 198,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 199,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 200,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 201,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 202,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 203,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 204,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 205,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 206,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 207,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 208,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 209,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 210,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 211,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 212,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 213,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 214,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 215,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 216,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 217,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 218,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 219,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 220,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 221,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 222,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 223,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 224,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 225,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 226,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 227,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 228,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 229,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 230,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 231,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 232,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 233,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 234,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 235,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 236,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 237,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 238,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 239,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 240,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 241,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 242,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 243,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 244,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 245,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 246,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 247,
+  "area": "ingles"
+ },
+ {
+  "q": "The opposite of 'happy' is:",
+  "options": [
+   "glad",
+   "sad",
+   "nice",
+   "kind"
+  ],
+  "correct": 1,
+  "explain": "Happy (feliz) / sad (triste).",
+  "producto": "P2",
+  "id": 248,
+  "area": "ingles"
+ },
+ {
+  "q": "Select the correct sentence:",
+  "options": [
+   "He don't like apples",
+   "He doesn't like apples",
+   "He not like apples",
+   "He doesn't likes apples"
+  ],
+  "correct": 1,
+  "explain": "Negación en tercera persona: doesn't + verbo base.",
+  "producto": "P3",
+  "id": 249,
+  "area": "ingles"
+ },
+ {
+  "q": "Choose the correct option: She ___ to school every day.",
+  "options": [
+   "go",
+   "goes",
+   "going",
+   "gone"
+  ],
+  "correct": 1,
+  "explain": "Tercera persona singular → goes.",
+  "producto": "P1",
+  "id": 250,
+  "area": "ingles"
+ }
+]

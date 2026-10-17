@@ -57,3 +57,16 @@ TU_API_KEY_PRIVADA.txt
 *_PRIVADA.txt
 *.key
 api_keys/
+
+
+# ===== Backend (carpeta backend/) =====
+# El backend tiene su propio .gitignore; aquí re-incluimos lo que el
+# .gitignore raíz excluiría por error pero que el backend SÍ necesita versionar.
+!backend/data/
+!backend/data/**
+!backend/package-lock.json
+backend/node_modules/
+backend/.env
+backend/mongo-data/
+backend/data/pdfs/*
+!backend/data/pdfs/.gitkeep
