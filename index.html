@@ -98,20 +98,21 @@
     .fc{position:absolute;top:50%;left:50%;background:rgba(10,22,40,0.82);backdrop-filter:blur(16px);border:1.5px solid rgba(201,168,76,0.35);border-radius:var(--radius-md);padding:0.85rem 1.1rem;display:flex;align-items:center;gap:0.7rem;color:var(--white);width:190px;box-shadow:0 8px 32px rgba(0,0,0,0.45);}
     /* Cada tarjeta se ancla al centro y se empuja hacia su órbita (como un planeta),
        repartidas alrededor del logo. El float suave conserva el centrado con translate(-50%,-50%). */
-    .fc:nth-child(4){animation:orbit1 6s ease-in-out infinite;}        /* arriba-izquierda */
-    .fc:nth-child(5){animation:orbit2 7s ease-in-out -2.3s infinite;} /* derecha */
-    .fc:nth-child(6){animation:orbit3 6.5s ease-in-out -4s infinite;} /* abajo-izquierda */
+    .fc:nth-child(4){animation:orbit1 6s ease-in-out infinite;}        /* Cálculo III — izquierda */
+    .fc:nth-child(5){animation:orbit2 7s ease-in-out -2.3s infinite;} /* Física Cuántica — arriba-derecha */
+    .fc:nth-child(6){animation:orbit3 6.5s ease-in-out -4s infinite;} /* Algoritmos — abajo-derecha */
+    /* Cada tarjeta orbita el logo a distancia similar, repartidas en triángulo */
     @keyframes orbit1{
-      0%,100%{transform:translate(-50%,-50%) translate(-170px,-120px);}
-      50%{transform:translate(-50%,-50%) translate(-170px,-132px);}
+      0%,100%{transform:translate(-50%,-50%) translate(-180px,55px);}
+      50%{transform:translate(-50%,-50%) translate(-180px,43px);}
     }
     @keyframes orbit2{
-      0%,100%{transform:translate(-50%,-50%) translate(150px,10px);}
-      50%{transform:translate(-50%,-50%) translate(150px,-4px);}
+      0%,100%{transform:translate(-50%,-50%) translate(165px,-135px);}
+      50%{transform:translate(-50%,-50%) translate(165px,-147px);}
     }
     @keyframes orbit3{
-      0%,100%{transform:translate(-50%,-50%) translate(-150px,130px);}
-      50%{transform:translate(-50%,-50%) translate(-150px,118px);}
+      0%,100%{transform:translate(-50%,-50%) translate(95px,180px);}
+      50%{transform:translate(-50%,-50%) translate(95px,168px);}
     }
     .fc-ico{font-size:1.35rem;width:38px;height:38px;background:rgba(201,168,76,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;}
     .fc-t{font-weight:700;font-size:0.87rem;margin-bottom:0.12rem;color:var(--white);}
