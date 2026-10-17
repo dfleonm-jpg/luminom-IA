@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Función helper para verificar si es admin
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'admin@luminom.com';
+    }
+    
+    // Colección de usuarios
+    match /users/{userId} {
+      // Permitir creación durante el registro
+      allow create: if request.auth != null && request.auth.uid == userId;
+      
+      // Usuario puede leer/actualizar sus propios datos
+      allow read, update: if request.auth != null && request.auth.uid == userId;
+      
+      // Admin puede leer y actualizar todos los usuarios
+      allow read, update: if isAdmin();
+    }
+    
+    // Colección de chats
+    match /chats/{chatId} {
+      // Usuario puede crear/leer/escribir sus propios chats
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      
+      // Admin puede leer todos los chats
+      allow read: if isAdmin();
+    }
+  }
+}

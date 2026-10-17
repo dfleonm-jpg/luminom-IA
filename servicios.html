@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Servicios y Planes - Luminom IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:#0A1628; --navy-mid:#112240; --navy-light:#1C3461;
+      --gold:#C9A84C; --gold-light:#E8C97A; --gold-dark:#A8884A;
+      --white:#FFFFFF; --off-white:#F8F6F1;
+      --text-primary:#0A1628; --text-secondary:#4A5568; --text-muted:#8898A4;
+      --border:rgba(10,22,40,0.1); --border-gold:rgba(201,168,76,0.3);
+      --shadow-sm:0 2px 12px rgba(10,22,40,0.08);
+      --shadow-md:0 8px 32px rgba(10,22,40,0.14);
+      --shadow-lg:0 20px 60px rgba(10,22,40,0.2);
+      --radius-sm:8px; --radius-md:14px; --radius-lg:22px;
+      --font-display:'Playfair Display',Georgia,serif;
+      --font-body:'Inter',system-ui,sans-serif;
+      --success:#10B981; --warning:#F59E0B;
+      --t:0.28s cubic-bezier(0.4,0,0.2,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--off-white);color:var(--text-primary);line-height:1.7;}
+    
+    /* Navigation */
+    .nav{background:var(--navy);padding:1rem 2rem;box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:100;}
+    .nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+    .logo{display:flex;align-items:center;gap:0.6rem;color:var(--white);text-decoration:none;transition:var(--t);}
+    .logo:hover{transform:translateY(-2px);}
+    .logo-mark{width:36px;height:36px;background:var(--gold);color:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:1.1rem;}
+    .logo-text{font-family:var(--font-display);font-size:1.15rem;font-weight:600;}
+    .logo-text em{font-style:italic;color:var(--gold);}
+    .nav-links{display:flex;gap:2rem;align-items:center;}
+    .nav-link{color:rgba(255,255,255,0.8);text-decoration:none;font-weight:500;font-size:0.9rem;transition:var(--t);}
+    .nav-link:hover{color:var(--gold);}
+    .btn-nav{background:var(--gold);color:var(--navy);padding:0.6rem 1.5rem;border-radius:100px;font-weight:600;font-size:0.88rem;text-decoration:none;transition:var(--t);}
+    .btn-nav:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.4);}
+    
+    /* Hero */
+    .hero{background:linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);padding:5rem 2rem;text-align:center;color:var(--white);position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:0.4;}
+    .hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto;}
+    .hero h1{font-family:var(--font-display);font-size:3.5rem;font-weight:700;margin-bottom:1.2rem;line-height:1.15;}
+    .hero h1 .gold{color:var(--gold);font-style:italic;}
+    .hero p{font-size:1.25rem;color:rgba(255,255,255,0.85);max-width:700px;margin:0 auto 2.5rem;}
+    .hero-badge{display:inline-block;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);padding:0.5rem 1.2rem;border-radius:100px;font-size:0.88rem;color:var(--gold);font-weight:600;margin-bottom:1.5rem;}
+    
+    /* Pricing */
+    .pricing-section{max-width:1300px;margin:-4rem auto 0;padding:0 2rem 6rem;position:relative;z-index:10;}
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;}
+    
+    .price-card{background:var(--white);border:2px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;transition:var(--t);position:relative;}
+    .price-card:hover{transform:translateY(-8px);border-color:var(--border-gold);box-shadow:var(--shadow-lg);}
+    .price-card.featured{border-color:var(--gold);box-shadow:var(--shadow-md);}
+    .price-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+    .price-card.highlight{border-color:#059669;box-shadow:var(--shadow-md);}
+    .price-card.highlight::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#059669,#10B981);border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+    
+    .badge{position:absolute;top:-12px;right:20px;background:var(--gold);color:var(--navy);padding:0.4rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:700;letter-spacing:0.5px;}
+    
+    .plan-name{font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;}
+    .plan-desc{font-size:0.9rem;color:var(--text-secondary);margin-bottom:1.5rem;}
+    
+    .price-wrapper{margin:2rem 0;}
+    .price{font-family:var(--font-display);font-size:3.5rem;font-weight:700;color:var(--navy);line-height:1;}
+    .price-small{font-size:1.2rem;font-weight:400;color:var(--text-muted);}
+    .price-period{font-size:1rem;color:var(--text-muted);margin-top:0.3rem;}
+    
+    .features{list-style:none;margin:2rem 0;}
+    .features li{padding:0.85rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;color:var(--text-secondary);display:flex;align-items:center;gap:0.8rem;}
+    .features li:last-child{border-bottom:none;}
+    .features li::before{content:'✓';color:var(--success);font-weight:700;font-size:1.1rem;flex-shrink:0;}
+    .features li.disabled{color:var(--text-muted);opacity:0.5;}
+    .features li.disabled::before{content:'—';color:var(--text-muted);}
+    
+    .btn{display:block;width:100%;padding:1rem 2rem;border-radius:100px;border:none;font-weight:600;font-size:1rem;cursor:pointer;transition:var(--t);text-align:center;text-decoration:none;margin-top:2rem;}
+    .btn-primary{background:var(--gold);color:var(--navy);box-shadow:0 4px 16px rgba(201,168,76,0.3);}
+    .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.4);}
+    .btn-outline{background:transparent;color:var(--navy);border:2px solid var(--border);}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.05);}
+    .btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+    
+    /* Features Section */
+    .features-section{background:var(--white);padding:6rem 2rem;margin:4rem 0;}
+    .features-section h2{font-family:var(--font-display);font-size:2.8rem;font-weight:700;text-align:center;margin-bottom:3rem;color:var(--navy);}
+    .features-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;}
+    .feature-card{text-align:center;padding:2rem;}
+    .feature-icon{width:70px;height:70px;background:rgba(201,168,76,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.5rem;}
+    .feature-card h3{font-family:var(--font-display);font-size:1.4rem;font-weight:600;margin-bottom:0.8rem;color:var(--navy);}
+    .feature-card p{color:var(--text-secondary);line-height:1.7;}
+    
+    /* FAQ */
+    .faq-section{max-width:900px;margin:6rem auto;padding:0 2rem;}
+    .faq-section h2{font-family:var(--font-display);font-size:2.8rem;font-weight:700;text-align:center;margin-bottom:3rem;color:var(--navy);}
+    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:2rem;margin-bottom:1.5rem;transition:var(--t);}
+    .faq-item:hover{border-color:var(--border-gold);box-shadow:var(--shadow-sm);}
+    .faq-item h3{font-family:var(--font-display);font-size:1.3rem;font-weight:600;margin-bottom:1rem;color:var(--navy);}
+    .faq-item p{color:var(--text-secondary);line-height:1.8;}
+    
+    /* CTA */
+    .cta-section{background:linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);padding:5rem 2rem;text-align:center;color:var(--white);margin-top:6rem;}
+    .cta-section h2{font-family:var(--font-display);font-size:2.8rem;font-weight:700;margin-bottom:1.5rem;}
+    .cta-section p{font-size:1.2rem;color:rgba(255,255,255,0.85);margin-bottom:2.5rem;max-width:700px;margin-left:auto;margin-right:auto;}
+    .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);padding:1.2rem 3rem;border-radius:100px;font-weight:700;font-size:1.1rem;text-decoration:none;transition:var(--t);box-shadow:0 8px 24px rgba(201,168,76,0.4);}
+    .cta-btn:hover{background:var(--gold-light);transform:translateY(-3px);box-shadow:0 12px 32px rgba(201,168,76,0.5);}
+    
+    /* Footer */
+    footer{background:var(--navy);padding:3rem 2rem;text-align:center;color:rgba(255,255,255,0.7);}
+    footer p{margin:0.5rem 0;}
+    footer a{color:var(--gold);text-decoration:none;}
+    footer a:hover{text-decoration:underline;}
+    
+    @media(max-width:768px){
+      .hero h1{font-size:2.5rem;}
+      .hero p{font-size:1.1rem;}
+      .pricing-grid{grid-template-columns:1fr;}
+      .features-grid{grid-template-columns:1fr;}
+      .nav-links{display:none;}
+      .price{font-size:2.8rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">L</span>
+        <span class="logo-text">Luminom <em>IA</em></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="servicios.html" class="nav-link">Servicios</a>
+        <a href="tutor.html" class="btn-nav">Ir al Tutor →</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✨ Educación Superior al Alcance de Todos</div>
+      <h1>Planes y <span class="gold">Servicios</span></h1>
+      <p>Encuentra el plan perfecto para tu éxito académico. Desde estudiantes hasta instituciones educativas.</p>
+    </div>
+  </section>
+
+  <section class="pricing-section">
+    <div class="pricing-grid">
+      
+      <!-- Plan Gratuito -->
+      <div class="price-card">
+        <div class="plan-name">Estudiante</div>
+        <div class="plan-desc">Perfecto para empezar</div>
+        <div class="price-wrapper">
+          <div class="price">$0</div>
+          <div class="price-period">Gratis para siempre</div>
+        </div>
+        <ul class="features">
+          <li>Acceso ilimitado al tutor IA</li>
+          <li>Todas las materias universitarias</li>
+          <li>Explicaciones paso a paso</li>
+          <li>Ejemplos contextualizados</li>
+          <li>Guardado de conversaciones</li>
+          <li>Acceso desde cualquier dispositivo</li>
+          <li>Soporte por email</li>
+        </ul>
+        <a href="login.html" class="btn btn-outline">Comenzar Gratis</a>
+      </div>
+
+      <!-- Plan Premium -->
+      <div class="price-card featured">
+        <div class="badge">MÁS POPULAR</div>
+        <div class="plan-name">Premium</div>
+        <div class="plan-desc">Para estudiantes dedicados</div>
+        <div class="price-wrapper">
+          <div class="price"><span class="price-small">$</span>14.900</div>
+          <div class="price-period">COP / mes</div>
+        </div>
+        <ul class="features">
+          <li>Todo lo del plan Estudiante</li>
+          <li>Respuestas prioritarias</li>
+          <li>Sin límite de preguntas</li>
+          <li>Análisis de rendimiento académico</li>
+          <li>Exportar conversaciones a PDF</li>
+          <li>Modo offline (próximamente)</li>
+          <li>Soporte prioritario 24/7</li>
+          <li>Acceso anticipado a nuevas funciones</li>
+        </ul>
+        <button class="btn btn-primary" onclick="subscribeToPremium('monthly')">Suscribirme Ahora</button>
+      </div>
+
+      <!-- Plan De por Vida -->
+      <div class="price-card highlight">
+        <div class="badge" style="background:#059669;">MEJOR VALOR</div>
+        <div class="plan-name">De por Vida</div>
+        <div class="plan-desc">Pago único, acceso ilimitado</div>
+        <div class="price-wrapper">
+          <div class="price"><span class="price-small">$</span>299.000</div>
+          <div class="price-period">COP / pago único</div>
+          <div style="font-size:0.8rem;color:#059669;margin-top:0.5rem;">
+            💰 Ahorras $179.000 vs. 1 año Premium
+          </div>
+        </div>
+        <ul class="features">
+          <li>Todo lo del plan Premium</li>
+          <li><strong>Acceso de por vida</strong></li>
+          <li>Sin pagos mensuales nunca más</li>
+          <li>Todas las actualizaciones futuras</li>
+          <li>Precio bloqueado para siempre</li>
+          <li>Transferible a otro dispositivo</li>
+          <li>Garantía de satisfacción 30 días</li>
+          <li>Insignia de miembro fundador 🏆</li>
+        </ul>
+        <button class="btn btn-primary" onclick="subscribeToPremium('lifetime')" style="background:#059669;border-color:#059669;">Comprar De por Vida</button>
+      </div>
+
+      <!-- Plan Institucional -->
+      <div class="price-card">
+        <div class="plan-name">Institucional</div>
+        <div class="plan-desc">Para universidades y colegios</div>
+        <div class="price-wrapper">
+          <div class="price">Contacto</div>
+          <div class="price-period">Planes personalizados</div>
+        </div>
+        <ul class="features">
+          <li>Todo lo del plan Premium</li>
+          <li>Licencias para múltiples usuarios</li>
+          <li>Dashboard administrativo</li>
+          <li>Estadísticas de uso institucional</li>
+          <li>Integración con LMS (Moodle, Canvas)</li>
+          <li>Personalización de marca</li>
+          <li>Capacitación para docentes</li>
+          <li>Soporte técnico dedicado</li>
+        </ul>
+        <a href="mailto:ialuminom@gmail.com?subject=Consulta Plan Institucional" class="btn btn-outline">Contactar Ventas</a></a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="features-section">
+    <h2>¿Por qué elegir Luminom IA?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎓</div>
+        <h3>Especializado en Colombia</h3>
+        <p>Contenido adaptado al currículo universitario colombiano con ejemplos locales y contexto cultural.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Respuestas Instantáneas</h3>
+        <p>Obtén ayuda inmediata las 24 horas del día, los 7 días de la semana. Nunca esperes por una respuesta.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Privado y Seguro</h3>
+        <p>Tus conversaciones son privadas. No compartimos tu información con terceros.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Todas las Materias</h3>
+        <p>Desde Cálculo hasta Derecho. Cubre todas las áreas del conocimiento universitario.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3>Aprendizaje Progresivo</h3>
+        <p>El tutor recuerda tus conversaciones y adapta las explicaciones a tu nivel de comprensión.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Acceso Multi-Dispositivo</h3>
+        <p>Estudia desde tu computador, tablet o celular. Sincronización en la nube.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2>Métodos de Pago Aceptados</h2>
+    
+    <div style="text-align:center;margin:2rem 0;padding:2rem;background:var(--white);border-radius:16px;border:1px solid var(--border);">
+      <p style="font-size:1.1rem;color:var(--text-secondary);margin-bottom:1.5rem;">
+        💳 Pagos seguros procesados por <strong style="color:var(--navy);">Wompi</strong>
+      </p>
+      
+      <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1.5rem 0;">
+        <div style="font-size:2.5rem;">💳</div>
+        <div style="font-size:0.9rem;color:var(--text-secondary);">
+          <strong style="display:block;color:var(--navy);margin-bottom:0.25rem;">Tarjetas de Crédito/Débito</strong>
+          Visa, Mastercard, American Express
+        </div>
+      </div>
+      
+      <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1.5rem 0;">
+        <div style="font-size:2.5rem;">🏦</div>
+        <div style="font-size:0.9rem;color:var(--text-secondary);">
+          <strong style="display:block;color:var(--navy);margin-bottom:0.25rem;">PSE</strong>
+          Pago directo desde tu banco
+        </div>
+      </div>
+      
+      <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1.5rem 0;">
+        <div style="font-size:2.5rem;">📱</div>
+        <div style="font-size:0.9rem;color:var(--text-secondary);">
+          <strong style="display:block;color:var(--navy);margin-bottom:0.25rem;">Nequi</strong>
+          Pago desde tu celular
+        </div>
+      </div>
+      
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-top:1.5rem;">
+        🔒 Todos los pagos son 100% seguros y encriptados<br>
+        ✅ Recibe confirmación inmediata por email
+      </p>
+    </div>
+    
+    <h2 style="margin-top:3rem;">Preguntas Frecuentes</h2>
+    
+    <div class="faq-item">
+      <h3>¿Realmente es gratis?</h3>
+      <p>Sí, el plan Estudiante es 100% gratuito para siempre. No necesitas tarjeta de crédito ni información de pago. Solo crea tu cuenta y empieza a aprender.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Cuándo estará disponible el plan Premium?</h3>
+      <p>Estamos trabajando en lanzar el plan Premium en las próximas semanas. Si te interesa, regístrate ahora y te notificaremos cuando esté disponible con un descuento especial de lanzamiento.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Qué materias cubre el tutor?</h3>
+      <p>Luminom IA cubre todas las materias universitarias: Matemáticas (Cálculo, Álgebra, Estadística), Programación, Física, Química, Economía, Derecho, Ingeniería, Medicina, y más. Si es parte del currículo universitario colombiano, lo cubrimos.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Cómo funciona el plan Institucional?</h3>
+      <p>El plan Institucional está diseñado para universidades y colegios que desean ofrecer Luminom IA a sus estudiantes. Incluye licencias en volumen, administración centralizada y soporte dedicado. Contáctanos a <a href="mailto:ialuminom@gmail.com">ialuminom@gmail.com</a> para una cotización personalizada.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Puedo cancelar mi suscripción en cualquier momento?</h3>
+      <p>Sí, cuando lancemos los planes de pago, podrás cancelar en cualquier momento sin penalización. No hay contratos a largo plazo ni cargos ocultos.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Qué métodos de pago aceptan?</h3>
+      <p>Para facilitar el acceso a todos los estudiantes colombianos, aceptaremos tarjetas de crédito/débito, PSE, Nequi, Daviplata y otros métodos populares en Colombia.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿El tutor IA reemplaza a mis profesores?</h3>
+      <p>No, Luminom IA es un complemento a tus clases. Está diseñado para ayudarte a entender mejor los conceptos, practicar ejercicios y reforzar lo que aprendes en clase. Siempre recomendamos asistir a clases y consultar con tus profesores.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Mis datos están seguros?</h3>
+      <p>Absolutamente. Tomamos la privacidad muy en serio. Tus conversaciones son privadas, encriptadas y nunca compartimos tu información personal con terceros. Lee nuestra <a href="#">Política de Privacidad</a> para más detalles.</p>
+    </div>
+
+  </section>
+
+  <section class="cta-section">
+    <h2>¿Listo para mejorar tus calificaciones?</h2>
+    <p>Únete a miles de estudiantes colombianos que ya están usando Luminom IA para alcanzar el éxito académico.</p>
+    <a href="login.html" class="cta-btn">Comenzar Ahora — Es Gratis →</a>
+  </section>
+
+  <footer>
+    <p><strong>Luminom IA</strong> — Tutor Universitario con Inteligencia Artificial</p>
+    <p style="margin-top:1rem;">📧 Contacto: <a href="mailto:ialuminom@gmail.com">ialuminom@gmail.com</a></p>
+    <p style="margin-top:0.5rem;color:#64748B;">Hecho con ❤️ para estudiantes colombianos 🇨🇴</p>
+  </footer>
+
+  <!-- Wompi Checkout Script -->
+  <script src="https://checkout.wompi.co/widget.js"></script>
+
+  <script>
+    // Sistema de pagos con Wompi (Pasarela colombiana)
+    function subscribeToPremium(planType = 'monthly') {
+      // Verificar si está logueado
+      const session = JSON.parse(localStorage.getItem('luminom_session') || 'null');
+      
+      if (!session) {
+        alert('⚠️ Debes iniciar sesión primero');
+        window.location.href = 'login.html?next=servicios';
+        return;
+      }
+      
+      // Configuración según el plan
+      const planConfig = {
+        monthly: {
+          amount: 1490000, // $14,900 COP
+          name: 'Premium Mensual',
+          description: 'Suscripción mensual Premium'
+        },
+        lifetime: {
+          amount: 29900000, // $299,000 COP
+          name: 'De por Vida',
+          description: 'Acceso Premium de por vida'
+        }
+      };
+      
+      const selectedPlan = planConfig[planType];
+      
+      // Configuración de Wompi
+      const wompiConfig = {
+        publicKey: 'pub_test_V5V6qvtEEibQdDt5C1xYs0lQvmKYN2HH', // Key de prueba
+        currency: 'COP',
+        amountInCents: selectedPlan.amount,
+        reference: `${planType}-${session.userId}-${Date.now()}`,
+        redirectUrl: `${window.location.origin}/luminam-ia/payment-success.html?plan=${planType}`
+      };
+      
+      // Crear formulario de pago de Wompi
+      const checkout = new WidgetCheckout({
+        currency: wompiConfig.currency,
+        amountInCents: wompiConfig.amountInCents,
+        reference: wompiConfig.reference,
+        publicKey: wompiConfig.publicKey,
+        redirectUrl: wompiConfig.redirectUrl,
+        customerData: {
+          email: session.email,
+          fullName: session.name,
+          phoneNumber: '',
+        }
+      });
+      
+      checkout.open(function(result) {
+        const transaction = result.transaction;
+        console.log('Transacción:', transaction);
+        
+        if (transaction.status === 'APPROVED') {
+          // Guardar suscripción en localStorage
+          const subscription = {
+            plan: planType === 'lifetime' ? 'lifetime' : 'premium',
+            userId: session.userId,
+            transactionId: transaction.id,
+            startDate: new Date().toISOString(),
+            expiryDate: planType === 'lifetime' ? 'never' : null,
+            status: 'active'
+          };
+          
+          localStorage.setItem('luminom_subscription', JSON.stringify(subscription));
+          
+          const message = planType === 'lifetime' 
+            ? '🎉 ¡Felicidades! Ahora tienes acceso Premium DE POR VIDA 🏆'
+            : '🎉 ¡Pago exitoso! Ahora eres Premium';
+          
+          alert(message);
+          window.location.href = 'tutor.html';
+        } else {
+          alert('❌ Pago cancelado o rechazado');
+        }
+      });
+    }
+    
+    // Hacer función global para onclick
+    window.subscribeToPremium = subscribeToPremium;
+    
+    // Verificar si el usuario ya es Premium o Lifetime
+    function checkPremiumStatus() {
+      const subscription = JSON.parse(localStorage.getItem('luminom_subscription') || 'null');
+      
+      if (subscription && subscription.status === 'active') {
+        // Cambiar botones según el plan
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+          if (btn.textContent.includes('Suscribirme') || btn.textContent.includes('Comprar')) {
+            if (subscription.plan === 'lifetime') {
+              btn.textContent = '✅ Miembro De por Vida 🏆';
+              btn.disabled = true;
+              btn.onclick = null;
+              btn.style.background = '#059669';
+            } else {
+              // Si tiene Premium mensual, puede upgradear a lifetime
+              if (btn.textContent.includes('De por Vida')) {
+                btn.textContent = '⬆️ Upgradear a De por Vida';
+              } else {
+                btn.textContent = '✅ Ya eres Premium';
+                btn.disabled = true;
+                btn.onclick = null;
+              }
+            }
+          }
+        });
+      }
+    }
+    
+    // Ejecutar al cargar la página
+    window.addEventListener('DOMContentLoaded', checkPremiumStatus);
+  </script>
+
+</body>
+</html>

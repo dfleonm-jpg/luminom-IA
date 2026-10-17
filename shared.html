@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Conversación Compartida | Luminom IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:#0A1628; --gold:#C9A84C; --gold-light:#E8C97A;
+      --white:#FFFFFF; --off-white:#F8F6F1;
+      --text-primary:#0A1628; --text-secondary:#4A5568;
+      --border:rgba(10,22,40,0.1);
+      --radius-sm:8px; --radius-md:14px; --radius-lg:22px;
+      --font-display:'Playfair Display',Georgia,serif;
+      --font-body:'Inter',system-ui,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:var(--font-body);background:var(--off-white);color:var(--text-primary);padding:2rem;}
+    .container{max-width:900px;margin:0 auto;background:var(--white);padding:2rem;border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(10,22,40,0.1);}
+    h1{font-family:var(--font-display);color:var(--navy);margin-bottom:1rem;}
+    .meta{color:var(--text-secondary);font-size:0.9rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid var(--border);}
+    .message{display:flex;gap:1rem;margin-bottom:1.5rem;align-items:flex-start;}
+    .message.user{flex-direction:row-reverse;}
+    .avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0;}
+    .message.bot .avatar{background:var(--gold);color:var(--navy);}
+    .message.user .avatar{background:var(--navy);color:var(--gold);}
+    .bubble{flex:1;padding:1rem 1.5rem;border-radius:var(--radius-md);line-height:1.7;}
+    .message.bot .bubble{background:var(--off-white);border:1px solid var(--border);}
+    .message.user .bubble{background:var(--navy);color:var(--white);}
+    .cta{text-align:center;margin-top:3rem;padding:2rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:var(--radius-md);}
+    .cta h2{font-family:var(--font-display);color:var(--navy);margin-bottom:0.5rem;}
+    .cta p{color:var(--navy);margin-bottom:1rem;}
+    .btn{display:inline-block;padding:0.75rem 2rem;background:var(--navy);color:var(--gold);text-decoration:none;border-radius:100px;font-weight:700;transition:transform 0.2s;}
+    .btn:hover{transform:translateY(-2px);}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Conversación Compartida</h1>
+    <div class="meta" id="meta">Cargando...</div>
+    <div id="messages"></div>
+    
+    <div class="cta">
+      <h2>¿Te gustó esta conversación?</h2>
+      <p>Crea tu cuenta gratis en Luminom IA y empieza a aprender con IA</p>
+      <a href="index.html" class="btn">✨ Crear Cuenta Gratis</a>
+    </div>
+  </div>
+
+  <script>
+    // Obtener ID de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const shareId = urlParams.get('id');
+    
+    if (!shareId) {
+      document.getElementById('meta').textContent = '⚠️ Enlace inválido';
+      document.getElementById('messages').innerHTML = '<p style="text-align:center;color:var(--text-secondary);">No se encontró la conversación.</p>';
+    } else {
+      // Cargar conversación compartida
+      const sharedChats = JSON.parse(localStorage.getItem('luminom_shared_chats') || '{}');
+      const chat = sharedChats[shareId];
+      
+      if (!chat) {
+        document.getElementById('meta').textContent = '⚠️ Conversación no encontrada';
+        document.getElementById('messages').innerHTML = '<p style="text-align:center;color:var(--text-secondary);">Esta conversación no existe o ha expirado.</p>';
+      } else {
+        document.getElementById('meta').innerHTML = `
+          Compartido por <strong>${chat.sharedBy}</strong> • 
+          ${new Date(chat.sharedAt).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}
+        `;
+        
+        const messagesDiv = document.getElementById('messages');
+        messagesDiv.innerHTML = chat.messages.map(msg => {
+          const isUser = msg.role === 'user';
+          return `
+            <div class="message ${isUser ? 'user' : 'bot'}">
+              <div class="avatar">${isUser ? chat.sharedBy[0].toUpperCase() : 'L'}</div>
+              <div class="bubble">${msg.content.replace(/\n/g, '<br>')}</div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+  </script>
+</body>
+</html>

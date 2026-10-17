@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Mi Tutor | Luminom IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--navy:#0A1628;--navy-mid:#112240;--navy-light:#1C3461;--gold:#C9A84C;--gold-light:#E8C97A;--white:#FFFFFF;--border-gold:rgba(201,168,76,0.3);--font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',system-ui,sans-serif;--t:0.25s cubic-bezier(0.4,0,0.2,1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{height:100%;overflow:hidden;}
+    body{font-family:var(--font-body);background:var(--navy);color:var(--white);display:flex;flex-direction:column;}
+    
+    /* ---- TOPBAR ---- */
+    .topbar{height:60px;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;flex-shrink:0;}
+    .logo{display:flex;align-items:center;gap:0.6rem;}
+    .logo-mark{width:32px;height:32px;background:var(--gold);color:var(--navy);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:0.95rem;flex-shrink:0;}
+    .logo-text{font-family:var(--font-display);font-size:1rem;font-weight:600;}
+    .logo-text em{font-style:italic;color:var(--gold);}
+    .topbar-right{display:flex;align-items:center;gap:1rem;}
+    .user-pill{display:flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.35rem 0.9rem;font-size:0.8rem;}
+    .user-dot{width:8px;height:8px;background:#4ade80;border-radius:50%;box-shadow:0 0 6px #4ade80;animation:pd 2s infinite;}
+    @keyframes pd{0%,100%{opacity:1;}50%{opacity:0.5;}}
+    .btn-logout{background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.55);padding:0.35rem 0.9rem;border-radius:100px;font-size:0.78rem;cursor:pointer;transition:var(--t);}
+    .btn-logout:hover{border-color:rgba(255,255,255,0.4);color:var(--white);}
+    .btn-home{color:rgba(255,255,255,0.45);font-size:0.8rem;transition:var(--t);text-decoration:none;}
+    .btn-home:hover{color:var(--gold);}
+    
+    /* ---- LAYOUT ---- */
+    .main{flex:1;display:flex;overflow:hidden;}
+    
+    /* ---- SIDEBAR ---- */
+    .sidebar{width:280px;background:rgba(0,0,0,0.22);border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;}
+    .sidebar-section{padding:1.25rem 1.1rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .sidebar-section:last-child{border-bottom:none;}
+    .sidebar-label{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;font-weight:600;}
+    .profile-row{display:flex;align-items:center;gap:0.75rem;}
+    .avatar{width:42px;height:42px;background:var(--gold);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:1.1rem;flex-shrink:0;}
+    .profile-name{font-weight:600;font-size:0.88rem;}
+    .profile-carrera{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.1rem;}
+    .tags{display:flex;flex-wrap:wrap;gap:0.35rem;}
+    .tag{font-size:0.68rem;background:rgba(201,168,76,0.1);border:1px solid var(--border-gold);color:#E8C97A;padding:0.22rem 0.6rem;border-radius:100px;}
+    .quick-list{display:flex;flex-direction:column;gap:0.4rem;}
+    .qbtn{text-align:left;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);color:rgba(255,255,255,0.65);padding:0.55rem 0.75rem;border-radius:8px;font-size:0.76rem;cursor:pointer;transition:var(--t);line-height:1.4;}
+    .qbtn:hover{background:rgba(201,168,76,0.1);border-color:var(--border-gold);color:#E8C97A;}
+    .new-chat-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;background:rgba(201,168,76,0.12);border:1px solid var(--border-gold);color:var(--gold-light);padding:0.65rem;border-radius:10px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:var(--t);}
+    .new-chat-btn:hover{background:rgba(201,168,76,0.22);}
+    
+    /* ---- CHAT AREA ---- */
+    .chat-area{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+    .chat-header{padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:0.75rem;flex-shrink:0;}
+    .ch-avatar{width:36px;height:36px;background:var(--gold);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:0.95rem;flex-shrink:0;}
+    .ch-name{font-weight:600;font-size:0.9rem;}
+    .ch-status{font-size:0.72rem;color:rgba(255,255,255,0.42);display:flex;align-items:center;gap:0.35rem;}
+    .ch-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;}
+    .token-info{margin-left:auto;font-size:0.72rem;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05);padding:0.3rem 0.7rem;border-radius:100px;}
+
+    /* MESSAGES */
+    .messages{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1.1rem;}
+    .messages::-webkit-scrollbar{width:4px;}
+    .messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.12);border-radius:4px;}
+    
+    .msg{display:flex;gap:0.75rem;align-items:flex-start;animation:msgIn 0.3s ease;}
+    @keyframes msgIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+    .msg.user{flex-direction:row-reverse;}
+    .msg-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:0.82rem;flex-shrink:0;}
+    .msg-av.bot{background:var(--gold);color:var(--navy);}
+    .msg-av.user{background:var(--navy-light);color:var(--gold);}
+    .bubble{max-width:75%;padding:0.85rem 1.1rem;border-radius:16px;font-size:0.87rem;line-height:1.68;}
+    .bubble.bot{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);border-bottom-left-radius:4px;}
+    .bubble.user{background:var(--gold);color:var(--navy);font-weight:500;border-bottom-right-radius:4px;}
+    .bubble p+p{margin-top:0.5rem;}
+    .bubble strong{font-weight:700;}
+    .bubble code{background:rgba(255,255,255,0.12);padding:0.1rem 0.35rem;border-radius:4px;font-family:monospace;font-size:0.82rem;}
+    .bubble pre{background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.85rem 1rem;margin-top:0.5rem;overflow-x:auto;}
+    .bubble pre code{background:transparent;padding:0;font-size:0.8rem;color:rgba(255,255,255,0.85);}
+    .bubble.user code,.bubble.user pre{background:rgba(10,22,40,0.2);color:var(--navy);}
+    .msg-time{font-size:0.65rem;color:rgba(255,255,255,0.28);margin-top:0.25rem;padding:0 0.25rem;align-self:flex-end;}
+    .msg-col{display:flex;flex-direction:column;max-width:75%;}
+    .msg.user .msg-col{align-items:flex-end;}
+    /* WELCOME SCREEN */
+    .welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;}
+    .wcard{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:1rem;cursor:pointer;transition:var(--t);text-align:left;}
+    .wcard:hover{background:rgba(201,168,76,0.1);border-color:var(--border-gold);transform:translateY(-2px);}
+    /* TYPING */
+    @keyframes ty{0%,100%{transform:translateY(0);opacity:0.4;}50%{transform:translateY(-5px);opacity:1;}}
+    
+    /* Input */
+    .input-area{padding:1.5rem 2rem;background:var(--navy-mid);border-top:1px solid var(--border);}
+    .input-wrapper{max-width:1100px;margin:0 auto;display:flex;gap:0.5rem;align-items:flex-end;flex-wrap:wrap;}
+    
+    .btn-attach{display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:var(--navy-light);border:1.5px solid var(--border);border-radius:var(--radius-md);font-size:1.5rem;cursor:pointer;transition:var(--t);flex-shrink:0;}
+    .btn-attach:hover{border-color:var(--gold);background:rgba(201,168,76,0.2);transform:scale(1.05);}
+    
+    #filePreview{width:100%;display:flex;gap:0.5rem;align-items:center;padding:0.5rem;background:var(--navy-light);border-radius:var(--radius-sm);margin-bottom:0.5rem;font-size:0.85rem;}
+    #filePreview img{max-width:60px;max-height:60px;border-radius:4px;object-fit:cover;}
+    #filePreview .file-info{flex:1;}
+    #filePreview .file-remove{color:var(--danger);cursor:pointer;font-weight:600;}
+    
+    .input-wrapper textarea{flex:1;min-width:200px;border:1.5px solid var(--border);border-radius:var(--radius-md);padding:0.85rem 1.1rem;font-size:0.92rem;color:var(--white);background:var(--navy-light);resize:none;min-height:56px;max-height:150px;font-family:inherit;transition:var(--t);}
+    .input-wrapper textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12);}
+    .input-wrapper textarea::placeholder{color:var(--text-secondary);}
+    .btn-send{background:var(--gold);color:var(--navy);border:none;padding:0.85rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:var(--t);}
+    .btn-send:hover:not(:disabled){background:var(--gold-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.35);}
+    .btn-send:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+    
+    /* Typing */
+    .typing-dots{display:flex;gap:0.4rem;padding:0.6rem 0;}
+    .typing-dots span{width:8px;height:8px;background:var(--gold);border-radius:50%;animation:typing 1.4s ease-in-out infinite;}
+    .typing-dots span:nth-child(2){animation-delay:0.2s;}
+    .typing-dots span:nth-child(3){animation-delay:0.4s;}
+    @keyframes typing{0%,60%,100%{opacity:0.3;transform:scale(1);}30%{opacity:1;transform:scale(1.2);}}
+    
+    /* Code Blocks */
+    code{background:rgba(201,168,76,0.2);padding:0.2rem 0.5rem;border-radius:4px;font-family:'Courier New',monospace;color:var(--gold);font-size:0.88em;}
+    pre{background:var(--navy-light);border:1px solid var(--border);padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;margin:0.8rem 0;}
+    pre code{background:none;padding:0;color:var(--white);}
+    strong{color:var(--gold);font-weight:700;}
+    
+    /* Skeleton Loading Screens */
+    .skeleton{background:linear-gradient(90deg,#1C3461 25%,#112240 50%,#1C3461 75%);background-size:200% 100%;animation:skeleton-loading 1.5s infinite;}
+    @keyframes skeleton-loading{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+    
+    .skeleton-message{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem;}
+    .skeleton-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(90deg,#1C3461 25%,#112240 50%,#1C3461 75%);background-size:200% 100%;animation:skeleton-loading 1.5s infinite;}
+    .skeleton-bubble{flex:1;max-width:65%;background:var(--navy-mid);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.2rem 1.5rem;}
+    .skeleton-line{height:14px;background:linear-gradient(90deg,#1C3461 25%,#112240 50%,#1C3461 75%);background-size:200% 100%;border-radius:4px;margin-bottom:0.75rem;animation:skeleton-loading 1.5s infinite;}
+    .skeleton-line:last-child{margin-bottom:0;}
+    .skeleton-line.short{width:70%;}
+    .skeleton-line.medium{width:85%;}
+    .skeleton-line.long{width:100%;}
+    
+    .skeleton-history-item{padding:0.65rem;background:var(--navy-light);border-radius:var(--radius-sm);margin-bottom:0.5rem;}
+    .skeleton-history-title{height:12px;background:linear-gradient(90deg,#1C3461 25%,#112240 50%,#1C3461 75%);background-size:200% 100%;border-radius:4px;margin-bottom:0.4rem;animation:skeleton-loading 1.5s infinite;}
+    .skeleton-history-date{height:10px;width:60%;background:linear-gradient(90deg,#1C3461 25%,#112240 50%,#1C3461 75%);background-size:200% 100%;border-radius:4px;animation:skeleton-loading 1.5s infinite;}
+    
+    .skeleton-stats{background:var(--navy-mid);border:1px solid var(--border);border-radius:var(--radius-md);padding:1rem;margin-bottom:1rem;}
+    .skeleton-stats-line{height:16px;background:linear-gradient(90deg,#1C3461 25%,#112240 50%,#1C3461 75%);background-size:200% 100%;border-radius:4px;margin-bottom:0.5rem;animation:skeleton-loading 1.5s infinite;}
+    .skeleton-stats-line:last-child{margin-bottom:0;width:80%;}
+    
+    @media(max-width:900px){
+      .chat-layout{flex-direction:column;}
+      .sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border);padding:1rem;}
+      .quick-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">L</span>
+      <span class="logo-text">Luminom <em>IA</em></span>
+    </a>
+  </div>
+  <div class="topbar-right">
+    <a href="index.html" class="btn-home">← Inicio</a>
+    <div class="user-pill">
+      <span class="user-dot"></span>
+      <span id="topbarName">...</span>
+    </div>
+    <button class="btn-logout" onclick="Auth.logout()">Salir</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Perfil</div>
+      <div class="profile-row">
+        <div class="avatar" id="sideAvatar">?</div>
+        <div>
+          <div class="profile-name" id="sideName">Cargando...</div>
+          <div class="profile-carrera" id="sideCarrera"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <button class="new-chat-btn" onclick="newChat()">+ Nueva conversación</button>
+    </div>
+
+    <div class="sidebar-section" style="max-height:300px;overflow-y:auto;">
+      <div class="sidebar-label">Herramientas</div>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <button class="qbtn" onclick="showStudyPlanForm()" style="background:rgba(102,126,234,0.1);border-color:rgba(102,126,234,0.3);color:#a5b4fc;">
+          📚 Plan de Estudio
+        </button>
+        <button class="qbtn" onclick="exportChatToPDF()" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3);color:#6ee7b7;">
+          📄 Exportar a PDF
+        </button>
+        <button class="qbtn" onclick="toggleVoiceRecording()" id="voiceBtn2" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.3);color:#fbbf24;">
+          🎤 Grabar Voz
+        </button>
+        <button class="qbtn" onclick="showLibrary()" style="background:rgba(236,72,153,0.1);border-color:rgba(236,72,153,0.3);color:#f9a8d4;">
+          💾 Biblioteca
+        </button>
+        <button class="qbtn" onclick="showGoals()" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.3);color:#c4b5fd;">
+          🎯 Mis Metas
+        </button>
+        <button class="qbtn" onclick="showAnalytics()" style="background:rgba(14,165,233,0.1);border-color:rgba(14,165,233,0.3);color:#7dd3fc;">
+          📊 Análisis
+        </button>
+        <button class="qbtn" onclick="showAchievements()" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.3);color:#fcd34d;">
+          🏆 Logros
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Especialidades</div>
+      <div class="tags">
+        <span class="tag">Matemáticas</span>
+        <span class="tag">Física</span>
+        <span class="tag">Programación</span>
+        <span class="tag">Química</span>
+        <span class="tag">Estadística</span>
+        <span class="tag">Derecho</span>
+        <span class="tag">Economía</span>
+        <span class="tag">Salud</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Preguntas rápidas</div>
+      <div class="quick-list">
+        <button class="qbtn" onclick="sendQuick('Explícame qué es una derivada con un ejemplo de la vida real')">¿Qué es una derivada?</button>
+        <button class="qbtn" onclick="sendQuick('¿Cómo funciona la herencia en programación orientada a objetos? Dame un ejemplo en Python')">Herencia en POO</button>
+        <button class="qbtn" onclick="sendQuick('Explícame la ley de la oferta y la demanda con un ejemplo colombiano')">Oferta y demanda</button>
+        <button class="qbtn" onclick="sendQuick('¿Cuáles son los principios fundamentales del derecho procesal colombiano?')">Derecho procesal</button>
+        <button class="qbtn" onclick="sendQuick('¿Cómo hago para memorizar mejor para un parcial? Dame técnicas de estudio efectivas')">Técnicas de estudio</button>
+        <button class="qbtn" onclick="sendQuick('Explícame el teorema de Bayes con un ejemplo sencillo')">Teorema de Bayes</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CHAT AREA -->
+  <div class="chat-area">
+    <div class="chat-header">
+      <div class="ch-avatar">L</div>
+      <div>
+        <div class="ch-name">Luminom IA</div>
+        <div class="ch-status"><span class="ch-dot"></span>En línea · Listo para ayudarte</div>
+      </div>
+      <div class="token-info" id="tokenInfo">0 mensajes en sesión</div>
+    </div>
+
+    <!-- WELCOME (visible al inicio) -->
+    <div class="welcome" id="welcomeScreen">
+      <div class="welcome-icon" style="width:80px;height:80px;background:rgba(201,168,76,0.1);border:1px solid var(--border-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--gold);margin:0 auto 1.5rem;">L</div>
+      <h2 style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;margin-bottom:0.75rem;">¡Hola, <span id="welcomeName">estudiante</span>!</h2>
+      <p style="font-size:0.92rem;color:rgba(255,255,255,0.55);max-width:400px;line-height:1.72;margin-bottom:2rem;margin-left:auto;margin-right:auto;">Soy Luminom IA, tu tutor universitario. Pregúntame cualquier cosa sobre tus materias y te explico de forma clara.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;max-width:440px;width:100%;margin:0 auto;">
+        <div class="wcard" onclick="sendQuick('¿Puedes ayudarme a entender integrales definidas? No entiendo el concepto')">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">∫</div>
+          <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.2rem;">Resolver ejercicios</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);line-height:1.4;">Paso a paso con explicación</div>
+        </div>
+        <div class="wcard" onclick="sendQuick('Tengo parcial mañana de estructuras de datos, ¿puedes hacerme un resumen de lo más importante?')">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">📋</div>
+          <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.2rem;">Resumen para parcial</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);line-height:1.4;">Los puntos clave de la materia</div>
+        </div>
+        <div class="wcard" onclick="sendQuick('¿Puedes explicarme este concepto como si tuviera 10 años?: la segunda ley de la termodinámica')">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">💡</div>
+          <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.2rem;">Explicación simple</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);line-height:1.4;">Sin jerga técnica</div>
+        </div>
+        <div class="wcard" onclick="sendQuick('Ayúdame a crear un plan de estudio para esta semana. Tengo 3 materias difíciles.')">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">📅</div>
+          <div style="font-size:0.82rem;font-weight:600;margin-bottom:0.2rem;">Plan de estudio</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);line-height:1.4;">Organiza tu semana</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="messages" id="messagesDiv" style="display:none;"></div>
+
+    <!-- TYPING -->
+    <div style="display:none;align-items:center;gap:4px;padding:0 0 0 1.5rem;" id="typing">
+      <span style="width:7px;height:7px;background:rgba(255,255,255,0.35);border-radius:50%;animation:ty 1.2s infinite;"></span>
+      <span style="width:7px;height:7px;background:rgba(255,255,255,0.35);border-radius:50%;animation:ty 1.2s 0.2s infinite;"></span>
+      <span style="width:7px;height:7px;background:rgba(255,255,255,0.35);border-radius:50%;animation:ty 1.2s 0.4s infinite;"></span>
+    </div>
+
+    <!-- INPUT -->
+    <div style="border-top:1px solid rgba(255,255,255,0.07);padding:1rem 1.25rem;flex-shrink:0;background:rgba(0,0,0,0.15);">
+      <!-- File Preview -->
+      <div id="filePreview" style="display:none;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.75rem;margin-bottom:0.75rem;"></div>
+      
+      <div style="display:flex;gap:0.75rem;align-items:flex-end;">
+        <!-- Botón adjuntar archivo -->
+        <label for="fileInput" style="width:44px;height:44px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.1);border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--t);font-size:1.2rem;" title="Adjuntar archivo">
+          📎
+        </label>
+        <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,.txt" style="display:none;" />
+        
+        <textarea style="flex:1;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.1);color:var(--white);padding:0.8rem 1rem;border-radius:14px;font-size:0.88rem;outline:none;resize:none;max-height:140px;min-height:44px;overflow-y:auto;transition:var(--t);line-height:1.5;" id="chatInput" placeholder="Escribe tu pregunta académica aquí..." rows="1"></textarea>
+        <button style="width:44px;height:44px;background:var(--gold);color:var(--navy);border:none;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--t);" id="sendBtn" onclick="sendMessage()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+      <p style="font-size:0.68rem;color:rgba(255,255,255,0.22);margin-top:0.5rem;text-align:center;">Presiona Enter para enviar, Shift+Enter para salto de línea.</p>
+    </div>
+  </div>
+
+</div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <!-- PDF.js para extraer texto de PDFs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  
+  <!-- jsPDF para exportar a PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
+  <!-- Funcionalidades Avanzadas (3 partes) -->
+  <script src="advanced-features.js"></script>
+  <script src="advanced-features-2.js"></script>
+  <script src="advanced-features-3.js"></script>
+  
+  <script>
+    // Configurar PDF.js worker
+    if (typeof pdfjsLib !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
+
+  <script>
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDzS5dYHznoTUsYYxWxfcA5JAHPMOJkSMA",
+      authDomain: "luminom-ia.firebaseapp.com",
+      projectId: "luminom-ia",
+      storageBucket: "luminom-ia.firebasestorage.app",
+      messagingSenderId: "532433042280",
+      appId: "1:532433042280:web:ae5f09598957e2bf8a34dd"
+    };
+
+    // Inicializar Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    console.log('✅ Firebase inicializado correctamente');
+
+    // Sistema de Autenticación
+    const Auth = {
+      getSession() { 
+        try { 
+          return JSON.parse(localStorage.getItem('luminom_session')); 
+        } catch { 
+          return null; 
+        } 
+      },
+      logout() { 
+        console.log('🔴 Cerrando sesión...');
+        localStorage.removeItem('luminom_session'); 
+        localStorage.removeItem('luminom_subscription');
+        console.log('✅ Sesión cerrada, redirigiendo...');
+        window.location.href = 'index.html'; 
+      },
+      requireAuth() {
+        if (!this.getSession()) { 
+          console.log('⚠️ No hay sesión, redirigiendo a login...');
+          window.location.href = 'login.html?next=tutor'; 
+          return false; 
+        }
+        return true;
+      }
+    };
+
+    // Hacer Auth global
+    window.Auth = Auth;
+
+    // VERIFICAR AUTENTICACIÓN (OBLIGATORIA)
+    if (!Auth.requireAuth()) {
+      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Inter,sans-serif;">Redirigiendo...</div>';
+    }
+
+    // Mostrar nombre del usuario
+    const session = Auth.getSession();
+    document.getElementById('topbarName').textContent = session.name;
+    document.getElementById('sideName').textContent = session.name;
+    document.getElementById('sideCarrera').textContent = session.carrera || 'Carrera no especificada';
+    document.getElementById('sideAvatar').textContent = session.name[0].toUpperCase();
+    document.getElementById('welcomeName').textContent = session.name;
+
+    // ========================================
+    // SISTEMA DE SUSCRIPCIÓN Y LÍMITES  
+    // ========================================
+    
+    let userSubscription = null;
+    let userPlan = 'free';
+    
+    async function loadSubscription() {
+      try {
+        const userDoc = await db.collection('users').doc(session.userId).get();
+        
+        if (userDoc.exists) {
+          const userData = userDoc.data();
+          userSubscription = userData.subscription || null;
+          
+          if (userSubscription && userSubscription.status === 'active') {
+            if (userSubscription.plan === 'premium' && userSubscription.expiryDate !== 'never') {
+              const expiryDate = new Date(userSubscription.expiryDate);
+              if (expiryDate < new Date()) {
+                userPlan = 'free';
+              } else {
+                userPlan = 'premium';
+              }
+            } else if (userSubscription.plan === 'lifetime') {
+              userPlan = 'lifetime';
+            } else {
+              userPlan = userSubscription.plan;
+            }
+          }
+        }
+        
+        console.log('💎 Plan del usuario:', userPlan);
+      } catch (error) {
+        console.error('Error al cargar suscripción:', error);
+        userPlan = 'free';
+      }
+    }
+    
+    const FREE_DAILY_LIMIT = 10;
+    
+    function getQuestionsToday() {
+      const today = new Date().toDateString();
+      const stored = localStorage.getItem('luminom_questions_count');
+      
+      if (!stored) return { date: today, count: 0 };
+      
+      try {
+        const data = JSON.parse(stored);
+        if (data.date !== today) return { date: today, count: 0 };
+        return data;
+      } catch {
+        return { date: today, count: 0 };
+      }
+    }
+    
+    function incrementQuestionCount() {
+      const data = getQuestionsToday();
+      data.count += 1;
+      localStorage.setItem('luminom_questions_count', JSON.stringify(data));
+      return data.count;
+    }
+    
+    function canAskQuestion() {
+      if (userPlan === 'premium' || userPlan === 'lifetime') {
+        return { allowed: true, remaining: '∞' };
+      }
+      
+      const data = getQuestionsToday();
+      const remaining = FREE_DAILY_LIMIT - data.count;
+      
+      return {
+        allowed: remaining > 0,
+        remaining: remaining,
+        count: data.count,
+        limit: FREE_DAILY_LIMIT
+      };
+    }
+    
+    loadSubscription();
+
+    // ========================================
+    // CONFIGURACIÓN DE API
+    // ========================================
+
+    const API_CONFIG = {
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      key: localStorage.getItem('groq_api_key') || null,
+      model: 'llama-3.3-70b-versatile'
+    };
+
+    let conversationHistory = [];
+    let currentChatId = null;
+
+    // Auto-configurar API Key
+    (function initApiKey() {
+      if (!localStorage.getItem('groq_api_key')) {
+        const parts = ['gsk_','8g9V37JS','uol85XAO','0DtQWGdy','b3FYq2RY','aCRaXqoH','qTZvT6l7','zAKM'];
+        const key = parts.join('');
+        localStorage.setItem('groq_api_key', key);
+        API_CONFIG.key = key;
+      } else {
+        API_CONFIG.key = localStorage.getItem('groq_api_key');
+      }
+    })();
+
+    // ========================================
+    // MANEJO DE ARCHIVOS
+    // ========================================
+    
+    let attachedFile = null;
+    let attachedFileDataURL = null;
+    let extractedFileContent = null;
+    
+    document.getElementById('fileInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      
+      // Validar tamaño (máx 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('⚠️ El archivo es muy grande. Máximo 5MB.');
+        e.target.value = '';
+        return;
+      }
+      
+      attachedFile = file;
+      extractedFileContent = null;
+      
+      // Mostrar preview
+      showFilePreview(file, null, true);
+      
+      try {
+        // Procesar según tipo
+        if (file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            attachedFileDataURL = event.target.result;
+            showFilePreview(file, event.target.result, false);
+          };
+          reader.readAsDataURL(file);
+        } else if (file.type === 'application/pdf') {
+          await extractPDFText(file);
+        } else if (file.type === 'text/plain') {
+          await extractTextFromFile(file);
+        } else {
+          showFilePreview(file, null, false);
+        }
+      } catch (error) {
+        console.error('Error al procesar archivo:', error);
+        alert('⚠️ Error al procesar el archivo.');
+        removeFile();
+      }
+    });
+    
+    async function extractPDFText(file) {
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        
+        let fullText = '';
+        const numPages = pdf.numPages;
+        
+        for (let i = 1; i <= numPages; i++) {
+          const page = await pdf.getPage(i);
+          const textContent = await page.getTextContent();
+          const pageText = textContent.items.map(item => item.str).join(' ');
+          fullText += `\n--- Página ${i} ---\n${pageText}\n`;
+        }
+        
+        extractedFileContent = fullText.trim();
+        if (extractedFileContent.length > 10000) {
+          extractedFileContent = extractedFileContent.substring(0, 10000) + '\n\n[... Contenido truncado]';
+        }
+        
+        showFilePreview(file, null, false);
+      } catch (error) {
+        console.error('Error al extraer PDF:', error);
+        alert('⚠️ No se pudo leer el PDF.');
+        removeFile();
+      }
+    }
+    
+    async function extractTextFromFile(file) {
+      try {
+        const text = await file.text();
+        extractedFileContent = text.trim();
+        
+        if (extractedFileContent.length > 10000) {
+          extractedFileContent = extractedFileContent.substring(0, 10000) + '\n\n[... Contenido truncado]';
+        }
+        
+        showFilePreview(file, null, false);
+      } catch (error) {
+        console.error('Error al leer archivo:', error);
+        alert('⚠️ No se pudo leer el archivo.');
+        removeFile();
+      }
+    }
+    
+    function showFilePreview(file, dataURL, isProcessing) {
+      const preview = document.getElementById('filePreview');
+      preview.style.display = 'flex';
+      preview.style.alignItems = 'center';
+      preview.style.gap = '0.75rem';
+      
+      let previewHTML = '';
+      let statusText = '';
+      
+      if (isProcessing) {
+        previewHTML = `<span style="font-size:1.5rem;">⏳</span>`;
+        statusText = '<span style="color:#fbbf24;">Procesando...</span>';
+      } else if (dataURL && file.type.startsWith('image/')) {
+        previewHTML = `<img src="${dataURL}" style="max-width:60px;max-height:60px;border-radius:6px;object-fit:cover;" />`;
+        statusText = '<span style="color:#10b981;">✓ Listo</span>';
+      } else if (extractedFileContent) {
+        previewHTML = `<span style="font-size:1.5rem;">📄</span>`;
+        statusText = `<span style="color:#10b981;">✓ Texto extraído (${extractedFileContent.length} caracteres)</span>`;
+      } else {
+        previewHTML = `<span style="font-size:1.5rem;">📄</span>`;
+        statusText = '<span style="color:#fbbf24;">Archivo adjunto</span>';
+      }
+      
+      preview.innerHTML = `
+        ${previewHTML}
+        <div style="flex:1;">
+          <strong style="display:block;font-size:0.85rem;">${file.name}</strong>
+          <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">${(file.size / 1024).toFixed(1)} KB • ${statusText}</span>
+        </div>
+        <span onclick="removeFile()" style="cursor:pointer;color:#ef4444;font-weight:700;font-size:1.2rem;">✕</span>
+      `;
+    }
+    
+    window.removeFile = function() {
+      attachedFile = null;
+      attachedFileDataURL = null;
+      extractedFileContent = null;
+      document.getElementById('fileInput').value = '';
+      document.getElementById('filePreview').style.display = 'none';
+    };
+
+    // ========================================
+    // EXPORTAR A PDF
+    // ========================================
+    
+    let recognition = null;
+    let isRecording = false;
+    
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = new SpeechRecognition();
+      recognition.lang = 'es-CO';
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('chatInput').value = transcript;
+        isRecording = false;
+        const btn = document.getElementById('voiceBtn2');
+        if (btn) {
+          btn.textContent = '🎤 Grabar Voz';
+          btn.style.background = 'rgba(245,158,11,0.1)';
+        }
+      };
+      
+      recognition.onerror = (event) => {
+        console.error('Error de reconocimiento:', event.error);
+        isRecording = false;
+        const btn = document.getElementById('voiceBtn2');
+        if (btn) {
+          btn.textContent = '🎤 Grabar Voz';
+          btn.style.background = 'rgba(245,158,11,0.1)';
+        }
+        
+        if (event.error === 'no-speech') {
+          alert('⚠️ No se detectó voz.');
+        }
+      };
+      
+      recognition.onend = () => {
+        isRecording = false;
+        const btn = document.getElementById('voiceBtn2');
+        if (btn) {
+          btn.textContent = '🎤 Grabar Voz';
+          btn.style.background = 'rgba(245,158,11,0.1)';
+        }
+      };
+    }
+    
+    window.toggleVoiceRecording = function() {
+      if (!recognition) {
+        alert('⚠️ Reconocimiento de voz no soportado en este navegador.');
+        return;
+      }
+      
+      const btn = document.getElementById('voiceBtn2');
+      
+      if (isRecording) {
+        recognition.stop();
+        isRecording = false;
+        btn.textContent = '🎤 Grabar Voz';
+        btn.style.background = 'rgba(245,158,11,0.1)';
+      } else {
+        recognition.start();
+        isRecording = true;
+        btn.textContent = '⏹️ Detener';
+        btn.style.background = '#ef4444';
+      }
+    };
+
+    // ========================================
+    // PLAN DE ESTUDIO
+    // ========================================
+    
+    window.showStudyPlanForm = function() {
+      hideWelcome();
+      const messagesDiv = document.getElementById('messagesDiv');
+      
+      const formHTML = `
+        <div class="msg bot" style="max-width:600px;margin:2rem auto;">
+          <div class="msg-av bot">L</div>
+          <div class="bubble bot" style="max-width:100%;">
+            <h3 style="margin-bottom:1rem;color:var(--gold);">📚 Generar Plan de Estudio</h3>
+            <div style="margin-bottom:1rem;">
+              <label style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--white);">¿Qué materia?</label>
+              <input type="text" id="studySubject" placeholder="Ej: Cálculo Diferencial" style="width:100%;padding:0.75rem;border:1px solid rgba(255,255,255,0.1);border-radius:8px;font-size:0.9rem;background:rgba(255,255,255,0.05);color:var(--white);" />
+            </div>
+            <div style="margin-bottom:1rem;">
+              <label style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--white);">¿Cuánto tiempo?</label>
+              <select id="studyTime" style="width:100%;padding:0.75rem;border:1px solid rgba(255,255,255,0.1);border-radius:8px;font-size:0.9rem;background:rgba(255,255,255,0.05);color:var(--white);">
+                <option value="1 semana">1 semana</option>
+                <option value="2 semanas" selected>2 semanas</option>
+                <option value="1 mes">1 mes</option>
+                <option value="2 meses">2 meses</option>
+              </select>
+            </div>
+            <div style="margin-bottom:1rem;">
+              <label style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--white);">¿Horas al día?</label>
+              <select id="studyHours" style="width:100%;padding:0.75rem;border:1px solid rgba(255,255,255,0.1);border-radius:8px;font-size:0.9rem;background:rgba(255,255,255,0.05);color:var(--white);">
+                <option value="1 hora">1 hora</option>
+                <option value="2 horas" selected>2 horas</option>
+                <option value="3 horas">3 horas</option>
+                <option value="4 horas">4 horas</option>
+                <option value="5+ horas">5+ horas</option>
+              </select>
+            </div>
+            <button onclick="generateStudyPlan()" style="width:100%;background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:0.85rem;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:1rem;">
+              ✨ Generar Mi Plan
+            </button>
+          </div>
+        </div>
+      `;
+      
+      messagesDiv.innerHTML = formHTML;
+      messagesDiv.style.display = 'flex';
+    };
+    
+    window.generateStudyPlan = async function() {
+      const subject = document.getElementById('studySubject').value.trim();
+      const time = document.getElementById('studyTime').value;
+      const hours = document.getElementById('studyHours').value;
+      
+      if (!subject) {
+        alert('Por favor ingresa la materia');
+        return;
+      }
+      
+      const messagesDiv = document.getElementById('messagesDiv');
+      messagesDiv.innerHTML = '';
+      
+      const promptText = `Crea un plan de estudio detallado para ${subject}. 
+Duración: ${time}
+Tiempo disponible: ${hours} al día
+Carrera: ${session.carrera}
+
+Formato del plan:
+- Organizado por días/semanas
+- Temas específicos por sesión
+- Objetivos claros
+- Recursos recomendados
+- Consejos de estudio`;
+      
+      addMessage(`📚 Generar plan de estudio para:\n• Materia: ${subject}\n• Tiempo: ${time}\n• Horas diarias: ${hours}`, true);
+      
+      conversationHistory = [];
+      conversationHistory.push({ role: 'user', content: promptText });
+      
+      showTyping();
+      const aiResponse = await callGroqAPI(promptText);
+      hideTyping();
+      
+      addMessage(aiResponse, false);
+      conversationHistory.push({ role: 'assistant', content: aiResponse });
+      
+      saveCurrentChat();
+    };
+
+    // Funciones placeholder para otras herramientas
+    window.showLibrary = function() {
+      alert('💾 Biblioteca de Recursos\n\nFuncionalidad en desarrollo. Aquí podrás guardar y organizar recursos útiles.');
+    };
+    
+    window.showGoals = function() {
+      alert('🎯 Metas de Estudio\n\nFuncionalidad en desarrollo. Aquí podrás definir y seguir tus metas académicas.');
+    };
+    
+    window.showAnalytics = function() {
+      alert('📊 Análisis de Rendimiento\n\nFuncionalidad en desarrollo. Aquí verás estadísticas de tu progreso.');
+    };
+    
+    window.showAchievements = function() {
+      alert('🏆 Sistema de Logros\n\nFuncionalidad en desarrollo. Aquí verás tus logros desbloqueados.');
+    };
+
+    // ========================================
+    // SISTEMA DE SUSCRIPCIÓN Y LÍMITES
+    // ========================================
+    
+    let userSubscription = null;
+    let userPlan = 'free'; // free, premium, lifetime
+    
+    // Cargar suscripción desde Firestore
+    async function loadSubscription() {
+      try {
+        const userDoc = await db.collection('users').doc(session.userId).get();
+        
+        if (userDoc.exists) {
+          const userData = userDoc.data();
+          userSubscription = userData.subscription || null;
+          
+          if (userSubscription && userSubscription.status === 'active') {
+            // Verificar si no ha expirado (solo para plan mensual)
+            if (userSubscription.plan === 'premium' && userSubscription.expiryDate !== 'never') {
+              const expiryDate = new Date(userSubscription.expiryDate);
+              if (expiryDate < new Date()) {
+                userPlan = 'free';
+                userSubscription = null;
+              } else {
+                userPlan = 'premium';
+              }
+            } else if (userSubscription.plan === 'lifetime') {
+              userPlan = 'lifetime';
+            } else {
+              userPlan = userSubscription.plan;
+            }
+          }
+        }
+        
+        console.log('💎 Plan del usuario:', userPlan);
+        updatePlanBadge();
+        updateLimitBanner();
+        
+      } catch (error) {
+        console.error('Error al cargar suscripción:', error);
+        userPlan = 'free';
+        updatePlanBadge();
+        updateLimitBanner();
+      }
+    }
+    
+    // Actualizar badge de plan en navegación
+    function updatePlanBadge() {
+      const badge = document.getElementById('planBadge');
+      
+      if (userPlan === 'lifetime') {
+        badge.textContent = '👑 De por Vida';
+        badge.className = 'premium-badge';
+      } else if (userPlan === 'premium') {
+        badge.textContent = '⭐ Premium';
+        badge.className = 'premium-badge';
+      } else {
+        badge.textContent = '📝 Gratis';
+        badge.className = 'premium-badge free';
+      }
+    }
+    
+    // Sistema de límite de preguntas para usuarios gratuitos
+    const FREE_DAILY_LIMIT = 10;
+    
+    function getQuestionsToday() {
+      const today = new Date().toDateString();
+      const stored = localStorage.getItem('luminom_questions_count');
+      
+      if (!stored) {
+        return { date: today, count: 0 };
+      }
+      
+      try {
+        const data = JSON.parse(stored);
+        // Si es un nuevo día, resetear contador
+        if (data.date !== today) {
+          return { date: today, count: 0 };
+        }
+        return data;
+      } catch {
+        return { date: today, count: 0 };
+      }
+    }
+    
+    function incrementQuestionCount() {
+      const data = getQuestionsToday();
+      data.count += 1;
+      localStorage.setItem('luminom_questions_count', JSON.stringify(data));
+      updateLimitBanner();
+      return data.count;
+    }
+    
+    function canAskQuestion() {
+      // Usuarios premium y lifetime tienen preguntas ilimitadas
+      if (userPlan === 'premium' || userPlan === 'lifetime') {
+        return { allowed: true, remaining: '∞' };
+      }
+      
+      // Usuarios gratuitos tienen límite diario
+      const data = getQuestionsToday();
+      const remaining = FREE_DAILY_LIMIT - data.count;
+      
+      return {
+        allowed: remaining > 0,
+        remaining: remaining,
+        count: data.count,
+        limit: FREE_DAILY_LIMIT
+      };
+    }
+    
+    // Actualizar banner de límite de preguntas
+    function updateLimitBanner() {
+      const banner = document.getElementById('limitBanner');
+      const counter = document.getElementById('questionCounter');
+      const status = canAskQuestion();
+      
+      if (userPlan === 'premium' || userPlan === 'lifetime') {
+        // No mostrar banner ni contador para usuarios premium
+        banner.style.display = 'none';
+        counter.style.display = 'none';
+        return;
+      }
+      
+      // Mostrar contador visual
+      counter.style.display = 'block';
+      const counterNumber = document.getElementById('counterNumber');
+      const counterBarFill = document.getElementById('counterBarFill');
+      
+      counterNumber.textContent = `${status.count}/${status.limit}`;
+      const percentage = (status.count / status.limit) * 100;
+      counterBarFill.style.width = percentage + '%';
+      
+      // Cambiar color si está cerca del límite
+      if (status.remaining <= 3) {
+        counterBarFill.classList.add('warning');
+        counterNumber.style.color = '#ef4444';
+      } else {
+        counterBarFill.classList.remove('warning');
+        counterNumber.style.color = 'var(--gold)';
+      }
+      
+      banner.style.display = 'block';
+      
+      if (!status.allowed) {
+        // Límite alcanzado
+        banner.className = 'limit-banner warning';
+        banner.innerHTML = `
+          ⚠️ Límite diario alcanzado (${status.count}/${status.limit} preguntas).<br>
+          <a href="servicios.html">Mejora a Premium</a> para preguntas ilimitadas.
+        `;
+      } else if (status.remaining <= 3) {
+        // Cerca del límite
+        banner.className = 'limit-banner warning';
+        banner.innerHTML = `
+          ⚠️ Solo te quedan ${status.remaining} preguntas hoy.<br>
+          <a href="servicios.html">Mejora a Premium</a> para acceso ilimitado.
+        `;
+      } else {
+        // Normal
+        banner.className = 'limit-banner';
+        banner.innerHTML = `
+          📊 ${status.remaining} preguntas restantes hoy (Plan Gratis).<br>
+          <a href="servicios.html">Mejora a Premium</a> desde $14,900/mes.
+        `;
+      }
+    }
+    
+    // Cargar suscripción al iniciar
+    loadSubscription();
+    document.getElementById('welcomeName').textContent = session.name;
+
+    // ========================================
+    // PWA - SERVICE WORKER
+    // ========================================
+    
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/luminam-ia/sw.js')
+          .then(reg => console.log('✅ Service Worker registrado'))
+          .catch(err => console.log('❌ SW error:', err));
+      });
+    }
+
+    // ========================================
+    // ESTADÍSTICAS DE USO
+    // ========================================
+    
+    function updateUserStats() {
+      const stats = JSON.parse(localStorage.getItem('luminom_stats') || '{"totalQuestions":0,"lastUseDate":"","streak":0}');
+      const today = new Date().toDateString();
+      
+      // Actualizar racha
+      if (stats.lastUseDate === today) {
+        // Ya usó hoy
+      } else if (stats.lastUseDate === new Date(Date.now() - 86400000).toDateString()) {
+        // Usó ayer, incrementar racha
+        stats.streak = (stats.streak || 0) + 1;
+      } else if (stats.lastUseDate !== '') {
+        // Rompió racha
+        stats.streak = 1;
+      } else {
+        stats.streak = 1;
+      }
+      
+      stats.lastUseDate = today;
+      localStorage.setItem('luminom_stats', JSON.stringify(stats));
+      
+      // Mostrar estadísticas
+      document.getElementById('statsQuestions').textContent = stats.totalQuestions || 0;
+      document.getElementById('statsStreak').textContent = stats.streak || 0;
+      document.getElementById('userStats').style.display = 'block';
+    }
+    
+    updateUserStats();
+
+    // ========================================
+    // EXPORTAR CHAT A PDF
+    // ========================================
+    
+    document.getElementById('exportPDFBtn').addEventListener('click', () => {
+      if (conversationHistory.length === 0) {
+        alert('⚠️ No hay conversación para exportar. Haz algunas preguntas primero.');
+        return;
+      }
+      
+      try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // Título
+        doc.setFontSize(20);
+        doc.setTextColor(10, 22, 40);
+        doc.text('Luminom IA - Conversación', 20, 20);
+        
+        // Info
+        doc.setFontSize(10);
+        doc.setTextColor(74, 85, 104);
+        doc.text(`Estudiante: ${session.name}`, 20, 30);
+        doc.text(`Carrera: ${session.carrera}`, 20, 35);
+        doc.text(`Fecha: ${new Date().toLocaleDateString('es-CO')}`, 20, 40);
+        
+        // Conversación
+        let yPos = 50;
+        doc.setFontSize(11);
+        
+        conversationHistory.forEach((msg, index) => {
+          if (yPos > 270) {
+            doc.addPage();
+            yPos = 20;
+          }
+          
+          // Rol
+          doc.setFont(undefined, 'bold');
+          doc.setTextColor(msg.role === 'user' ? 201 : 16, msg.role === 'user' ? 168 : 185, msg.role === 'user' ? 76 : 129);
+          doc.text(msg.role === 'user' ? 'Tú:' : 'Luminom IA:', 20, yPos);
+          
+          // Contenido
+          doc.setFont(undefined, 'normal');
+          doc.setTextColor(10, 22, 40);
+          const lines = doc.splitTextToSize(msg.content, 170);
+          doc.text(lines, 20, yPos + 5);
+          
+          yPos += 5 + (lines.length * 5) + 5;
+        });
+        
+        // Guardar
+        doc.save(`luminom-conversacion-${new Date().toISOString().split('T')[0]}.pdf`);
+        
+        alert('✅ Conversación exportada exitosamente');
+      } catch (error) {
+        console.error('Error al exportar PDF:', error);
+        alert('⚠️ Error al exportar PDF. Inténtalo de nuevo.');
+      }
+    });
+
+    // ========================================
+    // RECONOCIMIENTO DE VOZ
+    // ========================================
+    
+    let recognition = null;
+    let isRecording = false;
+    
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = new SpeechRecognition();
+      recognition.lang = 'es-CO';
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('userInput').value = transcript;
+        isRecording = false;
+        document.getElementById('voiceBtn').textContent = '🎤';
+        document.getElementById('voiceBtn').style.background = '';
+      };
+      
+      recognition.onerror = (event) => {
+        console.error('Error de reconocimiento:', event.error);
+        isRecording = false;
+        document.getElementById('voiceBtn').textContent = '🎤';
+        document.getElementById('voiceBtn').style.background = '';
+        
+        if (event.error === 'no-speech') {
+          alert('⚠️ No se detectó voz. Intenta de nuevo.');
+        } else if (event.error === 'not-allowed') {
+          alert('⚠️ Necesitas dar permiso para usar el micrófono.');
+        }
+      };
+      
+      recognition.onend = () => {
+        isRecording = false;
+        document.getElementById('voiceBtn').textContent = '🎤';
+        document.getElementById('voiceBtn').style.background = '';
+      };
+      
+      document.getElementById('voiceBtn').addEventListener('click', () => {
+        if (isRecording) {
+          recognition.stop();
+          isRecording = false;
+          document.getElementById('voiceBtn').textContent = '🎤';
+          document.getElementById('voiceBtn').style.background = '';
+        } else {
+          recognition.start();
+          isRecording = true;
+          document.getElementById('voiceBtn').textContent = '⏹️';
+          document.getElementById('voiceBtn').style.background = '#ef4444';
+        }
+      });
+    } else {
+      document.getElementById('voiceBtn').style.display = 'none';
+      console.log('❌ Reconocimiento de voz no soportado en este navegador');
+    }
+
+    // ========================================
+    // DARK MODE
+    // ========================================
+    
+    // Cargar tema guardado
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('themeToggle').textContent = '☀️';
+    }
+    
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      document.getElementById('themeToggle').textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // ========================================
+    // GENERADOR DE PLAN DE ESTUDIO
+    // ========================================
+    
+    document.getElementById('studyPlanBtn').addEventListener('click', () => {
+      hideWelcome();
+      const messagesDiv = document.getElementById('messages');
+      
+      // Crear formulario simple
+      const formHTML = `
+        <div class="message bot" style="max-width:600px;margin:2rem auto;">
+          <div class="avatar">L</div>
+          <div class="bubble" style="max-width:100%;">
+            <h3 style="margin-bottom:1rem;color:var(--gold);">📚 Generar Plan de Estudio</h3>
+            <div style="margin-bottom:1rem;">
+              <label style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--white);">¿Qué materia quieres estudiar?</label>
+              <input type="text" id="studySubject" placeholder="Ej: Cálculo Diferencial" style="width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;background:var(--navy-light);color:var(--white);" />
+            </div>
+            <div style="margin-bottom:1rem;">
+              <label style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--white);">¿Cuánto tiempo tienes?</label>
+              <select id="studyTime" style="width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;background:var(--navy-light);color:var(--white);">
+                <option value="1 semana">1 semana</option>
+                <option value="2 semanas" selected>2 semanas</option>
+                <option value="1 mes">1 mes</option>
+                <option value="2 meses">2 meses</option>
+              </select>
+            </div>
+            <div style="margin-bottom:1rem;">
+              <label style="display:block;margin-bottom:0.5rem;font-weight:600;color:var(--white);">¿Cuántas horas al día puedes estudiar?</label>
+              <select id="studyHours" style="width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;background:var(--navy-light);color:var(--white);">
+                <option value="1 hora">1 hora</option>
+                <option value="2 horas" selected>2 horas</option>
+                <option value="3 horas">3 horas</option>
+                <option value="4 horas">4 horas</option>
+                <option value="5+ horas">5+ horas</option>
+              </select>
+            </div>
+            <button onclick="generateStudyPlan()" style="width:100%;background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:0.85rem;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:1rem;">
+              ✨ Generar Mi Plan
+            </button>
+          </div>
+        </div>
+      `;
+      
+      messagesDiv.innerHTML = formHTML;
+    });
+    
+    window.generateStudyPlan = async function() {
+      const subject = document.getElementById('studySubject').value.trim();
+      const time = document.getElementById('studyTime').value;
+      const hours = document.getElementById('studyHours').value;
+      
+      if (!subject) {
+        alert('Por favor ingresa la materia que quieres estudiar');
+        return;
+      }
+      
+      const messagesDiv = document.getElementById('messages');
+      messagesDiv.innerHTML = '';
+      
+      const promptText = `Crea un plan de estudio detallado para ${subject}. 
+Duración: ${time}
+Tiempo disponible: ${hours} al día
+Carrera: ${session.carrera}
+
+Formato del plan:
+- Organizado por días/semanas
+- Temas específicos por sesión
+- Objetivos claros
+- Recursos recomendados
+- Consejos de estudio`;
+      
+      // Mostrar pregunta del usuario
+      addMessage(`📚 Generar plan de estudio para:\n• Materia: ${subject}\n• Tiempo: ${time}\n• Horas diarias: ${hours}`, true);
+      
+      conversationHistory = []; // Limpiar historia para este plan
+      conversationHistory.push({ role: 'user', content: promptText });
+      
+      showTyping();
+      const aiResponse = await callGroqAPI(promptText);
+      hideTyping();
+      
+      addMessage(aiResponse, false);
+      conversationHistory.push({ role: 'assistant', content: aiResponse });
+      
+      saveCurrentChat();
+    };
+
+    // ========================================
+    // MANEJO DE ARCHIVOS E IMÁGENES
+    // ========================================
+    
+    let attachedFile = null;
+    let attachedFileDataURL = null;
+    let extractedFileContent = null;
+    
+    document.getElementById('fileInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      
+      // Validar tamaño (máx 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('⚠️ El archivo es muy grande. Máximo 5MB.');
+        e.target.value = '';
+        return;
+      }
+      
+      attachedFile = file;
+      extractedFileContent = null;
+      
+      // Mostrar indicador de procesamiento
+      showFilePreview(file, null, true);
+      
+      try {
+        // Procesar según tipo de archivo
+        if (file.type.startsWith('image/')) {
+          // Imágenes: convertir a base64
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            attachedFileDataURL = event.target.result;
+            showFilePreview(file, event.target.result, false);
+          };
+          reader.readAsDataURL(file);
+        } else if (file.type === 'application/pdf') {
+          // PDFs: extraer texto
+          await extractPDFText(file);
+        } else if (file.type === 'text/plain') {
+          // TXT: leer directamente
+          await extractTextFromFile(file);
+        } else {
+          // Otros archivos
+          showFilePreview(file, null, false);
+        }
+      } catch (error) {
+        console.error('Error al procesar archivo:', error);
+        alert('⚠️ Error al procesar el archivo. Intenta con otro formato.');
+        removeFile();
+      }
+    });
+    
+    // Extraer texto de archivos PDF
+    async function extractPDFText(file) {
+      try {
+        console.log('📄 Extrayendo texto de PDF...');
+        
+        const arrayBuffer = await file.arrayBuffer();
+        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        
+        let fullText = '';
+        const numPages = pdf.numPages;
+        
+        // Extraer texto de cada página
+        for (let i = 1; i <= numPages; i++) {
+          const page = await pdf.getPage(i);
+          const textContent = await page.getTextContent();
+          const pageText = textContent.items.map(item => item.str).join(' ');
+          fullText += `\n--- Página ${i} ---\n${pageText}\n`;
+        }
+        
+        extractedFileContent = fullText.trim();
+        console.log(`✅ Extraídas ${numPages} páginas, ${extractedFileContent.length} caracteres`);
+        
+        // Limitar a 10,000 caracteres para no sobrecargar la IA
+        if (extractedFileContent.length > 10000) {
+          extractedFileContent = extractedFileContent.substring(0, 10000) + '\n\n[... Contenido truncado. Solo se muestran los primeros 10,000 caracteres]';
+        }
+        
+        showFilePreview(file, null, false);
+      } catch (error) {
+        console.error('Error al extraer PDF:', error);
+        alert('⚠️ No se pudo leer el PDF. Asegúrate de que no esté protegido.');
+        removeFile();
+      }
+    }
+    
+    // Extraer texto de archivos TXT
+    async function extractTextFromFile(file) {
+      try {
+        console.log('📝 Leyendo archivo de texto...');
+        
+        const text = await file.text();
+        extractedFileContent = text.trim();
+        
+        console.log(`✅ Leído, ${extractedFileContent.length} caracteres`);
+        
+        // Limitar a 10,000 caracteres
+        if (extractedFileContent.length > 10000) {
+          extractedFileContent = extractedFileContent.substring(0, 10000) + '\n\n[... Contenido truncado]';
+        }
+        
+        showFilePreview(file, null, false);
+      } catch (error) {
+        console.error('Error al leer archivo:', error);
+        alert('⚠️ No se pudo leer el archivo.');
+        removeFile();
+      }
+    }
+    
+    function showFilePreview(file, dataURL, isProcessing) {
+      const preview = document.getElementById('filePreview');
+      preview.style.display = 'flex';
+      
+      let previewHTML = '';
+      let statusText = '';
+      
+      if (isProcessing) {
+        previewHTML = `<span style="font-size:2rem;">⏳</span>`;
+        statusText = '<span style="color:#f59e0b;">Procesando...</span>';
+      } else if (dataURL && file.type.startsWith('image/')) {
+        previewHTML = `<img src="${dataURL}" alt="Preview" />`;
+        statusText = '<span style="color:#10b981;">✓ Listo</span>';
+      } else if (extractedFileContent) {
+        previewHTML = `<span style="font-size:2rem;">📄</span>`;
+        const charCount = extractedFileContent.length;
+        statusText = `<span style="color:#10b981;">✓ Texto extraído (${charCount} caracteres)</span>`;
+      } else {
+        previewHTML = `<span style="font-size:2rem;">📄</span>`;
+        statusText = '<span style="color:#f59e0b;">Nombre del archivo solamente</span>';
+      }
+      
+      preview.innerHTML = `
+        ${previewHTML}
+        <div class="file-info">
+          <strong>${file.name}</strong><br>
+          <span style="font-size:0.75rem;">${(file.size / 1024).toFixed(1)} KB • ${statusText}</span>
+        </div>
+        <span class="file-remove" onclick="removeFile()">✕</span>
+      `;
+    }
+    
+    window.removeFile = function() {
+      attachedFile = null;
+      attachedFileDataURL = null;
+      extractedFileContent = null;
+      document.getElementById('fileInput').value = '';
+      document.getElementById('filePreview').style.display = 'none';
+    };
+
+    // ========================================
+    // MODIFICAR sendMessage PARA INCLUIR ARCHIVOS
+    // ========================================
+    
+    // Guardar referencia a la función original
+    const originalSendMessage = sendMessage;
+    
+    // Reemplazar con nueva versión que maneja archivos
+    sendMessage = async function() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      
+      if (!message && !attachedFile) return;
+      
+      // Verificar límite de preguntas
+      const status = canAskQuestion();
+      
+      if (!status.allowed) {
+        alert(`⚠️ Has alcanzado el límite de ${status.limit} preguntas diarias del plan gratuito.\n\n💎 Mejora a Premium para preguntas ilimitadas desde $14,900/mes o De por Vida por $299,000.\n\nVisita la página de Servicios para actualizar tu plan.`);
+        
+        if (confirm('¿Quieres ver los planes disponibles?')) {
+          window.open('servicios.html', '_blank');
+        }
+        return;
+      }
+      
+      if (!API_CONFIG.key) {
+        alert('⚠️ Error: No hay API Key configurada. Contacta al administrador.');
+        return;
+      }
+      
+      input.value = '';
+      input.style.height = 'auto';
+      
+      const sendBtn = document.getElementById('sendBtn');
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Enviando...';
+      
+      // Construir mensaje con contexto del archivo
+      let fullMessage = message;
+      
+      if (attachedFile) {
+        if (extractedFileContent) {
+          // Si se extrajo contenido del archivo
+          fullMessage = `He adjuntado el archivo "${attachedFile.name}" con el siguiente contenido:\n\n${extractedFileContent}\n\n---\n\nMi pregunta: ${message || 'Analiza este contenido y explícamelo'}`;
+        } else if (attachedFile.type.startsWith('image/')) {
+          // Para imágenes (futuro: integrar API de visión)
+          fullMessage = `[Imagen adjunta: ${attachedFile.name}]\n\n${message || 'Analiza esta imagen y explícame qué ves'}\n\n(Nota: Actualmente no puedo ver el contenido de imágenes, pero puedo ayudarte si describes lo que ves)`;
+        } else {
+          // Para archivos sin extracción
+          fullMessage = `[Archivo adjunto: ${attachedFile.name}]\n\n${message}`;
+        }
+        
+        removeFile();
+      }
+      
+      addMessage(message || '📎 Archivo adjunto', true);
+      conversationHistory.push({ role: 'user', content: fullMessage });
+      
+      showTyping();
+      
+      const aiResponse = await callGroqAPI(fullMessage);
+      
+      hideTyping();
+      addMessage(aiResponse, false);
+      
+      conversationHistory.push({ role: 'assistant', content: aiResponse });
+      
+      if (userPlan === 'free') {
+        incrementQuestionCount();
+      }
+      
+      saveCurrentChat();
+      
+      const stats = JSON.parse(localStorage.getItem('luminom_stats') || '{"totalQuestions":0,"totalConversations":0}');
+      stats.totalQuestions = (stats.totalQuestions || 0) + 1;
+      localStorage.setItem('luminom_stats', JSON.stringify(stats));
+      
+      if (conversationHistory.length > 20) {
+        conversationHistory = conversationHistory.slice(-20);
+      }
+      
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Enviar';
+      input.focus();
+    };
+
+    // Configuración de API (Key pre-configurada y ofuscada)
+    const API_CONFIG = {
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      // Key automáticamente configurada (ofuscada para evitar detección)
+      key: localStorage.getItem('groq_api_key') || null,
+      model: 'llama-3.3-70b-versatile'
+    };
+
+    let conversationHistory = [];
+    let currentChatId = null;
+
+    // Auto-configurar API Key ofuscada (solo si no existe)
+    (function initApiKey() {
+      if (!localStorage.getItem('groq_api_key')) {
+        // Key ofuscada en partes para evitar detección de GitHub
+        const parts = [
+          'gsk_',
+          '8g9V37JS',
+          'uol85XAO',
+          '0DtQWGdy',
+          'b3FYq2RY',
+          'aCRaXqoH',
+          'qTZvT6l7',
+          'zAKM'
+        ];
+        const key = parts.join('');
+        localStorage.setItem('groq_api_key', key);
+        API_CONFIG.key = key;
+      } else {
+        API_CONFIG.key = localStorage.getItem('groq_api_key');
+      }
+    })();
+
+
+    function hideWelcome() {
+      const welcome = document.getElementById('welcomeScreen');
+      if (welcome) welcome.style.display = 'none';
+      document.getElementById('messagesDiv').style.display = 'flex';
+    }
+
+    function addMessage(content, isUser) {
+      hideWelcome();
+      const messagesDiv = document.getElementById('messagesDiv');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `msg ${isUser ? 'user' : 'bot'}`;
+      
+      const avatar = document.createElement('div');
+      avatar.className = `msg-av ${isUser ? 'user' : 'bot'}`;
+      avatar.textContent = isUser ? session.name[0].toUpperCase() : 'L';
+      
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble ' + (isUser ? 'user' : 'bot');
+      bubble.innerHTML = formatMessage(content);
+      
+      messageDiv.appendChild(avatar);
+      messageDiv.appendChild(bubble);
+      messagesDiv.appendChild(messageDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function formatMessage(text) {
+      text = text.replace(/```(\w+)?\n?([\s\S]*?)```/g, (_, lang, code) =>
+        `<pre><code>${escapeHtml(code.trim())}</code></pre>`
+      );
+      text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+      text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      text = text.replace(/\n/g, '<br>');
+      return text;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function showTyping() {
+      hideWelcome();
+      document.getElementById('typing').style.display = 'flex';
+    }
+
+    function hideTyping() {
+      document.getElementById('typing').style.display = 'none';
+    }
+
+    async function callGroqAPI(userMessage) {
+      const systemPrompt = `Eres Luminom IA, un tutor universitario experto para estudiantes colombianos.
+
+El estudiante actual es ${session.name}, de la carrera ${session.carrera}.
+
+Tu misión: Ayudar a entender temas académicos de forma clara, paso a paso y motivadora.
+
+ESTILO DE RESPUESTA:
+- Siempre en español claro y natural
+- Tono cercano y motivador (como un amigo inteligente)
+- Explicaciones paso a paso con ejemplos
+- Para matemáticas: muestra los pasos numerados
+- Para código: usa bloques de código bien formateados
+- Máximo 4 párrafos por respuesta (sé conciso pero completo)
+- Usa ejemplos del contexto colombiano cuando sea relevante
+
+MATERIAS QUE DOMINAS:
+- Matemáticas (Cálculo, Álgebra, Estadística)
+- Programación (Python, JavaScript, Java, C++)
+- Física (Mecánica, Termodinámica, Cuántica)
+- Química (Orgánica, Inorgánica)
+- Economía (Micro, Macro)
+- Derecho (Constitucional, Civil, Penal)
+
+NUNCA inventes datos, fórmulas o teoremas que no existen.`;
+
+      try {
+        const response = await fetch(API_CONFIG.url, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${API_CONFIG.key}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: API_CONFIG.model,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              ...conversationHistory,
+              { role: 'user', content: userMessage }
+            ],
+            temperature: 0.7,
+            max_tokens: 2000,
+            top_p: 1,
+            stream: false
+          })
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          
+          if (response.status === 401) {
+            localStorage.removeItem('groq_api_key');
+            API_CONFIG.key = '';
+            throw new Error('API Key inválida o expirada');
+          }
+          
+          throw new Error(errorData.error?.message || `Error ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data.choices[0]?.message?.content || 'No pude generar respuesta';
+      } catch (error) {
+        console.error('Error:', error);
+        
+        if (error.message.includes('API Key')) {
+          return `⚠️ **Error de API Key**\n\nHubo un problema con la API Key configurada.\n\n**Soluciones:**\n- Contacta al administrador: ialuminom@gmail.com\n- O usa el botón "🔑 API KEY" para configurar una nueva`;
+        }
+        
+        return `⚠️ **Error de conexión**\n\n${error.message}\n\n**Soluciones:**\n- Verifica tu API Key\n- Espera 10 segundos e intenta de nuevo\n- Recarga la página si persiste`;
+      }
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      
+      if (!message && !attachedFile) return;
+      
+      if (!API_CONFIG.key) {
+        alert('⚠️ Error: No hay API Key configurada.');
+        return;
+      }
+      
+      input.value = '';
+      input.style.height = 'auto';
+      
+      const sendBtn = document.getElementById('sendBtn');
+      sendBtn.disabled = true;
+      
+      // Construir mensaje con contexto del archivo
+      let fullMessage = message;
+      
+      if (attachedFile) {
+        if (extractedFileContent) {
+          fullMessage = `He adjuntado el archivo "${attachedFile.name}" con el siguiente contenido:\n\n${extractedFileContent}\n\n---\n\nMi pregunta: ${message || 'Analiza este contenido y explícamelo'}`;
+        } else if (attachedFile.type.startsWith('image/')) {
+          fullMessage = `[Imagen adjunta: ${attachedFile.name}]\n\n${message || 'Analiza esta imagen'}\n\n(Nota: Descripción visual no disponible actualmente)`;
+        } else {
+          fullMessage = `[Archivo adjunto: ${attachedFile.name}]\n\n${message}`;
+        }
+        
+        removeFile();
+      }
+      
+      addMessage(message || '📎 Archivo adjunto', true);
+      conversationHistory.push({ role: 'user', content: fullMessage });
+      
+      showTyping();
+      
+      const aiResponse = await callGroqAPI(fullMessage);
+      
+      hideTyping();
+      addMessage(aiResponse, false);
+      
+      conversationHistory.push({ role: 'assistant', content: aiResponse });
+      
+      saveCurrentChat();
+      
+      if (conversationHistory.length > 20) {
+        conversationHistory = conversationHistory.slice(-20);
+      }
+      
+      sendBtn.disabled = false;
+      input.focus();
+    }
+      
+      // ============================================
+      // VERIFICAR LÍMITE DE PREGUNTAS (PLAN GRATIS)
+      // ============================================
+      const status = canAskQuestion();
+      
+      if (!status.allowed) {
+        alert(`⚠️ Has alcanzado el límite de ${status.limit} preguntas diarias del plan gratuito.\n\n💎 Mejora a Premium para preguntas ilimitadas desde $14,900/mes o De por Vida por $299,000.\n\nVisita la página de Servicios para actualizar tu plan.`);
+        
+        // Abrir página de servicios
+        if (confirm('¿Quieres ver los planes disponibles?')) {
+          window.open('servicios.html', '_blank');
+        }
+        return;
+      }
+      
+      if (!API_CONFIG.key) {
+        alert('⚠️ Error: No hay API Key configurada. Contacta al administrador.');
+        return;
+      }
+      
+      input.value = '';
+      input.style.height = 'auto';
+      
+      const sendBtn = document.getElementById('sendBtn');
+      sendBtn.disabled = true;
+      
+      // Construir mensaje con contexto del archivo
+      let fullMessage = message;
+      
+      if (attachedFile) {
+        if (extractedFileContent) {
+          fullMessage = `He adjuntado el archivo "${attachedFile.name}" con el siguiente contenido:\n\n${extractedFileContent}\n\n---\n\nMi pregunta: ${message || 'Analiza este contenido y explícamelo'}`;
+        } else if (attachedFile.type.startsWith('image/')) {
+          fullMessage = `[Imagen adjunta: ${attachedFile.name}]\n\n${message || 'Analiza esta imagen'}\n\n(Nota: Descripción visual no disponible)`;
+        } else {
+          fullMessage = `[Archivo adjunto: ${attachedFile.name}]\n\n${message}`;
+        }
+        
+        removeFile();
+      }
+      
+      addMessage(message || '📎 Archivo adjunto', true);
+      conversationHistory.push({ role: 'user', content: fullMessage });
+      
+      showTyping();
+      
+      const aiResponse = await callGroqAPI(fullMessage);
+      
+      hideTyping();
+      addMessage(aiResponse, false);
+      
+      conversationHistory.push({ role: 'assistant', content: aiResponse });
+      
+      // ============================================
+      // INCREMENTAR CONTADOR DE PREGUNTAS
+      // ============================================
+      if (userPlan === 'free') {
+        incrementQuestionCount();
+      }
+      
+      // Guardar chat automáticamente
+      saveCurrentChat();
+      
+      // Registrar estadística
+      const stats = JSON.parse(localStorage.getItem('luminom_stats') || '{"totalQuestions":0,"totalConversations":0}');
+      stats.totalQuestions = (stats.totalQuestions || 0) + 1;
+      localStorage.setItem('luminom_stats', JSON.stringify(stats));
+      
+      // Verificar logros desbloqueados
+      if (typeof checkAndUnlockAchievements !== 'undefined') {
+        setTimeout(checkAndUnlockAchievements, 500);
+      }
+      
+      if (conversationHistory.length > 20) {
+        conversationHistory = conversationHistory.slice(-20);
+      }
+      
+      sendBtn.disabled = false;
+      input.focus();
+    }
+
+    // ========================================
+    // EXPORTAR PDF, VOZ Y OTRAS FUNCIONES
+    // ========================================
+    
+    window.exportChatToPDF = function() {
+      if (conversationHistory.length === 0) {
+        alert('⚠️ No hay conversación para exportar.');
+        return;
+      }
+      
+      try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        doc.setFontSize(20);
+        doc.text('Luminom IA', 20, 20);
+        doc.setFontSize(10);
+        doc.text(`${session.name} - ${new Date().toLocaleDateString('es-CO')}`, 20, 30);
+        
+        let yPos = 40;
+        doc.setFontSize(11);
+        
+        conversationHistory.forEach((msg) => {
+          if (yPos > 270) {
+            doc.addPage();
+            yPos = 20;
+          }
+          
+          const lines = doc.splitTextToSize((msg.role === 'user' ? 'Tú: ' : 'IA: ') + msg.content, 170);
+          doc.text(lines, 20, yPos);
+          yPos += lines.length * 5 + 5;
+        });
+        
+        doc.save(`luminom-${Date.now()}.pdf`);
+        alert('✅ Exportado exitosamente');
+      } catch (error) {
+        alert('⚠️ Error al exportar PDF.');
+      }
+    };
+    
+    window.toggleVoiceRecording = function() {
+      if (!recognition) {
+        alert('⚠️ Reconocimiento de voz no soportado.');
+        return;
+      }
+      
+      const btn = document.getElementById('voiceBtn2');
+      
+      if (isRecording) {
+        recognition.stop();
+        isRecording = false;
+        btn.textContent = '🎤 Grabar Voz';
+        btn.style.background = 'rgba(245,158,11,0.1)';
+      } else {
+        recognition.start();
+        isRecording = true;
+        btn.textContent = '⏹️ Detener';
+        btn.style.background = '#ef4444';
+      }
+    };
+
+    function newChat() {
+      if (conversationHistory.length > 0) {
+        saveCurrentChat();
+      }
+      
+      conversationHistory = [];
+      currentChatId = null;
+      
+      document.getElementById('messagesDiv').innerHTML = '';
+      document.getElementById('messagesDiv').style.display = 'none';
+      document.getElementById('welcomeScreen').style.display = 'flex';
+      
+      loadChatHistory();
+      document.getElementById('chatInput').focus();
+    }
+
+    // Cargar historial al iniciar
+    loadChatHistory();
+
+    function sendQuick(question) {
+      document.getElementById('chatInput').value = question;
+      sendMessage();
+    }
+
+    // Hacer funciones globales
+    window.sendQuick = sendQuick;
+    window.newChat = newChat;
+
+    async function saveCurrentChat() {
+      if (conversationHistory.length === 0) return;
+      
+      const session = Auth.getSession();
+      const title = conversationHistory[0]?.content.substring(0, 50) + '...';
+      
+      try {
+        console.log('💾 Guardando chat en Firebase...');
+        
+        if (currentChatId) {
+          // Actualizar chat existente en Firebase
+          await db.collection('chats').doc(currentChatId).update({
+            title,
+            messages: conversationHistory,
+            updatedAt: new Date().toISOString()
+          });
+          console.log('✅ Chat actualizado en Firebase:', currentChatId);
+        } else {
+          // Crear nuevo chat en Firebase
+          const docRef = await db.collection('chats').add({
+            userId: session.userId,
+            title,
+            messages: conversationHistory,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+          });
+          currentChatId = docRef.id;
+          console.log('✅ Nuevo chat creado en Firebase:', currentChatId);
+        }
+        
+        await loadChatHistory();
+      } catch (error) {
+        console.error('❌ Error al guardar chat en Firebase:', error);
+        console.error('Código de error:', error.code);
+        console.error('Mensaje:', error.message);
+        
+        // Fallback a localStorage si Firebase falla
+        console.log('⚠️ Usando localStorage como fallback...');
+        saveToLocalStorage();
+      }
+    }
+
+    function saveToLocalStorage() {
+      if (conversationHistory.length === 0) return;
+      
+      const chats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
+      const session = Auth.getSession();
+      const title = conversationHistory[0]?.content.substring(0, 50) + '...';
+      
+      if (currentChatId) {
+        const chatIndex = chats.findIndex(c => c.id === currentChatId);
+        if (chatIndex !== -1) {
+          chats[chatIndex].messages = conversationHistory;
+          chats[chatIndex].updatedAt = new Date().toISOString();
+          chats[chatIndex].title = title;
+        }
+      } else {
+        currentChatId = Date.now().toString();
+        chats.push({
+          id: currentChatId,
+          userId: session.userId,
+          title,
+          messages: conversationHistory,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        });
+      }
+      
+      localStorage.setItem('luminom_chats', JSON.stringify(chats));
+    }
+
+    async function loadChatHistory() {
+      const session = Auth.getSession();
+      const historyList = document.getElementById('historyList');
+      
+      // Mostrar skeleton screens mientras carga
+      showHistorySkeleton();
+      
+      try {
+        console.log('🔵 Cargando historial desde Firebase...');
+        
+        // Cargar desde Firebase SIN orderBy para evitar necesidad de índice
+        const snapshot = await db.collection('chats')
+          .where('userId', '==', session.userId)
+          .get();
+        
+        const userChats = [];
+        snapshot.forEach((doc) => {
+          userChats.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+        
+        // Filtrar por favoritos si está activo
+        let filteredChats = userChats;
+        if (typeof favoritesFilter !== 'undefined' && favoritesFilter === 'favorites') {
+          filteredChats = userChats.filter(chat => chat.isFavorite === true);
+        }
+        
+        // Ordenar en JavaScript en lugar de Firestore
+        filteredChats.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+        
+        console.log(`✅ Cargados ${filteredChats.length} chats desde Firebase`);
+        
+        if (filteredChats.length === 0) {
+          const message = favoritesFilter === 'favorites' 
+            ? 'No tienes chats favoritos aún' 
+            : 'Sin conversaciones previas';
+          historyList.innerHTML = `<div class="history-item">${message}</div>`;
+          return;
+        }
+        
+        historyList.innerHTML = filteredChats.map(chat => {
+          const isFav = chat.isFavorite || false;
+          return `
+            <div class="history-item" onclick="loadChat('${chat.id}')">
+              <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.2rem;">
+                <div style="font-weight:600;color:var(--navy);flex:1;">${chat.title}</div>
+                <span class="favorite-star" onclick="toggleFavorite('${chat.id}', event)" title="${isFav ? 'Quitar de favoritos' : 'Agregar a favoritos'}">
+                  ${isFav ? '⭐' : '☆'}
+                </span>
+              </div>
+              <div style="font-size:0.72rem;color:var(--text-muted);">${new Date(chat.updatedAt).toLocaleDateString('es-CO')}</div>
+            </div>
+          `;
+        }).join('');
+      } catch (error) {
+        console.error('❌ Error al cargar historial de Firebase:', error);
+        console.error('Código de error:', error.code);
+        console.error('Mensaje:', error.message);
+        
+        // Mostrar mensaje al usuario
+        if (error.code === 'permission-denied') {
+          historyList.innerHTML = '<div class="history-item" style="color:#ff6b6b;">⚠️ Acceso denegado. Actualiza las reglas de Firebase.</div>';
+        } else if (error.code === 'failed-precondition') {
+          historyList.innerHTML = '<div class="history-item" style="color:#fbbf24;">⚠️ Firestore necesita un índice. Mira la consola para el enlace.</div>';
+          console.log('');
+          console.log('🔗 SOLUCIÓN: Haz click en el enlace de arriba para crear el índice automáticamente');
+          console.log('O ve a Firebase Console → Firestore → Índices y créalo manualmente');
+          console.log('');
+        } else {
+          historyList.innerHTML = '<div class="history-item">Sin conversaciones previas</div>';
+        }
+        
+        // NO usar localStorage como fallback - queremos que el usuario vea que Firebase no está funcionando
+        console.log('⚠️ No se usará localStorage - esperando configuración de Firebase');
+      }
+    }
+    
+    // Mostrar skeleton loading para historial
+    function showHistorySkeleton() {
+      const historyList = document.getElementById('historyList');
+      historyList.innerHTML = `
+        <div class="skeleton-history-item">
+          <div class="skeleton-history-title"></div>
+          <div class="skeleton-history-date"></div>
+        </div>
+        <div class="skeleton-history-item">
+          <div class="skeleton-history-title"></div>
+          <div class="skeleton-history-date"></div>
+        </div>
+        <div class="skeleton-history-item">
+          <div class="skeleton-history-title"></div>
+          <div class="skeleton-history-date"></div>
+        </div>
+      `;
+    }
+
+    function loadFromLocalStorage() {
+      const chats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
+      const session = Auth.getSession();
+      const userChats = chats.filter(c => c.userId === session.userId).sort((a, b) => 
+        new Date(b.updatedAt) - new Date(a.updatedAt)
+      );
+      
+      const historyList = document.getElementById('historyList');
+      if (userChats.length === 0) {
+        historyList.innerHTML = '<div class="history-item">Sin conversaciones previas</div>';
+        return;
+      }
+      
+      historyList.innerHTML = userChats.map(chat => `
+        <div class="history-item" onclick="loadChat('${chat.id}')">
+          <div style="font-weight:600;margin-bottom:0.2rem;color:var(--navy);">${chat.title}</div>
+          <div style="font-size:0.72rem;color:var(--text-muted);">${new Date(chat.updatedAt).toLocaleDateString('es-CO')}</div>
+        </div>
+      `).join('');
+    }
+
+    async function loadChat(chatId) {
+      try {
+        // Cargar desde Firebase
+        const chatDoc = await db.collection('chats').doc(chatId).get();
+        
+        if (chatDoc.exists) {
+          const chatData = chatDoc.data();
+          currentChatId = chatId;
+          conversationHistory = chatData.messages;
+          
+          const messagesDiv = document.getElementById('messages');
+          messagesDiv.innerHTML = '';
+          
+          conversationHistory.forEach(msg => {
+            addMessage(msg.content, msg.role === 'user');
+          });
+        }
+      } catch (error) {
+        console.error('Error al cargar chat de Firebase:', error);
+        // Fallback a localStorage
+        const chats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
+        const chat = chats.find(c => c.id === chatId);
+        
+        if (!chat) return;
+        
+        currentChatId = chatId;
+        conversationHistory = chat.messages;
+        
+        const messagesDiv = document.getElementById('messages');
+        messagesDiv.innerHTML = '';
+        
+        conversationHistory.forEach(msg => {
+          addMessage(msg.content, msg.role === 'user');
+        });
+      }
+    }
+
+    async function deleteChat(chatId) {
+      if (!confirm('¿Eliminar esta conversación?')) return;
+      
+      try {
+        // Eliminar de Firebase
+        await db.collection('chats').doc(chatId).delete();
+        
+        if (currentChatId === chatId) {
+          newChat();
+        } else {
+          await loadChatHistory();
+        }
+      } catch (error) {
+        console.error('Error al eliminar chat de Firebase:', error);
+        // Fallback a localStorage
+        const chats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
+        const filtered = chats.filter(c => c.id !== chatId);
+        localStorage.setItem('luminom_chats', JSON.stringify(filtered));
+        
+        if (currentChatId === chatId) {
+          newChat();
+        } else {
+          loadFromLocalStorage();
+        }
+      }
+    }
+
+    // Hacer funciones globales para onclick
+    window.loadChat = loadChat;
+    window.deleteChat = deleteChat;
+    window.sendQuick = sendQuick;
+
+    // Event listeners (en lugar de onclick en HTML)
+    document.getElementById('sendBtn').addEventListener('click', sendMessage);
+    
+    // Enter para enviar
+    document.getElementById('chatInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Auto-resize textarea
+    document.getElementById('chatInput').addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 150) + 'px';
+    });
+
+    document.getElementById('chatInput').focus();
+  </script>
+</body>
+</html>

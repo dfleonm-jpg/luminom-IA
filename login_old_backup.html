@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Iniciar Sesión - Luminom IA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --primary:#6366F1;
+      --secondary:#8B5CF6;
+      --accent:#EC4899;
+      --dark:#0F172A;
+      --darker:#020617;
+      --card:#1E293B;
+      --text:#F1F5F9;
+      --muted:#94A3B8;
+      --success:#10B981;
+      --error:#EF4444;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--darker);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2rem;
+    }
+    
+    /* Background */
+    .bg-animated{
+      position:fixed;
+      top:0;left:0;right:0;bottom:0;
+      background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);
+      opacity:0.05;
+      z-index:-1;
+      animation:pulse 15s ease-in-out infinite;
+    }
+    @keyframes pulse{0%,100%{opacity:0.03;}50%{opacity:0.08;}}
+    
+    /* Login Container */
+    .login-container{
+      background:linear-gradient(135deg,rgba(30,41,59,0.9),rgba(30,41,59,0.7));
+      backdrop-filter:blur(20px);
+      border:2px solid rgba(99,102,241,0.3);
+      border-radius:30px;
+      padding:3rem;
+      max-width:450px;
+      width:100%;
+      box-shadow:0 30px 80px rgba(0,0,0,0.5);
+      animation:slideIn 0.5s ease-out;
+    }
+    @keyframes slideIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+    
+    .logo{
+      text-align:center;
+      font-size:2.5rem;
+      font-weight:800;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      margin-bottom:0.5rem;
+    }
+    .subtitle{
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:2rem;
+      font-size:1rem;
+    }
+    
+    /* Tabs */
+    .tabs{
+      display:flex;
+      gap:1rem;
+      margin-bottom:2rem;
+      border-bottom:2px solid rgba(99,102,241,0.2);
+    }
+    .tab{
+      flex:1;
+      padding:1rem;
+      background:transparent;
+      border:none;
+      color:var(--muted);
+      font-weight:600;
+      font-size:1rem;
+      cursor:pointer;
+      transition:all 0.3s;
+      border-bottom:3px solid transparent;
+    }
+    .tab.active{
+      color:var(--primary);
+      border-bottom-color:var(--primary);
+    }
+    .tab:hover{color:var(--text);}
+    
+    /* Forms */
+    .form-container{
+      display:none;
+    }
+    .form-container.active{
+      display:block;
+      animation:fadeIn 0.4s ease-out;
+    }
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    
+    .form-group{
+      margin-bottom:1.5rem;
+    }
+    label{
+      display:block;
+      margin-bottom:0.5rem;
+      color:var(--text);
+      font-weight:500;
+      font-size:0.95rem;
+    }
+    input,select{
+      width:100%;
+      padding:1rem;
+      background:rgba(15,23,42,0.8);
+      border:2px solid rgba(99,102,241,0.3);
+      border-radius:12px;
+      color:var(--text);
+      font-size:1rem;
+      font-family:inherit;
+      transition:all 0.3s;
+    }
+    input:focus,select:focus{
+      outline:none;
+      border-color:var(--primary);
+      box-shadow:0 0 20px rgba(99,102,241,0.3);
+    }
+    input::placeholder{
+      color:var(--muted);
+    }
+    
+    .error-message{
+      color:var(--error);
+      font-size:0.85rem;
+      margin-top:0.5rem;
+      display:none;
+    }
+    .error-message.show{display:block;}
+    
+    .btn-submit{
+      width:100%;
+      padding:1.2rem;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      color:white;
+      border:none;
+      border-radius:50px;
+      font-weight:700;
+      font-size:1.1rem;
+      cursor:pointer;
+      transition:all 0.3s;
+      box-shadow:0 15px 40px rgba(99,102,241,0.4);
+      margin-top:1rem;
+    }
+    .btn-submit:hover{
+      transform:translateY(-3px);
+      box-shadow:0 20px 50px rgba(99,102,241,0.6);
+    }
+    .btn-submit:disabled{
+      opacity:0.5;
+      cursor:not-allowed;
+      transform:none;
+    }
+    
+    /* Divider */
+    .divider{
+      text-align:center;
+      margin:2rem 0;
+      position:relative;
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+    .divider::before,.divider::after{
+      content:'';
+      position:absolute;
+      top:50%;
+      width:40%;
+      height:1px;
+      background:rgba(99,102,241,0.2);
+    }
+    .divider::before{left:0;}
+    .divider::after{right:0;}
+    
+    /* Social Buttons */
+    .social-btns{
+      display:flex;
+      gap:1rem;
+    }
+    .btn-social{
+      flex:1;
+      padding:1rem;
+      background:rgba(15,23,42,0.6);
+      border:2px solid rgba(99,102,241,0.3);
+      border-radius:12px;
+      color:var(--text);
+      font-weight:600;
+      cursor:pointer;
+      transition:all 0.3s;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.5rem;
+    }
+    .btn-social:hover{
+      border-color:var(--primary);
+      background:rgba(99,102,241,0.1);
+    }
+    
+    .footer-link{
+      text-align:center;
+      margin-top:1.5rem;
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+    .footer-link a{
+      color:var(--primary);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .footer-link a:hover{
+      text-decoration:underline;
+    }
+    
+    @media(max-width:600px){
+      .login-container{
+        padding:2rem;
+      }
+      .logo{font-size:2rem;}
+      .social-btns{flex-direction:column;}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-animated"></div>
+
+  <div class="login-container">
+    <div class="logo">✦ Luminom IA</div>
+    <p class="subtitle">Tu tutor universitario con IA</p>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('login')">Iniciar Sesión</button>
+      <button class="tab" onclick="showTab('register')">Registrarse</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="form-container active">
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="tu@email.com" required/>
+          <div class="error-message" id="loginEmailError">Email inválido</div>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" required/>
+          <div class="error-message" id="loginPasswordError">Contraseña incorrecta</div>
+        </div>
+
+        <button type="submit" class="btn-submit">Iniciar Sesión</button>
+      </form>
+
+      <div class="divider">o continúa con</div>
+
+      <div class="social-btns">
+        <button class="btn-social" onclick="alert('Próximamente disponible')">
+          🔵 Google
+        </button>
+        <button class="btn-social" onclick="alert('Próximamente disponible')">
+          ⚫ GitHub
+        </button>
+      </div>
+
+      <div class="footer-link">
+        ¿Olvidaste tu contraseña? <a href="#">Recupérala aquí</a>
+      </div>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm" class="form-container">
+      <form onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label for="registerName">Nombre Completo</label>
+          <input type="text" id="registerName" placeholder="Juan Pérez" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" placeholder="tu@email.com" required/>
+          <div class="error-message" id="registerEmailError">Este email ya está registrado</div>
+        </div>
+
+        <div class="form-group">
+          <label for="registerCarrera">Carrera</label>
+          <select id="registerCarrera" required>
+            <option value="">Selecciona tu carrera</option>
+            <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+            <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+            <option value="Ingeniería Civil">Ingeniería Civil</option>
+            <option value="Medicina">Medicina</option>
+            <option value="Derecho">Derecho</option>
+            <option value="Administración de Empresas">Administración de Empresas</option>
+            <option value="Economía">Economía</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Diseño Gráfico">Diseño Gráfico</option>
+            <option value="Arquitectura">Arquitectura</option>
+            <option value="Otra">Otra</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="registerPassword">Contraseña</label>
+          <input type="password" id="registerPassword" placeholder="••••••••" minlength="8" required/>
+          <div class="error-message" id="registerPasswordError">Mínimo 8 caracteres</div>
+        </div>
+
+        <div class="form-group">
+          <label for="registerConfirmPassword">Confirmar Contraseña</label>
+          <input type="password" id="registerConfirmPassword" placeholder="••••••••" required/>
+          <div class="error-message" id="registerConfirmError">Las contraseñas no coinciden</div>
+        </div>
+
+        <button type="submit" class="btn-submit">Crear Cuenta</button>
+      </form>
+
+      <div class="divider">o regístrate con</div>
+
+      <div class="social-btns">
+        <button class="btn-social" onclick="alert('Próximamente disponible')">
+          🔵 Google
+        </button>
+        <button class="btn-social" onclick="alert('Próximamente disponible')">
+          ⚫ GitHub
+        </button>
+      </div>
+
+      <div class="footer-link">
+        ¿Ya tienes cuenta? <a href="#" onclick="showTab('login')">Inicia sesión</a>
+      </div>
+    </div>
+
+    <div class="footer-link" style="margin-top:2rem;">
+      <a href="index.html">← Volver al Inicio</a>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tab) {
+      // Update tabs
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Update forms
+      document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+      if (tab === 'login') {
+        document.getElementById('loginForm').classList.add('active');
+      } else {
+        document.getElementById('registerForm').classList.add('active');
+      }
+
+      // Clear errors
+      document.querySelectorAll('.error-message').forEach(e => e.classList.remove('show'));
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      // Validación simple (demo)
+      if (!email.includes('@')) {
+        document.getElementById('loginEmailError').classList.add('show');
+        return;
+      }
+
+      if (password.length < 6) {
+        document.getElementById('loginPasswordError').classList.add('show');
+        return;
+      }
+
+      // Simular login exitoso
+      const user = {
+        name: email.split('@')[0],
+        email: email,
+        premium: false,
+        loggedIn: true
+      };
+
+      localStorage.setItem('luminomUser', JSON.stringify(user));
+      
+      alert(`✅ ¡Bienvenido de nuevo, ${user.name}!`);
+      window.location.href = 'tutor.html';
+    }
+
+    function handleRegister(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('registerName').value;
+      const email = document.getElementById('registerEmail').value;
+      const carrera = document.getElementById('registerCarrera').value;
+      const password = document.getElementById('registerPassword').value;
+      const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+      // Clear previous errors
+      document.querySelectorAll('.error-message').forEach(e => e.classList.remove('show'));
+
+      // Validations
+      if (!email.includes('@')) {
+        document.getElementById('registerEmailError').classList.add('show');
+        return;
+      }
+
+      if (password.length < 8) {
+        document.getElementById('registerPasswordError').classList.add('show');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        document.getElementById('registerConfirmError').classList.add('show');
+        return;
+      }
+
+      // Simular registro exitoso
+      const user = {
+        name: name,
+        email: email,
+        carrera: carrera,
+        premium: false,
+        loggedIn: true
+      };
+
+      localStorage.setItem('luminomUser', JSON.stringify(user));
+      
+      alert(`✅ ¡Cuenta creada exitosamente, ${name}! Bienvenido a Luminom IA.`);
+      window.location.href = 'tutor.html';
+    }
+
+    // Check if already logged in
+    window.addEventListener('DOMContentLoaded', () => {
+      const user = localStorage.getItem('luminomUser');
+      if (user) {
+        const userData = JSON.parse(user);
+        if (confirm(`Ya tienes una sesión activa como ${userData.name}. ¿Ir al tutor?`)) {
+          window.location.href = 'tutor.html';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

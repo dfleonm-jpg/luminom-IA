@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualizar Reglas de Firestore - Luminom IA</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #2d3748;
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+    .subtitle {
+      color: #718096;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    .step {
+      background: #f7fafc;
+      border-left: 4px solid #667eea;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+    }
+    .step-number {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 32px;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    .step h3 {
+      display: inline-block;
+      color: #2d3748;
+      margin-bottom: 1rem;
+    }
+    .step p {
+      color: #4a5568;
+      line-height: 1.7;
+      margin-top: 0.5rem;
+    }
+    .code-box {
+      background: #2d3748;
+      color: #68d391;
+      padding: 1.5rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      position: relative;
+      margin: 1rem 0;
+    }
+    .btn-copy {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .btn-copy:hover {
+      background: #5a67d8;
+    }
+    .btn-copy:active {
+      transform: scale(0.95);
+    }
+    .alert {
+      background: #fed7d7;
+      border-left: 4px solid #f56565;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .alert-warning {
+      background: #fefcbf;
+      border-left-color: #ecc94b;
+    }
+    .alert-success {
+      background: #c6f6d5;
+      border-left-color: #48bb78;
+    }
+    .link-button {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: all 0.2s;
+    }
+    .link-button:hover {
+      background: #5a67d8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔧 Actualizar Reglas de Firestore</h1>
+    <p class="subtitle">Para que el panel de admin funcione correctamente</p>
+
+    <div class="alert alert-warning">
+      <strong>⚠️ Importante:</strong> Sin estas reglas, el panel de admin NO podrá cargar datos de usuarios.
+    </div>
+
+    <div class="step">
+      <h3><span class="step-number">1</span> Abrir Firebase Console</h3>
+      <p>Haz click en el botón de abajo para ir directamente a las reglas de Firestore:</p>
+      <a href="https://console.firebase.google.com/project/luminom-ia/firestore/rules" target="_blank" class="link-button">
+        🔗 Ir a Firebase Console → Reglas
+      </a>
+    </div>
+
+    <div class="step">
+      <h3><span class="step-number">2</span> Copiar las Reglas</h3>
+      <p>Haz click en "Copiar" y pega el contenido en Firebase Console:</p>
+      <div class="code-box" id="rulesCode">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Función helper para verificar si es admin
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'admin@luminom.com';
+    }
+    
+    // Colección de usuarios
+    match /users/{userId} {
+      // Permitir creación durante el registro
+      allow create: if request.auth != null && request.auth.uid == userId;
+      
+      // Usuario puede leer/actualizar sus propios datos
+      allow read, update: if request.auth != null && request.auth.uid == userId;
+      
+      // Admin puede leer y actualizar todos los usuarios
+      allow read, update: if isAdmin();
+    }
+    
+    // Colección de chats
+    match /chats/{chatId} {
+      // Usuario puede crear/leer/escribir sus propios chats
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      
+      // Admin puede leer todos los chats
+      allow read: if isAdmin();
+    }
+  }
+}
+        <button class="btn-copy" onclick="copyRules()">📋 Copiar</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3><span class="step-number">3</span> Publicar las Reglas</h3>
+      <p>En Firebase Console:</p>
+      <ul style="margin-left: 2rem; margin-top: 0.5rem; color: #4a5568;">
+        <li>Borrar las reglas actuales</li>
+        <li>Pegar las reglas copiadas</li>
+        <li>Click en botón <strong>"Publicar"</strong></li>
+        <li>Esperar confirmación</li>
+      </ul>
+    </div>
+
+    <div class="step">
+      <h3><span class="step-number">4</span> Verificar</h3>
+      <p>Después de publicar:</p>
+      <ul style="margin-left: 2rem; margin-top: 0.5rem; color: #4a5568;">
+        <li>Esperar 1 minuto</li>
+        <li>Ir al panel de admin: <code>/admin.html</code></li>
+        <li>Recargar la página (F5)</li>
+        <li>Deberías ver la tabla de usuarios ✅</li>
+      </ul>
+    </div>
+
+    <div class="alert alert-success">
+      <strong>✅ ¿Todo funcionando?</strong><br>
+      Si ves la tabla de usuarios en el panel de admin, ¡las reglas están correctas!
+    </div>
+
+    <div class="alert">
+      <strong>❌ ¿Sigue sin funcionar?</strong><br>
+      1. Verificar que iniciaste sesión con <code>admin@luminom.com</code><br>
+      2. Abrir consola del navegador (F12) y buscar errores<br>
+      3. Verificar que las reglas se publicaron correctamente en Firebase
+    </div>
+  </div>
+
+  <script>
+    function copyRules() {
+      const codeElement = document.getElementById('rulesCode');
+      const textToCopy = codeElement.textContent.replace('📋 Copiar', '').trim();
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = codeElement.querySelector('.btn-copy');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ ¡Copiado!';
+        btn.style.background = '#48bb78';
+        
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '#667eea';
+        }, 2000);
+      }).catch(err => {
+        alert('Error al copiar. Por favor copia manualmente.');
+        console.error('Error:', err);
+      });
+    }
+  </script>
+</body>
+</html>
