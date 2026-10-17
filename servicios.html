@@ -38,6 +38,8 @@
     .nav-link:hover{color:var(--gold);}
     .btn-nav{background:var(--gold);color:var(--navy);padding:0.6rem 1.5rem;border-radius:100px;font-weight:600;font-size:0.88rem;text-decoration:none;transition:var(--t);}
     .btn-nav:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.4);}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:var(--t);}
     
     /* Hero */
     .hero{background:linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);padding:5rem 2rem;text-align:center;color:var(--white);position:relative;overflow:hidden;}
@@ -118,8 +120,11 @@
       .hero p{font-size:1.1rem;}
       .pricing-grid{grid-template-columns:1fr;}
       .features-grid{grid-template-columns:1fr;}
-      .nav-links{display:none;}
       .price{font-size:2.8rem;}
+      .hamburger{display:flex;}
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;gap:0;padding:0.5rem 0;box-shadow:0 8px 20px rgba(0,0,0,0.3);}
+      .nav-links.open{display:flex;}
+      .nav-links .nav-link,.nav-links .btn-nav{padding:0.9rem 2rem;border-radius:0;width:100%;text-align:left;}
     }
   </style>
 </head>
@@ -131,11 +136,13 @@
         <span class="logo-mark">L</span>
         <span class="logo-text">Luminom <em>IA</em></span>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="navLinks">
         <a href="index.html" class="nav-link">Inicio</a>
+        <a href="index.html#features" class="nav-link">¿Por qué Luminom?</a>
         <a href="servicios.html" class="nav-link">Servicios</a>
-        <a href="tutor.html" class="btn-nav">Ir al Tutor →</a>
+        <a href="tutor.html" class="btn-nav" id="navTutorBtn">Ir al Tutor →</a>
       </div>
+      <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
@@ -235,7 +242,7 @@
           <li>Capacitación para docentes</li>
           <li>Soporte técnico dedicado</li>
         </ul>
-        <a href="mailto:ialuminom@gmail.com?subject=Consulta Plan Institucional" class="btn btn-outline">Contactar Ventas</a></a>
+        <a href="mailto:ialuminom@gmail.com?subject=Consulta Plan Institucional" class="btn btn-outline">Contactar Ventas</a>
       </div>
 
     </div>
@@ -487,6 +494,20 @@
     
     // Ejecutar al cargar la página
     window.addEventListener('DOMContentLoaded', checkPremiumStatus);
+
+    // Menú móvil
+    document.getElementById('hamburger').addEventListener('click', () =>
+      document.getElementById('navLinks').classList.toggle('open'));
+
+    // Nav consciente de sesión: si no hay sesión, el botón lleva al login
+    (function () {
+      const ses = JSON.parse(localStorage.getItem('luminom_session') || 'null');
+      const btn = document.getElementById('navTutorBtn');
+      if (!ses && btn) {
+        btn.textContent = 'Iniciar sesión →';
+        btn.setAttribute('href', 'login.html');
+      }
+    })();
   </script>
 
 </body>
