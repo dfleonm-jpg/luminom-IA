@@ -1,12 +1,14 @@
 // Service Worker para Luminom IA
-const CACHE_NAME = 'luminom-v1';
+const CACHE_NAME = 'luminom-v2';
+// Rutas relativas: funcionan sin importar el subdirectorio donde se sirva el sitio
 const urlsToCache = [
-  '/luminam-ia/',
-  '/luminam-ia/index.html',
-  '/luminam-ia/tutor.html',
-  '/luminam-ia/login.html',
-  '/luminam-ia/servicios.html',
-  '/luminam-ia/manifest.json'
+  './',
+  './index.html',
+  './tutor.html',
+  './login.html',
+  './servicios.html',
+  './manifest.json',
+  './favicon.svg'
 ];
 
 // Instalación
