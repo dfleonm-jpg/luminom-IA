@@ -131,9 +131,9 @@ userChats.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));  // ✅
 
 ## 🚀 URL del Proyecto
 
-**GitHub Pages:** https://srdaniontop-netizen.github.io/luminam-ia/
+**GitHub Pages:** https://dfleonm-jpg.github.io/luminom-IA/
 
-**Repositorio:** https://github.com/srdaniontop-netizen/luminam-ia
+**Repositorio:** https://github.com/dfleonm-jpg/luminom-IA
 
 ---
 
@@ -216,11 +216,11 @@ userChats.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));  // ✅
 **GitHub Pages:** ✅ Debería estar actualizado automáticamente
 
 **Si GitHub Pages no está actualizado:**
-1. Ir a: https://github.com/srdaniontop-netizen/luminam-ia/settings/pages
+1. Ir a: https://github.com/dfleonm-jpg/luminom-IA/settings/pages
 2. Verificar que "Source" esté en "Deploy from a branch"
 3. Verificar que "Branch" esté en "main" y carpeta "/ (root)"
 4. Esperar 1-2 minutos para que se actualice automáticamente
-5. Verificar el estado en: https://github.com/srdaniontop-netizen/luminam-ia/actions
+5. Verificar el estado en: https://github.com/dfleonm-jpg/luminom-IA/actions
 
 ---
 
@@ -257,7 +257,7 @@ userChats.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));  // ✅
 ## 🔍 Cómo Verificar que Todo Funciona
 
 ### Método Rápido:
-1. Abrir: https://srdaniontop-netizen.github.io/luminam-ia/
+1. Abrir: https://dfleonm-jpg.github.io/luminom-IA/
 2. Registrar cuenta nueva
 3. Hacer una pregunta en el tutor
 4. Cerrar sesión e iniciar de nuevo

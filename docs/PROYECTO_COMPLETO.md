@@ -180,17 +180,17 @@ groq_api_key: "gsk_..."
 ## 🌐 ENLACES IMPORTANTES
 
 ### Para Usuarios:
-- 🏠 **Inicio**: https://srdaniontop-netizen.github.io/luminam-ia/
-- 🔐 **Login**: https://srdaniontop-netizen.github.io/luminam-ia/login.html
-- 💬 **Tutor**: https://srdaniontop-netizen.github.io/luminam-ia/tutor.html
+- 🏠 **Inicio**: https://dfleonm-jpg.github.io/luminom-IA/
+- 🔐 **Login**: https://dfleonm-jpg.github.io/luminom-IA/login.html
+- 💬 **Tutor**: https://dfleonm-jpg.github.io/luminom-IA/tutor.html
 
 ### Para Ti (Admin):
-- 📊 **Admin Panel**: https://srdaniontop-netizen.github.io/luminam-ia/admin.html
+- 📊 **Admin Panel**: https://dfleonm-jpg.github.io/luminom-IA/admin.html
   - Email: `admin@luminom.com`
   - Contraseña: [la que elegiste al registrarte]
 
 ### Desarrollo:
-- 📁 **Repo**: https://github.com/srdaniontop-netizen/luminam-ia
+- 📁 **Repo**: https://github.com/dfleonm-jpg/luminom-IA
 - 🔑 **Groq Console**: https://console.groq.com (para monitorear uso)
 
 ---

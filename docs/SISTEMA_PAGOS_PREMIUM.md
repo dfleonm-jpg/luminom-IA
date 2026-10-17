@@ -477,7 +477,7 @@ Todo el código está implementado y funcionando. Solo falta:
 2. **Obtener API Key de producción** de Wompi cuando estés listo para cobrar de verdad
 3. **Verificar que funciona en múltiples dispositivos**
 
-**URL del sitio:** https://srdaniontop-netizen.github.io/luminam-ia/
+**URL del sitio:** https://dfleonm-jpg.github.io/luminom-IA/
 
 **Contacto:** ialuminom@gmail.com
 

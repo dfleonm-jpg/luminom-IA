@@ -4,7 +4,7 @@
 
 Simplemente ve a:
 
-**https://srdaniontop-netizen.github.io/luminam-ia/admin.html**
+**https://dfleonm-jpg.github.io/luminom-IA/admin.html**
 
 ---
 
@@ -117,7 +117,7 @@ if (!Auth.requireAdmin()) {
 ## 📝 Estructura Actual
 
 ```
-luminam-ia/
+luminom-IA/
 ├── index.html          → Página principal
 ├── login.html          → Login/Registro
 ├── tutor.html          → Chat con IA (requiere login)
@@ -159,8 +159,8 @@ Password: [tu contraseña segura]
 
 ¿Necesitas ayuda implementando el backend?
 
-- GitHub: [@srdaniontop-netizen](https://github.com/srdaniontop-netizen)
-- Repo: [luminam-ia](https://github.com/srdaniontop-netizen/luminam-ia/issues)
+- GitHub: [@dfleonm-jpg](https://github.com/dfleonm-jpg)
+- Repo: [luminom-IA](https://github.com/dfleonm-jpg/luminom-IA/issues)
 
 ---
 

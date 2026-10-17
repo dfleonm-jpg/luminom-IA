@@ -29,7 +29,7 @@ Este documento detalla todos los casos de prueba ejecutados para validar la func
 - Email no registrado previamente
 
 **Pasos:**
-1. Ir a `https://srdaniontop-netizen.github.io/luminam-ia/login.html`
+1. Ir a `https://dfleonm-jpg.github.io/luminom-IA/login.html`
 2. Click en tab "Registrarse"
 3. Ingresar datos:
    - Nombre: "Juan Pérez"

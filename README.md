@@ -2,9 +2,9 @@
 
 **Tutor universitario con IA diseñado específicamente para estudiantes colombianos**
 
-🔗 **Demo en vivo**: https://srdaniontop-netizen.github.io/luminam-ia/
+🔗 **Demo en vivo**: https://dfleonm-jpg.github.io/luminom-IA/
 
-[![Estado](https://img.shields.io/badge/Estado-Producción-success)](https://srdaniontop-netizen.github.io/luminam-ia/)
+[![Estado](https://img.shields.io/badge/Estado-Producción-success)](https://dfleonm-jpg.github.io/luminom-IA/)
 [![Licencia](https://img.shields.io/badge/Licencia-MIT-blue)](LICENSE)
 [![Firebase](https://img.shields.io/badge/Firebase-Ready-orange)](https://firebase.google.com/)
 [![PWA](https://img.shields.io/badge/PWA-Enabled-purple)](manifest.json)
@@ -153,7 +153,7 @@ luminom-ia/
 
 ### Paso 1: Regístrate
 
-1. Ve a **https://srdaniontop-netizen.github.io/luminam-ia/**
+1. Ve a **https://dfleonm-jpg.github.io/luminom-IA/**
 2. Haz clic en **"Comenzar gratis"** o **"Registrarse"**
 3. Completa el formulario con:
    - Nombre completo
@@ -212,7 +212,7 @@ luminom-ia/
 
 ### Cómo Acceder
 
-Simplemente ve a: **https://srdaniontop-netizen.github.io/luminam-ia/admin.html**
+Simplemente ve a: **https://dfleonm-jpg.github.io/luminom-IA/admin.html**
 
 ### Funcionalidades
 
@@ -280,7 +280,7 @@ Diseño profesional y académico, inspirado en universidades prestigiosas.
 4. **Branch**: `main` → **Folder**: `/root`
 5. **Save**
 
-Tu app estará en: `https://tu-usuario.github.io/luminam-ia/`
+Tu app estará en: `https://tu-usuario.github.io/luminom-IA/`
 
 ### Vercel (Alternativa)
 
@@ -467,9 +467,9 @@ MIT License - Usa, modifica y distribuye libremente
 
 ## 💬 Contacto
 
-- **GitHub**: [@srdaniontop-netizen](https://github.com/srdaniontop-netizen)
-- **Proyecto**: [luminam-ia](https://github.com/srdaniontop-netizen/luminam-ia)
-- **Issues**: [Reportar problema](https://github.com/srdaniontop-netizen/luminam-ia/issues)
+- **GitHub**: [@dfleonm-jpg](https://github.com/dfleonm-jpg)
+- **Proyecto**: [luminom-IA](https://github.com/dfleonm-jpg/luminom-IA)
+- **Issues**: [Reportar problema](https://github.com/dfleonm-jpg/luminom-IA/issues)
 
 ---
 
@@ -493,6 +493,6 @@ MIT License - Usa, modifica y distribuye libremente
 
 **Hecho con ❤️ para estudiantes colombianos — 100% gratis**
 
-🔗 **Pruébalo ahora**: https://srdaniontop-netizen.github.io/luminam-ia/
+🔗 **Pruébalo ahora**: https://dfleonm-jpg.github.io/luminom-IA/
 
-📚 **¿Necesitas ayuda?** Abre un [issue en GitHub](https://github.com/srdaniontop-netizen/luminam-ia/issues)
+📚 **¿Necesitas ayuda?** Abre un [issue en GitHub](https://github.com/dfleonm-jpg/luminom-IA/issues)

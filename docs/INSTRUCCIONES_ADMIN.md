@@ -2,7 +2,7 @@
 
 ## 🔐 Acceso al Panel
 
-**URL:** https://srdaniontop-netizen.github.io/luminam-ia/admin.html
+**URL:** https://dfleonm-jpg.github.io/luminom-IA/admin.html
 
 **Acceso restringido solo a:** `admin@luminom.com`
 
@@ -12,7 +12,7 @@
 
 ### 1. Crear la Cuenta de Admin (Primera vez)
 
-1. Ir a: https://srdaniontop-netizen.github.io/luminam-ia/login.html?tab=register
+1. Ir a: https://dfleonm-jpg.github.io/luminom-IA/login.html?tab=register
 2. Llenar el formulario:
    - **Nombre:** Admin Luminom (o el que quieras)
    - **Email:** `admin@luminom.com` ⚠️ **DEBE ser exactamente este email**
@@ -23,8 +23,8 @@
 
 ### 2. Acceder al Panel (Después de crear la cuenta)
 
-1. Iniciar sesión con `admin@luminom.com` en: https://srdaniontop-netizen.github.io/luminam-ia/login.html
-2. Ir directamente a: https://srdaniontop-netizen.github.io/luminam-ia/admin.html
+1. Iniciar sesión con `admin@luminom.com` en: https://dfleonm-jpg.github.io/luminom-IA/login.html
+2. Ir directamente a: https://dfleonm-jpg.github.io/luminom-IA/admin.html
 3. O escribir la URL en el navegador: `/admin.html`
 
 **Nota:** El enlace a admin NO está en el menú de navegación - solo se accede por URL directa.
@@ -331,7 +331,7 @@ Ahora puedes:
 - ✅ Gestionar suscripciones manualmente
 - ✅ Monitorear estadísticas en tiempo real
 
-**URL del Panel:** https://srdaniontop-netizen.github.io/luminam-ia/admin.html
+**URL del Panel:** https://dfleonm-jpg.github.io/luminom-IA/admin.html
 
 **Email de Admin:** admin@luminom.com
 

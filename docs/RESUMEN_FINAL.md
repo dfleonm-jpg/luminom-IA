@@ -71,7 +71,7 @@
 ### 3. 📁 ESTRUCTURA ORGANIZADA
 
 ```
-luminam-ia/
+luminom-IA/
 ├── 🏠 PÁGINAS PRINCIPALES
 │   ├── index.html              → Landing page (público)
 │   ├── login.html              → Login/Registro (público)
@@ -118,7 +118,7 @@ luminam-ia/
 ### 5. 📊 PANEL DE ADMINISTRACIÓN
 
 #### **Acceso:**
-**https://srdaniontop-netizen.github.io/luminam-ia/admin.html**
+**https://dfleonm-jpg.github.io/luminom-IA/admin.html**
 
 #### **Funcionalidades Actuales (Demo):**
 - 📈 Estadísticas: Usuarios, conversaciones, actividad
@@ -139,7 +139,7 @@ Ver guía completa en `COMO_ACCEDER_ADMIN.md`
 ## 🚀 CÓMO USAR EL SITIO
 
 ### Paso 1: Ir al Sitio
-**https://srdaniontop-netizen.github.io/luminam-ia/**
+**https://dfleonm-jpg.github.io/luminom-IA/**
 
 ### Paso 2: Registrarse
 1. Clic en **"Comenzar gratis"** o **"Registrarse"**
@@ -305,10 +305,10 @@ Ver guía completa en `COMO_ACCEDER_ADMIN.md`
 
 ## 🌐 ENLACES IMPORTANTES
 
-- 🏠 **Sitio Web**: https://srdaniontop-netizen.github.io/luminam-ia/
-- 📁 **Repositorio**: https://github.com/srdaniontop-netizen/luminam-ia
+- 🏠 **Sitio Web**: https://dfleonm-jpg.github.io/luminom-IA/
+- 📁 **Repositorio**: https://github.com/dfleonm-jpg/luminom-IA
 - 🔑 **Groq Console**: https://console.groq.com
-- 📝 **Issues**: https://github.com/srdaniontop-netizen/luminam-ia/issues
+- 📝 **Issues**: https://github.com/dfleonm-jpg/luminom-IA/issues
 
 ---
 
@@ -353,7 +353,7 @@ Ver guía completa en `COMO_ACCEDER_ADMIN.md`
 
 ¿Preguntas o problemas?
 
-- GitHub Issues: [Crear issue](https://github.com/srdaniontop-netizen/luminam-ia/issues/new)
+- GitHub Issues: [Crear issue](https://github.com/dfleonm-jpg/luminom-IA/issues/new)
 - Email: (tu email aquí)
 - WhatsApp: (tu número aquí)
 

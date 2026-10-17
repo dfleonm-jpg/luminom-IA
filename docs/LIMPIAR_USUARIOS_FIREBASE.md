@@ -96,7 +96,7 @@ Si quieres mantener los usuarios pero limpiar sus chats:
 ### Verifica que todo funciona:
 
 1. **Regístrate con un email nuevo:**
-   - Ve a: `https://srdaniontop-netizen.github.io/luminam-ia/login.html`
+   - Ve a: `https://dfleonm-jpg.github.io/luminom-IA/login.html`
    - Click en "Registrarse"
    - Usa un email NUEVO
 
@@ -138,7 +138,7 @@ Si quieres mantener los usuarios pero limpiar sus chats:
 
 **Solución:**
 1. Ve a Firestore Database → Reglas
-2. Usa: `https://srdaniontop-netizen.github.io/luminam-ia/generar-reglas-firebase.html`
+2. Usa: `https://dfleonm-jpg.github.io/luminom-IA/generar-reglas-firebase.html`
 3. Copia las reglas
 4. Pega en Firebase Console
 5. Publica

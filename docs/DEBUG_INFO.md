@@ -42,7 +42,7 @@
 
 ## 🧪 PÁGINA DE PRUEBA CREADA:
 
-**URL de Prueba:** https://srdaniontop-netizen.github.io/luminam-ia/tutor-test.html
+**URL de Prueba:** https://dfleonm-jpg.github.io/luminom-IA/tutor-test.html
 
 Esta página minimalista prueba:
 - ✅ Conexión a Firebase
@@ -89,7 +89,7 @@ Abre la consola del navegador (F12) y verifica:
 
 Usuario, por favor:
 
-1. **Prueba la página de test:** https://srdaniontop-netizen.github.io/luminam-ia/tutor-test.html
+1. **Prueba la página de test:** https://dfleonm-jpg.github.io/luminom-IA/tutor-test.html
    - Si funciona → El problema está en tutor.html
    - Si no funciona → El problema es Firebase/API
 

@@ -17,7 +17,7 @@
 
 ### 2️⃣ Usa el Tutor
 
-1. Ve a: **https://srdaniontop-netizen.github.io/luminam-ia/**
+1. Ve a: **https://dfleonm-jpg.github.io/luminom-IA/**
 2. Haz clic en **"Empezar Gratis"**
 3. Cuando aparezca el popup, **pega tu API Key**
 4. Haz clic en **OK**
@@ -45,7 +45,7 @@ Si necesitas cambiar tu API Key:
    - Folder: `/root`
 4. Haz clic en **Save**
 5. Espera 1-2 minutos
-6. Tu sitio estará en: `https://TU-USUARIO.github.io/luminam-ia/`
+6. Tu sitio estará en: `https://TU-USUARIO.github.io/luminom-IA/`
 
 ### Opción 2: Vercel
 
@@ -54,7 +54,7 @@ Si necesitas cambiar tu API Key:
 npm i -g vercel
 
 # Deploy
-cd luminam-ia
+cd luminom-IA
 vercel
 ```
 
@@ -157,7 +157,7 @@ const systemPrompt = `Eres [TU NOMBRE], un tutor...`;
 ¿Tienes problemas?
 
 1. **Revisa las FAQ** arriba
-2. **Abre un Issue**: [GitHub Issues](https://github.com/srdaniontop-netizen/luminam-ia/issues)
+2. **Abre un Issue**: [GitHub Issues](https://github.com/dfleonm-jpg/luminom-IA/issues)
 3. **Contacta**: Deja un comentario en el repo
 
 ---

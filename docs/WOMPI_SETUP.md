@@ -105,7 +105,7 @@ amountInCents: 2990000,
 
 ### Cómo Probar:
 
-1. Abre tu sitio: `https://TU_USUARIO.github.io/luminam-ia/servicios.html`
+1. Abre tu sitio: `https://TU_USUARIO.github.io/luminom-IA/servicios.html`
 2. Haz clic en **"Suscribirme Ahora"** (plan Premium)
 3. Usa una tarjeta de prueba
 4. Fecha: Cualquier mes/año futuro
@@ -140,7 +140,7 @@ Una vez aprobado:
 
 2. Cambia la línea ~217:
    ```javascript
-   redirectUrl: window.location.origin + '/luminam-ia/payment-success.html'
+   redirectUrl: window.location.origin + '/luminom-IA/payment-success.html'
    // Asegúrate de que la URL sea correcta
    ```
 

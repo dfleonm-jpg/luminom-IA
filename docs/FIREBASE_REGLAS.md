@@ -87,7 +87,7 @@ Missing or insufficient permissions
 
 ## ✅ Verificar que funciona
 
-1. Abre tu sitio: `https://srdaniontop-netizen.github.io/luminam-ia/`
+1. Abre tu sitio: `https://dfleonm-jpg.github.io/luminom-IA/`
 2. Regístrate con un nuevo usuario
 3. Crea una conversación
 4. Si no hay errores → ¡Funciona! ✅

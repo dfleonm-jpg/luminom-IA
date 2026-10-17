@@ -59,7 +59,7 @@ Haz click en el botón **"Publicar"** (Publish)
 
 Después de actualizar las reglas:
 
-1. Ve a tu sitio: https://srdaniontop-netizen.github.io/luminam-ia/test-firebase.html
+1. Ve a tu sitio: https://dfleonm-jpg.github.io/luminom-IA/test-firebase.html
 2. Prueba el botón "Registrar Usuario"
 3. Si sale ✅ verde, las reglas están correctas
 4. Si sale ❌ rojo, revisa el mensaje de error

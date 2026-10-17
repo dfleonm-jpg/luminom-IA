@@ -117,7 +117,7 @@
 
 ### 1. Test de Login con errores específicos:
 
-1. Ve a: `https://srdaniontop-netizen.github.io/luminam-ia/login.html`
+1. Ve a: `https://dfleonm-jpg.github.io/luminom-IA/login.html`
 2. Abre la consola (F12 → pestaña Console)
 3. Intenta login con:
    - Email incorrecto → verás "No existe una cuenta con este correo"
@@ -135,7 +135,7 @@
 
 ### 3. Test de plan Lifetime:
 
-1. Ve a: `https://srdaniontop-netizen.github.io/luminam-ia/servicios.html`
+1. Ve a: `https://dfleonm-jpg.github.io/luminom-IA/servicios.html`
 2. Verás 4 planes: Estudiante, Premium, **De por Vida**, Institucional
 3. El plan "De por Vida" tiene badge verde "MEJOR VALOR"
 
@@ -156,7 +156,7 @@
 Si no, el registro seguirá fallando. Usa la herramienta:
 
 ```
-https://srdaniontop-netizen.github.io/luminam-ia/generar-reglas-firebase.html
+https://dfleonm-jpg.github.io/luminom-IA/generar-reglas-firebase.html
 ```
 
 O sigue las instrucciones en: `FIREBASE_REGLAS_ACTUALIZAR.md`

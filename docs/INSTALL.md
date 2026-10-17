@@ -132,8 +132,8 @@ sudo systemctl start mongod
 ### Paso 1: Clonar el Repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/luminam-ia.git
-cd luminam-ia
+git clone https://github.com/tu-usuario/luminom-IA.git
+cd luminom-IA
 ```
 
 ### Paso 2: Instalar Dependencias del Backend

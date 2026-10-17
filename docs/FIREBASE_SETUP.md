@@ -151,7 +151,7 @@ git push origin main
 
 ### 6.2 Probar la Sincronización
 
-1. Abre tu sitio: `https://TU_USUARIO.github.io/luminam-ia/`
+1. Abre tu sitio: `https://TU_USUARIO.github.io/luminom-IA/`
 2. Regístrate con un email (ej: `test@test.com`)
 3. Crea una conversación con el tutor
 4. **Abre en otro navegador o dispositivo**

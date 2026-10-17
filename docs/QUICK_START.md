@@ -17,8 +17,8 @@
 ### 1. Clonar e Instalar
 
 ```bash
-git clone https://github.com/tu-usuario/luminam-ia.git
-cd luminam-ia/backend
+git clone https://github.com/tu-usuario/luminom-IA.git
+cd luminom-IA/backend
 npm install
 ```
 

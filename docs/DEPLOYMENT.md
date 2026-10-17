@@ -43,7 +43,7 @@ heroku login
 ### Paso 3: Crear Aplicación
 
 ```bash
-cd luminam-ia
+cd luminom-IA
 heroku create luminom-ia  # Cambia el nombre si ya existe
 ```
 
@@ -98,7 +98,7 @@ Ve a https://railway.app y crea una cuenta con GitHub.
 1. Click en "New Project"
 2. Selecciona "Deploy from GitHub repo"
 3. Autoriza Railway para acceder a tus repos
-4. Selecciona `luminam-ia`
+4. Selecciona `luminom-IA`
 
 ### Paso 3: Configurar Variables
 
@@ -208,8 +208,8 @@ sudo npm install -g pm2
 
 ```bash
 cd /var/www
-git clone https://github.com/tu-usuario/luminam-ia.git
-cd luminam-ia/backend
+git clone https://github.com/tu-usuario/luminom-IA.git
+cd luminom-IA/backend
 npm install --production
 ```
 
@@ -340,7 +340,7 @@ Se desplegará automáticamente.
 ### VPS con PM2
 ```bash
 ssh root@tu_ip
-cd /var/www/luminam-ia
+cd /var/www/luminom-IA
 git pull origin main
 cd backend
 npm install --production

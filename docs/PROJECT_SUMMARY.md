@@ -96,7 +96,7 @@
 ## 🗂️ Estructura de Directorios
 
 ```
-luminam-ia/
+luminom-IA/
 │
 ├── backend/
 │   ├── config/

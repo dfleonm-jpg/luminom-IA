@@ -87,7 +87,7 @@ Hay dos maneras:
 
 ### Método 1: Popup automático (Recomendado)
 
-1. Ve a [https://srdaniontop-netizen.github.io/luminam-ia/tutor.html](https://srdaniontop-netizen.github.io/luminam-ia/tutor.html)
+1. Ve a [https://dfleonm-jpg.github.io/luminom-IA/tutor.html](https://dfleonm-jpg.github.io/luminom-IA/tutor.html)
 2. Aparecerá un popup pidiendo la key
 3. Pega tu key
 4. Haz clic en **"GUARDAR"**
@@ -179,7 +179,7 @@ const API_CONFIG = {
 Si tienes problemas:
 
 1. Revisa esta guía primero
-2. Abre un [Issue en GitHub](https://github.com/srdaniontop-netizen/luminam-ia/issues)
+2. Abre un [Issue en GitHub](https://github.com/dfleonm-jpg/luminom-IA/issues)
 3. Incluye el mensaje de error completo
 4. **NUNCA** compartas tu API Key en el issue
 
