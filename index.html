@@ -98,9 +98,9 @@
     .fc{position:absolute;top:50%;left:50%;background:rgba(10,22,40,0.82);backdrop-filter:blur(16px);border:1.5px solid rgba(201,168,76,0.35);border-radius:var(--radius-md);padding:0.85rem 1.1rem;display:flex;align-items:center;gap:0.7rem;color:var(--white);width:190px;box-shadow:0 8px 32px rgba(0,0,0,0.45);}
     /* Cada tarjeta se ancla al centro y se empuja hacia su órbita (como un planeta),
        repartidas alrededor del logo. El float suave conserva el centrado con translate(-50%,-50%). */
-    .fc:nth-child(4){animation:orbit1 6s ease-in-out infinite;}        /* Cálculo III — izquierda */
-    .fc:nth-child(5){animation:orbit2 7s ease-in-out -2.3s infinite;} /* Física Cuántica — arriba-derecha */
-    .fc:nth-child(6){animation:orbit3 6.5s ease-in-out -4s infinite;} /* Algoritmos — abajo-derecha */
+    .fc:nth-child(5){animation:orbit1 6s ease-in-out infinite;}        /* Cálculo III — izquierda */
+    .fc:nth-child(6){animation:orbit2 7s ease-in-out -2.3s infinite;} /* Física Cuántica — arriba-derecha */
+    .fc:nth-child(7){animation:orbit3 6.5s ease-in-out -4s infinite;} /* Algoritmos — abajo-derecha */
     /* Cada tarjeta orbita el logo a distancia similar, repartidas en triángulo */
     @keyframes orbit1{
       0%,100%{transform:translate(-50%,-50%) translate(-180px,55px);}
