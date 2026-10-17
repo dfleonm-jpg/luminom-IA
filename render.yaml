@@ -1,0 +1,25 @@
+# Despliegue del backend en Render (https://render.com) — plan gratis.
+# Render leerá este archivo automáticamente al crear un "Blueprint".
+services:
+  - type: web
+    name: luminom-backend
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: AI_PROVIDER
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false          # se define a mano en el panel de Render (secreto)
+      - key: MONGODB_URI
+        sync: false          # cadena de conexión de MongoDB Atlas
+      - key: CORS_ORIGIN
+        value: https://dfleonm-jpg.github.io
+      - key: MONGOD_PATH
+        value: ""            # vacío => no auto-arranca mongod (se usa Atlas)
+      - key: MONGO_DBPATH
+        value: ""

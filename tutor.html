@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Mi Tutor | Luminom IA</title>
+  <script src="config.js"></script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="theme-color" content="#0A1628" />
   <link rel="manifest" href="manifest.json" />
@@ -1033,7 +1034,9 @@ Formato del plan:
         return;
       }
       
-      if (!API_CONFIG.key) {
+      // En modo backend no se necesita API Key en el navegador (la usa el servidor).
+      const usingBackend = Boolean(window.LUMINOM_CONFIG && window.LUMINOM_CONFIG.BACKEND_URL);
+      if (!usingBackend && !API_CONFIG.key) {
         alert('⚠️ Error: No hay API Key configurada. Contacta al administrador.');
         return;
       }
@@ -1216,6 +1219,33 @@ MATERIAS QUE DOMINAS:
 
 NUNCA inventes datos, fórmulas o teoremas que no existen.`;
 
+      // ============================================
+      // MODO BACKEND (Node + Express + MongoDB + Groq)
+      // Si hay una URL de backend configurada en config.js, el mensaje se envía
+      // al backend: él llama a Groq en el servidor y guarda el chat en MongoDB.
+      // ============================================
+      const backendUrl = (window.LUMINOM_CONFIG && window.LUMINOM_CONFIG.BACKEND_URL || '').replace(/\/$/, '');
+      if (backendUrl) {
+        try {
+          const res = await fetch(`${backendUrl}/api/chat`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userMessage })
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) {
+            throw new Error(data.detail || `Error ${res.status}`);
+          }
+          return data.content || 'No pude generar respuesta';
+        } catch (error) {
+          console.error('Error backend:', error);
+          return `⚠️ **No pude contactar al servidor**\n\n${error.message}\n\n**Soluciones:**\n- Verifica que el backend esté activo (en Render el plan gratis "duerme" y tarda ~30s en despertar: reintenta)\n- Revisa la URL en config.js`;
+        }
+      }
+
+      // ============================================
+      // MODO DIRECTO (fallback): Groq desde el navegador, sin MongoDB
+      // ============================================
       try {
         const response = await fetch(API_CONFIG.url, {
           method: 'POST',
@@ -1283,7 +1313,9 @@ NUNCA inventes datos, fórmulas o teoremas que no existen.`;
         return;
       }
       
-      if (!API_CONFIG.key) {
+      // En modo backend no se necesita API Key en el navegador (la usa el servidor).
+      const usingBackend = Boolean(window.LUMINOM_CONFIG && window.LUMINOM_CONFIG.BACKEND_URL);
+      if (!usingBackend && !API_CONFIG.key) {
         alert('⚠️ Error: No hay API Key configurada. Contacta al administrador.');
         return;
       }
