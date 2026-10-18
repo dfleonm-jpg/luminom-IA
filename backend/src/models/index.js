@@ -133,6 +133,11 @@ const accountSchema = new Schema(
     name: { type: String, default: '' },
     carrera: { type: String, default: '' },
     role: { type: String, enum: ['user', 'admin'], default: 'user' },
+    // Plan de pago / suscripción
+    plan: { type: String, enum: ['free', 'premium', 'lifetime'], default: 'free' },
+    planExpires: { type: String, default: '' }, // ISO date; '' = sin vencimiento
+    status: { type: String, enum: ['active', 'suspended'], default: 'active' },
+    lastLogin: { type: String, default: '' },
     createdAt: { type: String, default: () => new Date().toISOString() },
   },
   { timestamps: false, collection: 'accounts' }

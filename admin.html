@@ -89,6 +89,11 @@
     .badge{display:inline-block;padding:0.25rem 0.7rem;border-radius:100px;font-size:0.73rem;font-weight:700;}
     .badge.admin{background:rgba(201,168,76,0.18);color:#9a7d2e;}
     .badge.user{background:rgba(59,130,246,0.12);color:#2563eb;}
+    .badge.free{background:#e5e7eb;color:#4b5563;}
+    .badge.premium{background:rgba(201,168,76,0.18);color:#9a7d2e;}
+    .badge.lifetime{background:rgba(139,92,246,0.15);color:#7c3aed;}
+    .badge.active{background:rgba(16,185,129,0.15);color:#059669;}
+    .badge.suspended{background:rgba(239,68,68,0.14);color:#dc2626;}
     .row-actions{display:flex;gap:0.35rem;flex-wrap:wrap;}
     .icon-btn{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-size:0.9rem;display:inline-flex;align-items:center;justify-content:center;transition:var(--t);}
     .icon-btn:hover{border-color:var(--gold);background:var(--off-white);}
@@ -184,13 +189,20 @@
               <option value="admin">Admins</option>
               <option value="user">Usuarios</option>
             </select>
+            <select class="select" id="planFilter">
+              <option value="all">Todos los planes</option>
+              <option value="free">Gratis</option>
+              <option value="premium">Premium</option>
+              <option value="lifetime">De por Vida</option>
+            </select>
+            <button class="btn btn-ghost" onclick="exportCSV()">⬇️ CSV</button>
             <button class="btn btn-gold" onclick="openCreate()">➕ Nuevo usuario</button>
           </div>
         </div>
         <div id="usersLoading" class="loading">Cargando usuarios…</div>
         <div class="table-wrap" id="usersTableWrap" style="display:none;">
           <table>
-            <thead><tr><th>Usuario</th><th>Carrera</th><th>Rol</th><th>Registro</th><th>Acciones</th></tr></thead>
+            <thead><tr><th>Usuario</th><th>Rol</th><th>Plan</th><th>Estado</th><th>Registro</th><th>Acciones</th></tr></thead>
             <tbody id="usersTableBody"></tbody>
           </table>
           <div class="empty" id="usersEmpty" style="display:none;">No hay usuarios que coincidan.</div>
@@ -219,6 +231,7 @@
       <div class="field" id="mEmailField"><label>Email</label><input type="email" id="mEmail" placeholder="correo@ejemplo.com"/></div>
       <div class="field"><label>Carrera</label><input type="text" id="mCarrera" placeholder="(opcional)"/></div>
       <div class="field"><label>Rol</label><select id="mRole"><option value="user">👤 Usuario</option><option value="admin">👑 Administrador</option></select></div>
+      <div class="field"><label>Plan de pago</label><select id="mPlan"><option value="free">🆓 Gratis</option><option value="premium">⭐ Premium (30 días)</option><option value="lifetime">👑 De por Vida</option></select></div>
       <div class="field" id="mPassField"><label>Contraseña</label><input type="text" id="mPass" placeholder="Mínimo 6 caracteres"/></div>
       <div class="modal-err" id="mErr"></div>
       <div class="modal-actions">
@@ -304,6 +317,10 @@
           ${statCard('👑','purple',s.admins,'Administradores')}
           ${statCard('🆕','green',s.new_last_7_days,'Nuevos (7 días)')}
           ${statCard('💬','blue',s.chats,'Mensajes de chat')}
+          ${statCard('🆓','blue',s.free,'Plan Gratis')}
+          ${statCard('⭐','gold',s.premium,'Plan Premium')}
+          ${statCard('👑','purple',s.lifetime,'De por Vida')}
+          ${statCard('🚫','green',s.suspended,'Suspendidos')}
         `;
         document.getElementById('systemGrid').innerHTML = `
           ${statCard('📚','gold',s.subjects,'Materias')}
@@ -330,14 +347,20 @@
       }
     }
 
-    function renderUsers(){
+    const PLAN_LABEL = { free:'🆓 Gratis', premium:'⭐ Premium', lifetime:'👑 De por Vida' };
+    function filteredAccounts(){
       const q = document.getElementById('searchInput').value.trim().toLowerCase();
       const roleF = document.getElementById('roleFilter').value;
-      let list = accounts.filter(a=>{
+      const planF = document.getElementById('planFilter').value;
+      return accounts.filter(a=>{
         const matchQ = !q || (a.name||'').toLowerCase().includes(q) || (a.email||'').toLowerCase().includes(q);
         const matchR = roleF==='all' || a.role===roleF;
-        return matchQ && matchR;
+        const matchP = planF==='all' || (a.plan||'free')===planF;
+        return matchQ && matchR && matchP;
       });
+    }
+    function renderUsers(){
+      const list = filteredAccounts();
       const tbody = document.getElementById('usersTableBody');
       const empty = document.getElementById('usersEmpty');
       if(list.length===0){ tbody.innerHTML=''; empty.style.display='block'; return; }
@@ -347,18 +370,27 @@
         const initial = (a.name||a.email||'?').trim()[0].toUpperCase();
         const created = a.createdAt ? new Date(a.createdAt).toLocaleDateString('es-CO') : '—';
         const isSelf = (a.email||'').toLowerCase() === (session.email||'').toLowerCase();
+        const plan = a.plan || 'free';
         const roleBadge = a.role==='admin' ? '<span class="badge admin">👑 Admin</span>' : '<span class="badge user">👤 Usuario</span>';
+        const planBadge = `<span class="badge ${plan}">${PLAN_LABEL[plan]}</span>`;
+        const statusBadge = a.status==='suspended' ? '<span class="badge suspended">🚫 Suspendido</span>' : '<span class="badge active">✓ Activo</span>';
         const toggleRole = a.role==='admin'
           ? `<button class="icon-btn" title="Degradar a usuario" onclick="changeRole('${id}','user')">⬇️</button>`
           : `<button class="icon-btn" title="Promover a admin" onclick="changeRole('${id}','admin')">⬆️</button>`;
+        const toggleStatus = a.status==='suspended'
+          ? `<button class="icon-btn" title="Reactivar" onclick="changeStatus('${id}','active')">✅</button>`
+          : `<button class="icon-btn" title="Suspender" onclick="changeStatus('${id}','suspended')" ${isSelf?'disabled':''}>⛔</button>`;
         return `<tr>
           <td><div class="avatar-cell"><div class="avatar">${esc(initial)}</div><div><div style="font-weight:600;">${esc(a.name||'—')}${isSelf?' <small style="color:var(--gold)">(tú)</small>':''}</div><div style="font-size:0.78rem;color:var(--text-muted);">${esc(a.email)}</div></div></div></td>
-          <td>${esc(a.carrera||'—')}</td>
           <td>${roleBadge}</td>
+          <td>${planBadge}</td>
+          <td>${statusBadge}</td>
           <td>${created}</td>
           <td><div class="row-actions">
+            <button class="icon-btn" title="Ver detalle" onclick="openDetail('${id}')">👁️</button>
             <button class="icon-btn" title="Editar" onclick="openEdit('${id}')">✏️</button>
             ${toggleRole}
+            ${toggleStatus}
             <button class="icon-btn" title="Cambiar contraseña" onclick="openPw('${id}')">🔑</button>
             <button class="icon-btn danger" title="Eliminar" onclick="removeUser('${id}')" ${isSelf?'disabled':''}>🗑️</button>
           </div></td>
@@ -368,6 +400,51 @@
 
     document.getElementById('searchInput').addEventListener('input', renderUsers);
     document.getElementById('roleFilter').addEventListener('change', renderUsers);
+    document.getElementById('planFilter').addEventListener('change', renderUsers);
+
+    async function changeStatus(id, status){
+      const a = accounts.find(x=>(x.id||x._id)===id);
+      if(!confirm(`¿${status==='suspended'?'Suspender':'Reactivar'} la cuenta de ${a?.name||a?.email}?`)) return;
+      try{ await api('/api/admin/accounts/'+id,'PATCH',{status}); toast('Estado actualizado'); await loadAll(); }
+      catch(e){ toast(e.message,false); }
+    }
+    window.changeStatus = changeStatus;
+
+    function openDetail(id){
+      const a = accounts.find(x=>(x.id||x._id)===id); if(!a) return;
+      const last = a.lastLogin ? new Date(a.lastLogin).toLocaleString('es-CO') : 'Nunca';
+      const created = a.createdAt ? new Date(a.createdAt).toLocaleString('es-CO') : '—';
+      const exp = a.planExpires ? new Date(a.planExpires).toLocaleDateString('es-CO') : (a.plan==='lifetime'?'Nunca (de por vida)':'—');
+      alert(
+        `DETALLE DE CUENTA\n\n`+
+        `Nombre: ${a.name||'—'}\n`+
+        `Email: ${a.email}\n`+
+        `Carrera: ${a.carrera||'—'}\n`+
+        `Rol: ${a.role}\n`+
+        `Plan: ${a.plan||'free'}\n`+
+        `Vence: ${exp}\n`+
+        `Estado: ${a.status||'active'}\n`+
+        `Registrado: ${created}\n`+
+        `Último acceso: ${last}`
+      );
+    }
+    window.openDetail = openDetail;
+
+    function exportCSV(){
+      const rows = [['Nombre','Email','Carrera','Rol','Plan','Estado','Registro','Ultimo acceso']];
+      filteredAccounts().forEach(a=>rows.push([
+        a.name||'', a.email||'', a.carrera||'', a.role||'', a.plan||'free', a.status||'active',
+        a.createdAt||'', a.lastLogin||''
+      ]));
+      const csv = rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url; link.download = 'usuarios-luminom.csv'; link.click();
+      URL.revokeObjectURL(url);
+      toast('CSV exportado');
+    }
+    window.exportCSV = exportCSV;
 
     // ---- acciones ----
     async function changeRole(id, role){
@@ -394,7 +471,8 @@
       document.getElementById('mEmailField').style.display='block';
       document.getElementById('mPassField').style.display='block';
       document.getElementById('mName').value=''; document.getElementById('mEmail').value='';
-      document.getElementById('mCarrera').value=''; document.getElementById('mRole').value='user'; document.getElementById('mPass').value='';
+      document.getElementById('mCarrera').value=''; document.getElementById('mRole').value='user';
+      document.getElementById('mPlan').value='free'; document.getElementById('mPass').value='';
       document.getElementById('mErr').textContent='';
       document.getElementById('modal').classList.add('open');
     }
@@ -408,6 +486,7 @@
       document.getElementById('mPassField').style.display='none';
       document.getElementById('mName').value=a.name||''; document.getElementById('mCarrera').value=a.carrera||'';
       document.getElementById('mRole').value=a.role||'user';
+      document.getElementById('mPlan').value=a.plan||'free';
       document.getElementById('mErr').textContent='';
       document.getElementById('modal').classList.add('open');
     }
@@ -420,16 +499,17 @@
       const email=document.getElementById('mEmail').value.trim();
       const carrera=document.getElementById('mCarrera').value.trim();
       const role=document.getElementById('mRole').value;
+      const plan=document.getElementById('mPlan').value;
       const password=document.getElementById('mPass').value;
       const err=document.getElementById('mErr'); err.textContent='';
       const btn=document.getElementById('mSave'); btn.disabled=true;
       try{
         if(editId){
-          await api('/api/admin/accounts/'+editId,'PATCH',{name,carrera,role});
+          await api('/api/admin/accounts/'+editId,'PATCH',{name,carrera,role,plan});
           toast('Usuario actualizado');
         }else{
           if(name.length<3){throw new Error('Nombre muy corto');}
-          await api('/api/admin/accounts','POST',{name,email,carrera,role,password});
+          await api('/api/admin/accounts','POST',{name,email,carrera,role,plan,password});
           toast('Usuario creado');
         }
         closeModal(); await loadAll();

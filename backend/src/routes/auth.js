@@ -43,6 +43,12 @@ router.post(
     if (!account || !verifyPassword(password, account.passwordHash)) {
       throw new HttpError(401, 'Correo o contraseña incorrectos')
     }
+    if (account.status === 'suspended') {
+      throw new HttpError(403, 'Tu cuenta ha sido suspendida. Contacta al administrador.')
+    }
+
+    account.lastLogin = new Date().toISOString()
+    await account.save()
 
     const token = signToken(account)
     res.json({ ok: true, token, user: account.toJSON() })
@@ -86,13 +92,23 @@ router.get(
 
     // Registros de los últimos 7 días
     const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
-    const recent = await Account.countDocuments({ createdAt: { $gte: since } })
+    const [recent, freeN, premiumN, lifetimeN, suspendedN] = await Promise.all([
+      Account.countDocuments({ createdAt: { $gte: since } }),
+      Account.countDocuments({ plan: 'free' }),
+      Account.countDocuments({ plan: 'premium' }),
+      Account.countDocuments({ plan: 'lifetime' }),
+      Account.countDocuments({ status: 'suspended' }),
+    ])
 
     res.json({
       total_accounts: total,
       admins,
       users: total - admins,
       new_last_7_days: recent,
+      free: freeN,
+      premium: premiumN,
+      lifetime: lifetimeN,
+      suspended: suspendedN,
       chats: Chat,
       subjects: Subject,
       lessons: Lesson,
@@ -106,10 +122,11 @@ router.post(
   '/admin/accounts',
   requireAdmin,
   asyncHandler(async (req, res) => {
-    const { name = '', email = '', password = '', carrera = '', role = 'user' } = req.body || {}
+    const { name = '', email = '', password = '', carrera = '', role = 'user', plan = 'free' } = req.body || {}
     if (!isEmail(email)) throw new HttpError(400, 'Correo electrónico inválido')
     if (String(password).length < 6) throw new HttpError(400, 'La contraseña debe tener al menos 6 caracteres')
     if (!['user', 'admin'].includes(role)) throw new HttpError(400, 'Rol inválido')
+    if (!['free', 'premium', 'lifetime'].includes(plan)) throw new HttpError(400, 'Plan inválido')
 
     const normalized = email.trim().toLowerCase()
     if (await Account.findOne({ email: normalized })) throw new HttpError(409, 'Este correo ya está registrado')
@@ -120,6 +137,8 @@ router.post(
       name: String(name).trim(),
       carrera: String(carrera).trim(),
       role,
+      plan,
+      planExpires: plan === 'premium' ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString() : '',
     })
     res.json({ ok: true, user: account.toJSON() })
   })
@@ -133,7 +152,7 @@ router.patch(
     const account = await Account.findById(req.params.id)
     if (!account) throw new HttpError(404, 'Cuenta no encontrada')
 
-    const { name, carrera, role } = req.body || {}
+    const { name, carrera, role, plan, planExpires, status } = req.body || {}
 
     // No permitir que un admin se quite su propio rol (evita quedarte fuera)
     if (role && role !== account.role && String(account._id) === req.auth.sub && role !== 'admin') {
@@ -145,10 +164,27 @@ router.patch(
       if (adminCount <= 1) throw new HttpError(400, 'Debe existir al menos un administrador')
     }
     if (role && !['user', 'admin'].includes(role)) throw new HttpError(400, 'Rol inválido')
+    if (plan && !['free', 'premium', 'lifetime'].includes(plan)) throw new HttpError(400, 'Plan inválido')
+    if (status && !['active', 'suspended'].includes(status)) throw new HttpError(400, 'Estado inválido')
+    // No permitir suspenderte a ti mismo
+    if (status === 'suspended' && String(account._id) === req.auth.sub) {
+      throw new HttpError(400, 'No puedes suspender tu propia cuenta')
+    }
 
     if (typeof name === 'string') account.name = name.trim()
     if (typeof carrera === 'string') account.carrera = carrera.trim()
     if (role) account.role = role
+    if (plan) {
+      account.plan = plan
+      // Al poner premium sin fecha, dar 30 días por defecto; lifetime/free limpian la fecha
+      if (plan === 'premium') {
+        account.planExpires = planExpires || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+      } else {
+        account.planExpires = ''
+      }
+    }
+    if (typeof planExpires === 'string' && plan === 'premium') account.planExpires = planExpires
+    if (status) account.status = status
     await account.save()
 
     res.json({ ok: true, user: account.toJSON() })
