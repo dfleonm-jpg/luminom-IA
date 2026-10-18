@@ -373,7 +373,7 @@
           }
           if (res.ok) {
             const u = await res.json();
-            session = { userId: u.id || u._id, name: u.name || u.email, email: u.email, carrera: u.carrera || '', role: u.role || 'user' };
+            session = { userId: u.id || u._id, name: u.name || u.email, email: u.email, carrera: u.carrera || '', role: u.role || 'user', plan: u.plan || 'free' };
             localStorage.setItem('luminom_session', JSON.stringify(session));
             document.getElementById('userName').textContent = session.name;
             document.getElementById('welcomeName').textContent = session.name;
@@ -397,24 +397,40 @@
     let userSubscription = null;
     let userPlan = 'free'; // free, premium, lifetime
     
-    // Cargar suscripción (desde localStorage; el pago/plan se gestiona aparte)
+    // Cargar el plan REAL desde el backend (MongoDB). Así, si un admin cambia el
+    // plan del usuario, el chat se actualiza al recargar (ya no depende solo de localStorage).
     async function loadSubscription() {
+      // 1) Valor inicial desde la sesión local (rápido, por si el backend está dormido)
       try {
-        userSubscription = JSON.parse(localStorage.getItem('luminom_subscription') || 'null');
-        if (userSubscription && userSubscription.status === 'active') {
-          if (userSubscription.plan === 'premium' && userSubscription.expiryDate && userSubscription.expiryDate !== 'never') {
-            userPlan = new Date(userSubscription.expiryDate) < new Date() ? 'free' : 'premium';
-          } else if (userSubscription.plan === 'lifetime') {
-            userPlan = 'lifetime';
-          } else {
-            userPlan = userSubscription.plan || 'free';
-          }
-        }
-      } catch (e) {
-        userPlan = 'free';
-      }
+        userPlan = (session && session.plan) || 'free';
+      } catch (e) { userPlan = 'free'; }
       updatePlanBadge();
       updateLimitBanner();
+
+      // 2) Consultar el plan actualizado en el backend
+      const token = localStorage.getItem('luminom_token');
+      if (!API || !token) return;
+      try {
+        const res = await fetch(API + '/api/auth/me', { headers: { Authorization: 'Bearer ' + token } });
+        if (!res.ok) return;
+        const u = await res.json();
+
+        let plan = u.plan || 'free';
+        // Premium vencido -> vuelve a free
+        if (plan === 'premium' && u.planExpires && new Date(u.planExpires) < new Date()) {
+          plan = 'free';
+        }
+        userPlan = plan;
+
+        // Sincronizar la sesión local para coherencia en el resto del sitio
+        session.plan = plan;
+        localStorage.setItem('luminom_session', JSON.stringify(session));
+
+        updatePlanBadge();
+        updateLimitBanner();
+      } catch (e) {
+        // Backend dormido o sin conexión: se mantiene el plan de la sesión local
+      }
     }
     
     // Actualizar badge de plan en navegación
@@ -1178,9 +1194,10 @@ NUNCA inventes datos, fórmulas o teoremas que no existen.`;
       const backendUrl = (window.LUMINOM_CONFIG && window.LUMINOM_CONFIG.BACKEND_URL || '').replace(/\/$/, '');
       if (backendUrl) {
         try {
+          const authToken = localStorage.getItem('luminom_token');
           const res = await fetch(`${backendUrl}/api/chat`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', ...(authToken ? { Authorization: 'Bearer ' + authToken } : {}) },
             body: JSON.stringify({ message: userMessage })
           });
           const data = await res.json().catch(() => ({}));

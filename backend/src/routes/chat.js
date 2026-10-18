@@ -1,8 +1,24 @@
 import { Router } from 'express'
-import { Chat } from '../models/index.js'
+import { Chat, Account } from '../models/index.js'
 import { addXp, checkDaily, getUser, nowIso, updateUser } from '../services/state.js'
 import * as tutor from '../services/tutor.js'
+import { verifyToken } from '../services/auth.js'
 import { asyncHandler, HttpError } from '../errors.js'
+
+// Determina el plan efectivo del usuario autenticado (si envía token)
+async function planFromRequest(req) {
+  const header = req.headers.authorization || ''
+  const token = header.startsWith('Bearer ') ? header.slice(7) : null
+  const payload = token ? verifyToken(token) : null
+  if (!payload) return null
+  const account = await Account.findById(payload.sub)
+  if (!account) return null
+  let plan = account.plan || 'free'
+  if (plan === 'premium' && account.planExpires && new Date(account.planExpires) < new Date()) {
+    plan = 'free'
+  }
+  return { plan, status: account.status }
+}
 
 const router = Router()
 
@@ -26,13 +42,21 @@ router.post(
 
     const user = await getUser()
     const used = await checkDaily(user)
-    const premium = Boolean(user.premium)
-    const limit = premium ? 1000 : 20
 
-    if (used >= limit && !premium) {
+    // Límite según el plan REAL del usuario autenticado (si envía token).
+    // free = 10/día, premium y lifetime = ilimitado.
+    const info = await planFromRequest(req)
+    if (info && info.status === 'suspended') {
+      throw new HttpError(403, 'Tu cuenta está suspendida.')
+    }
+    const plan = info ? info.plan : 'free'
+    const isPaid = plan === 'premium' || plan === 'lifetime'
+    const limit = isPaid ? 100000 : 10
+
+    if (!isPaid && used >= limit) {
       throw new HttpError(
         402,
-        'Límite del plan gratuito alcanzado. Mejora a Premium para chat ilimitado.'
+        'Límite diario del plan gratuito alcanzado (10 preguntas). Mejora a Premium para chat ilimitado.'
       )
     }
 
