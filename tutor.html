@@ -397,40 +397,31 @@
     let userSubscription = null;
     let userPlan = 'free'; // free, premium, lifetime
     
-    // Cargar el plan REAL desde el backend (MongoDB). Así, si un admin cambia el
-    // plan del usuario, el chat se actualiza al recargar (ya no depende solo de localStorage).
-    async function loadSubscription() {
-      // 1) Valor inicial desde la sesión local (rápido, por si el backend está dormido)
-      try {
-        userPlan = (session && session.plan) || 'free';
-      } catch (e) { userPlan = 'free'; }
-      updatePlanBadge();
-      updateLimitBanner();
-
-      // 2) Consultar el plan actualizado en el backend
+    // Refresca userPlan consultando el backend (fuente de verdad en MongoDB).
+    // Si el backend no responde (dormido), conserva el plan actual sin romper nada.
+    async function refreshPlan() {
       const token = localStorage.getItem('luminom_token');
       if (!API || !token) return;
       try {
         const res = await fetch(API + '/api/auth/me', { headers: { Authorization: 'Bearer ' + token } });
         if (!res.ok) return;
         const u = await res.json();
-
         let plan = u.plan || 'free';
-        // Premium vencido -> vuelve a free
-        if (plan === 'premium' && u.planExpires && new Date(u.planExpires) < new Date()) {
-          plan = 'free';
-        }
+        if (plan === 'premium' && u.planExpires && new Date(u.planExpires) < new Date()) plan = 'free';
         userPlan = plan;
-
-        // Sincronizar la sesión local para coherencia en el resto del sitio
         session.plan = plan;
         localStorage.setItem('luminom_session', JSON.stringify(session));
-
         updatePlanBadge();
         updateLimitBanner();
-      } catch (e) {
-        // Backend dormido o sin conexión: se mantiene el plan de la sesión local
-      }
+      } catch (e) { /* backend dormido: mantener plan actual */ }
+    }
+
+    // Cargar el plan al abrir el tutor: primero el valor local (rápido), luego el real del backend.
+    async function loadSubscription() {
+      try { userPlan = (session && session.plan) || 'free'; } catch (e) { userPlan = 'free'; }
+      updatePlanBadge();
+      updateLimitBanner();
+      await refreshPlan(); // sincroniza con MongoDB
     }
     
     // Actualizar badge de plan en navegación
@@ -988,8 +979,12 @@ Formato del plan:
       const message = input.value.trim();
       
       if (!message && !attachedFile) return;
-      
-      // Verificar límite de preguntas
+
+      // Refrescar el plan REAL desde el backend justo antes de validar,
+      // para que un cambio hecho por el admin se aplique sin recargar la página.
+      await refreshPlan();
+
+      // Verificar límite de preguntas (solo aplica a plan gratis)
       const status = canAskQuestion();
       
       if (!status.allowed) {
@@ -1201,6 +1196,13 @@ NUNCA inventes datos, fórmulas o teoremas que no existen.`;
             body: JSON.stringify({ message: userMessage })
           });
           const data = await res.json().catch(() => ({}));
+          if (res.status === 402) {
+            // Límite del plan gratuito alcanzado (lo decide el backend)
+            return `⚠️ **${data.detail || 'Límite diario alcanzado'}**\n\n💎 Mejora a **Premium** o **De por Vida** en la página de [Servicios](servicios.html) para preguntas ilimitadas.`;
+          }
+          if (res.status === 403) {
+            return `🚫 **${data.detail || 'Tu cuenta está suspendida'}**\n\nContacta al administrador: ialuminom@gmail.com`;
+          }
           if (!res.ok) {
             throw new Error(data.detail || `Error ${res.status}`);
           }
