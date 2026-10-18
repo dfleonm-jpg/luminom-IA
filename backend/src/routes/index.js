@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import coreRoutes from './core.js'
+import authRoutes from './auth.js'
 import chatRoutes from './chat.js'
 import learnRoutes from './learn.js'
 import studyRoutes from './study.js'
@@ -8,6 +9,7 @@ import pdfRoutes from './pdfs.js'
 
 const router = Router()
 
+router.use(authRoutes)
 router.use(coreRoutes)
 router.use(chatRoutes)
 router.use(learnRoutes)

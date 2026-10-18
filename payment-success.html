@@ -58,92 +58,40 @@
     <a href="tutor.html" class="btn">Ir al Tutor →</a>
   </div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
   <script>
-    // Configuración de Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDzS5dYHznoTUsYYxWxfcA5JAHPMOJkSMA",
-      authDomain: "luminom-ia.firebaseapp.com",
-      projectId: "luminom-ia",
-      storageBucket: "luminom-ia.firebasestorage.app",
-      messagingSenderId: "532433042280",
-      appId: "1:532433042280:web:ae5f09598957e2bf8a34dd"
-    };
-
-    // Inicializar Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-
-    // Guardar suscripción premium en Firestore
-    async function saveSubscription() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const transactionId = urlParams.get('id');
-      const planType = urlParams.get('plan') || 'monthly'; // monthly o lifetime
-      const session = JSON.parse(localStorage.getItem('luminom_session') || 'null');
-      
-      if (!session || !transactionId) {
-        console.error('❌ Faltan datos de sesión o transacción');
-        return;
-      }
-
-      console.log('💳 Guardando suscripción en Firestore...');
-      console.log('Plan:', planType);
-      console.log('Usuario:', session.userId);
-      console.log('Transacción:', transactionId);
-
-      try {
-        const subscription = {
-          plan: planType === 'lifetime' ? 'lifetime' : 'premium',
-          userId: session.userId,
-          transactionId: transactionId,
-          startDate: new Date().toISOString(),
-          expiryDate: planType === 'lifetime' ? 'never' : calculateExpiryDate(),
-          status: 'active',
-          paymentMethod: 'wompi'
-        };
-        
-        // Guardar en localStorage (para acceso rápido)
-        localStorage.setItem('luminom_subscription', JSON.stringify(subscription));
-        
-        // Actualizar documento del usuario en Firestore
-        await db.collection('users').doc(session.userId).update({
-          subscription: subscription,
-          lastPaymentDate: new Date().toISOString()
-        });
-        
-        console.log('✅ Suscripción guardada exitosamente');
-        
-        // Actualizar mensaje en pantalla según el plan
-        updateMessageForPlan(planType);
-      } catch (error) {
-        console.error('❌ Error al guardar suscripción:', error);
-        // Aunque falle Firebase, localStorage está guardado
-      }
-    }
-
+    // Guarda la suscripción en localStorage tras el pago (sin backend de pagos aún).
     function calculateExpiryDate() {
       const now = new Date();
-      now.setMonth(now.getMonth() + 1); // +1 mes
+      now.setMonth(now.getMonth() + 1);
       return now.toISOString();
     }
 
     function updateMessageForPlan(planType) {
-      const heading = document.querySelector('h1');
-      const description = document.querySelector('p');
-      
       if (planType === 'lifetime') {
-        heading.innerHTML = '🎉 ¡Bienvenido al Plan De por Vida!';
-        description.innerHTML = 'Gracias por unirte a <strong>Luminom IA</strong> de por vida. Tienes acceso completo a todas las funciones premium para siempre, sin pagos mensuales. 🏆';
+        document.querySelector('h1').innerHTML = '\u{1F389} \u00A1Bienvenido al Plan De por Vida!';
+        document.querySelector('p').innerHTML = 'Gracias por unirte a <strong>Luminom IA</strong> de por vida. Tienes acceso completo a todas las funciones premium para siempre. \u{1F3C6}';
       }
     }
 
-    // Ejecutar al cargar la página
-    saveSubscription();
-  </script>
+    (function saveSubscription() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const transactionId = urlParams.get('id') || ('tx-' + Date.now());
+      const planType = urlParams.get('plan') || 'monthly';
+      const session = JSON.parse(localStorage.getItem('luminom_session') || 'null');
+      if (!session) return;
 
+      const subscription = {
+        plan: planType === 'lifetime' ? 'lifetime' : 'premium',
+        userId: session.userId,
+        transactionId,
+        startDate: new Date().toISOString(),
+        expiryDate: planType === 'lifetime' ? 'never' : calculateExpiryDate(),
+        status: 'active',
+        paymentMethod: 'wompi'
+      };
+      localStorage.setItem('luminom_subscription', JSON.stringify(subscription));
+      updateMessageForPlan(planType);
+    })();
+  </script>
 </body>
 </html>

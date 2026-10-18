@@ -333,38 +333,17 @@
   </div>
 </footer>
 
-<!-- Firebase (solo para cerrar sesión correctamente desde la landing) -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script>
-  try {
-    firebase.initializeApp({
-      apiKey: "AIzaSyDzS5dYHznoTUsYYxWxfcA5JAHPMOJkSMA",
-      authDomain: "luminom-ia.firebaseapp.com",
-      projectId: "luminom-ia",
-      storageBucket: "luminom-ia.firebasestorage.app",
-      messagingSenderId: "532433042280",
-      appId: "1:532433042280:web:ae5f09598957e2bf8a34dd"
-    });
-  } catch (e) { /* ya inicializado */ }
-</script>
-
 <script>
 
-// Gestión de sesión (la autenticación real vive en login.html / tutor.html con Firebase).
-// Aquí solo leemos la sesión para el nav y cerramos sesión correctamente.
+// Gestión de sesión. La autenticación real vive en el backend (MongoDB + JWT);
+// aquí solo leemos la sesión local para el nav y cerramos sesión limpiando el token.
 const Auth = {
   getSession() { try { return JSON.parse(localStorage.getItem('luminom_session')); } catch { return null; } },
   logout() {
+    localStorage.removeItem('luminom_token');
     localStorage.removeItem('luminom_session');
     localStorage.removeItem('luminom_subscription');
-    // Cerrar también la sesión de Firebase si el SDK está disponible,
-    // de lo contrario quedaría la sesión activa y volvería a entrar al tutor.
-    if (window.firebase && firebase.auth) {
-      firebase.auth().signOut().finally(() => window.location.replace('index.html'));
-    } else {
-      window.location.replace('index.html');
-    }
+    window.location.replace('index.html');
   }
 };
 

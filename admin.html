@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Panel Admin - Luminom IA</title>
+  <script src="config.js"></script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="theme-color" content="#0A1628" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -102,13 +103,13 @@
       <div class="stat-card">
         <div class="stat-icon">⭐</div>
         <div class="stat-value" id="premiumUsers">0</div>
-        <div class="stat-label">Usuarios Premium</div>
+        <div class="stat-label">Administradores</div>
       </div>
       
       <div class="stat-card">
         <div class="stat-icon">👑</div>
         <div class="stat-value" id="lifetimeUsers">0</div>
-        <div class="stat-label">Usuarios De por Vida</div>
+        <div class="stat-label">Usuarios Estándar</div>
       </div>
       
       <div class="stat-card">
@@ -129,9 +130,8 @@
               <th>Nombre</th>
               <th>Email</th>
               <th>Carrera</th>
-              <th>Plan</th>
+              <th>Rol</th>
               <th>Fecha Registro</th>
-              <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="usersTableBody">
@@ -142,260 +142,90 @@
     </div>
   </div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
+  <!-- Panel admin vía backend (Node + Express + MongoDB) -->
   <script>
-    // Configuración de Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDzS5dYHznoTUsYYxWxfcA5JAHPMOJkSMA",
-      authDomain: "luminom-ia.firebaseapp.com",
-      projectId: "luminom-ia",
-      storageBucket: "luminom-ia.firebasestorage.app",
-      messagingSenderId: "532433042280",
-      appId: "1:532433042280:web:ae5f09598957e2bf8a34dd"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-
-    // ============================================
-    // CONTROL DE ACCESO — ROL ADMIN
-    // Lista de correos con permiso de administrador.
-    // Para dar admin a alguien, agrega su email aquí (en minúsculas).
-    // ============================================
-    const ADMIN_EMAILS = [
-      'admin@luminom.com',
-      'felipedamartinez@gmail.com'  // Daniel Leon
-    ];
-
-    function isAdmin(email) {
-      return typeof email === 'string' && ADMIN_EMAILS.includes(email.trim().toLowerCase());
-    }
-
-    // Verificar autenticación admin
+    const API = (window.LUMINOM_CONFIG && window.LUMINOM_CONFIG.BACKEND_URL || '').replace(/\/$/, '');
+    const token = localStorage.getItem('luminom_token');
     const session = JSON.parse(localStorage.getItem('luminom_session') || 'null');
 
-    if (!session || !isAdmin(session.email)) {
+    // Control de acceso: debe haber token y rol admin
+    if (!token || !session || session.role !== 'admin') {
       alert('⚠️ Acceso denegado. Solo los administradores pueden acceder a este panel.');
       window.location.href = 'index.html';
-      throw new Error('Acceso denegado'); // detener el resto del script
+      throw new Error('Acceso denegado');
     }
 
     document.getElementById('adminName').textContent = session.name || session.email;
 
     function logout() {
+      localStorage.removeItem('luminom_token');
       localStorage.removeItem('luminom_session');
       window.location.href = 'index.html';
     }
+    window.logout = logout;
 
-    // Cargar datos
-    async function loadData() {
-      try {
-        console.log('📊 Cargando datos del panel de admin...');
-        console.log('Usuario admin:', session);
-        
-        // Obtener todos los usuarios
-        console.log('🔵 Cargando usuarios...');
-        const usersSnapshot = await db.collection('users').get();
-        const users = [];
-        usersSnapshot.forEach(doc => {
-          users.push({ id: doc.id, ...doc.data() });
-        });
-        console.log(`✅ Cargados ${users.length} usuarios`);
-
-        // Obtener todos los chats
-        console.log('🔵 Cargando chats...');
-        const chatsSnapshot = await db.collection('chats').get();
-        const totalChats = chatsSnapshot.size;
-        console.log(`✅ Cargados ${totalChats} chats`);
-
-        // Calcular estadísticas
-        let premiumCount = 0;
-        let lifetimeCount = 0;
-
-        users.forEach(user => {
-          if (user.subscription && user.subscription.status === 'active') {
-            if (user.subscription.plan === 'lifetime') {
-              lifetimeCount++;
-            } else if (user.subscription.plan === 'premium') {
-              premiumCount++;
-            }
-          }
-        });
-
-        console.log('📈 Estadísticas:', {
-          total: users.length,
-          premium: premiumCount,
-          lifetime: lifetimeCount,
-          chats: totalChats
-        });
-
-        // Actualizar estadísticas
-        document.getElementById('totalUsers').textContent = users.length;
-        document.getElementById('premiumUsers').textContent = premiumCount;
-        document.getElementById('lifetimeUsers').textContent = lifetimeCount;
-        document.getElementById('totalChats').textContent = totalChats;
-
-        // Mostrar tabla de usuarios
-        displayUsers(users);
-
-      } catch (error) {
-        console.error('❌ Error al cargar datos:', error);
-        console.error('Código de error:', error.code);
-        console.error('Mensaje:', error.message);
-        
-        let errorMsg = '❌ Error al cargar datos: ' + error.message;
-        
-        if (error.code === 'permission-denied') {
-          errorMsg = `
-            ❌ <strong>Error de Permisos</strong><br><br>
-            Las reglas de Firestore no permiten al admin leer los datos.<br><br>
-            <strong>Solución:</strong><br>
-            1. Ir a <a href="https://console.firebase.google.com/project/luminom-ia/firestore/rules" target="_blank">Firebase Console → Firestore → Reglas</a><br>
-            2. Copiar las reglas del archivo <code>firestore.rules</code> del proyecto<br>
-            3. Publicar las reglas<br>
-            4. Esperar 1 minuto y recargar esta página<br><br>
-            <strong>Email de admin requerido:</strong> admin@luminom.com
-          `;
-        }
-        
-        document.getElementById('usersLoading').innerHTML = errorMsg;
-      }
-    }
-
-    // Escapar HTML para evitar inyección desde datos de usuario
     function esc(str) {
       return String(str ?? '')
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
-    function displayUsers(users) {
+    async function loadData() {
+      try {
+        const res = await fetch(API + '/api/admin/accounts', {
+          headers: { Authorization: 'Bearer ' + token },
+        });
+        if (res.status === 401 || res.status === 403) {
+          document.getElementById('usersLoading').textContent =
+            '❌ Sesión no válida o sin permisos de administrador. Vuelve a iniciar sesión.';
+          return;
+        }
+        if (!res.ok) throw new Error('Error ' + res.status);
+        const accounts = await res.json();
+
+        // Estadísticas
+        const admins = accounts.filter(a => a.role === 'admin').length;
+        document.getElementById('totalUsers').textContent = accounts.length;
+        document.getElementById('premiumUsers').textContent = admins;
+        document.getElementById('lifetimeUsers').textContent = accounts.length - admins;
+
+        // Chats totales (opcional, desde /api/stats)
+        try {
+          const st = await fetch(API + '/api/stats').then(r => r.json());
+          document.getElementById('totalChats').textContent = st.attempts ?? 0;
+        } catch { /* ignore */ }
+
+        displayUsers(accounts);
+      } catch (error) {
+        document.getElementById('usersLoading').innerHTML =
+          '❌ No se pudo cargar. ¿El backend está activo? (en Render el plan free tarda ~30s en despertar). ' + esc(error.message);
+      }
+    }
+
+    function displayUsers(accounts) {
       const tbody = document.getElementById('usersTableBody');
       tbody.innerHTML = '';
-
-      // Ordenar por fecha de registro (más recientes primero)
-      users.sort((a, b) => {
-        const dateA = new Date(a.createdAt || 0);
-        const dateB = new Date(b.createdAt || 0);
-        return dateB - dateA;
-      });
-
-      users.forEach(user => {
+      accounts.forEach(a => {
+        const created = a.createdAt ? new Date(a.createdAt).toLocaleDateString('es-CO') : 'N/A';
+        const roleBadge = a.role === 'admin'
+          ? '<span class="badge lifetime">👑 Admin</span>'
+          : '<span class="badge free">👤 Usuario</span>';
         const row = document.createElement('tr');
-        
-        // Determinar plan
-        let planBadge = '<span class="badge free">📝 Gratis</span>';
-        let planType = 'free';
-        
-        if (user.subscription && user.subscription.status === 'active') {
-          if (user.subscription.plan === 'lifetime') {
-            planBadge = '<span class="badge lifetime">👑 De por Vida</span>';
-            planType = 'lifetime';
-          } else if (user.subscription.plan === 'premium') {
-            planBadge = '<span class="badge premium">⭐ Premium</span>';
-            planType = 'premium';
-          }
-        }
-
-        // Fecha de registro
-        const createdDate = user.createdAt ? new Date(user.createdAt).toLocaleDateString('es-CO') : 'N/A';
-
         row.innerHTML = `
-          <td><strong>${esc(user.name)}</strong></td>
-          <td>${esc(user.email)}</td>
-          <td>${esc(user.carrera || 'N/A')}</td>
-          <td>${planBadge}</td>
-          <td>${createdDate}</td>
-          <td>
-            ${planType === 'free' ? `
-              <button class="btn btn-primary btn-small" onclick="grantPremium('${user.id}', 'premium')">
-                Dar Premium
-              </button>
-              <button class="btn btn-primary btn-small" onclick="grantPremium('${user.id}', 'lifetime')">
-                Dar Lifetime
-              </button>
-            ` : `
-              <button class="btn btn-danger btn-small" onclick="revokePremium('${user.id}')">
-                Quitar Premium
-              </button>
-            `}
-          </td>
+          <td><strong>${esc(a.name || '—')}</strong></td>
+          <td>${esc(a.email)}</td>
+          <td>${esc(a.carrera || 'N/A')}</td>
+          <td>${roleBadge}</td>
+          <td>${created}</td>
         `;
-        
         tbody.appendChild(row);
       });
-
       document.getElementById('usersLoading').style.display = 'none';
       document.getElementById('usersTable').style.display = 'block';
     }
 
-    // Dar premium gratis a un usuario
-    async function grantPremium(userId, plan) {
-      const planName = plan === 'lifetime' ? 'De por Vida' : 'Premium';
-      
-      if (!confirm(`¿Dar plan ${planName} GRATIS a este usuario?`)) {
-        return;
-      }
-
-      try {
-        const subscription = {
-          plan: plan,
-          userId: userId,
-          transactionId: 'admin-granted-' + Date.now(),
-          startDate: new Date().toISOString(),
-          expiryDate: plan === 'lifetime' ? 'never' : calculateExpiryDate(12), // 12 meses si es premium
-          status: 'active',
-          paymentMethod: 'admin-gift',
-          grantedBy: session.email,
-          grantedAt: new Date().toISOString()
-        };
-
-        await db.collection('users').doc(userId).update({
-          subscription: subscription,
-          lastPaymentDate: new Date().toISOString()
-        });
-
-        alert(`✅ Plan ${planName} otorgado exitosamente`);
-        loadData(); // Recargar datos
-      } catch (error) {
-        console.error('Error al otorgar premium:', error);
-        alert('❌ Error al otorgar premium: ' + error.message);
-      }
-    }
-
-    // Quitar premium de un usuario
-    async function revokePremium(userId) {
-      if (!confirm('¿Quitar el plan Premium de este usuario?')) {
-        return;
-      }
-
-      try {
-        await db.collection('users').doc(userId).update({
-          subscription: firebase.firestore.FieldValue.delete()
-        });
-
-        alert('✅ Premium removido exitosamente');
-        loadData(); // Recargar datos
-      } catch (error) {
-        console.error('Error al remover premium:', error);
-        alert('❌ Error al remover premium: ' + error.message);
-      }
-    }
-
-    function calculateExpiryDate(months) {
-      const now = new Date();
-      now.setMonth(now.getMonth() + months);
-      return now.toISOString();
-    }
-
-    // Cargar datos al iniciar
     loadData();
   </script>
-
 </body>
+
 </html>

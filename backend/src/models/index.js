@@ -125,6 +125,30 @@ const flashcardSchema = new Schema(
 )
 flashcardSchema.set('toJSON', toJSON)
 
+// Cuenta de usuario con login (email + contraseña + rol). Para autenticación real.
+const accountSchema = new Schema(
+  {
+    email: { type: String, required: true, unique: true, lowercase: true, trim: true, index: true },
+    passwordHash: { type: String, required: true },
+    name: { type: String, default: '' },
+    carrera: { type: String, default: '' },
+    role: { type: String, enum: ['user', 'admin'], default: 'user' },
+    createdAt: { type: String, default: () => new Date().toISOString() },
+  },
+  { timestamps: false, collection: 'accounts' }
+)
+// Nunca exponer el hash de la contraseña al cliente
+accountSchema.set('toJSON', {
+  virtuals: true,
+  versionKey: false,
+  transform: (_doc, ret) => {
+    delete ret.passwordHash
+    return ret
+  },
+})
+
+export const Account = mongoose.model('Account', accountSchema)
+
 export const User = mongoose.model('User', userSchema)
 export const Subject = mongoose.model('Subject', subjectSchema)
 export const Lesson = mongoose.model('Lesson', lessonSchema)

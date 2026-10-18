@@ -15,6 +15,12 @@ export const MONGODB_URI = env.MONGODB_URI || 'mongodb://127.0.0.1:27017/astra'
 // CORS: lista separada por comas, o '*' para permitir todo (desarrollo)
 export const CORS_ORIGIN = (env.CORS_ORIGIN || '*').trim()
 
+// ===== Autenticación (JWT) =====
+export const JWT_SECRET = env.JWT_SECRET || 'luminom-dev-secret-change-me'
+export const JWT_EXPIRES = env.JWT_EXPIRES || '30d'
+// Admin que se auto-crea al arrancar (bootstrap). Formato: email:password:Nombre
+export const BOOTSTRAP_ADMIN = env.BOOTSTRAP_ADMIN || 'felipedamartinez@gmail.com:Dani23dani:Daniel Leon'
+
 // Arranque automático de mongod si nadie lo está ejecutando
 export const MONGOD_PATH = env.MONGOD_PATH || ''
 export const MONGO_DBPATH = env.MONGO_DBPATH || path.join(ROOT, 'mongo-data')

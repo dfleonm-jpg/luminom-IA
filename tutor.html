@@ -314,11 +314,6 @@
     </div>
   </div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
   <!-- PDF.js para extraer texto de PDFs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   
@@ -339,78 +334,53 @@
 
   <script>
     // ========================================
-    // FIREBASE INIT
+    // AUTH - Backend (Node + Express + MongoDB) con JWT
     // ========================================
-    const firebaseConfig = {
-      apiKey: "AIzaSyDzS5dYHznoTUsYYxWxfcA5JAHPMOJkSMA",
-      authDomain: "luminom-ia.firebaseapp.com",
-      projectId: "luminom-ia",
-      storageBucket: "luminom-ia.firebasestorage.app",
-      messagingSenderId: "532433042280",
-      appId: "1:532433042280:web:ae5f09598957e2bf8a34dd"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-
-    // ========================================
-    // AUTH - Firebase es la unica fuente de verdad
-    // ========================================
+    const API = (window.LUMINOM_CONFIG && window.LUMINOM_CONFIG.BACKEND_URL || '').replace(/\/$/, '');
     let session = null;
 
     const Auth = {
       getSession() { return session; },
       logout() {
+        localStorage.removeItem('luminom_token');
         localStorage.removeItem('luminom_session');
         localStorage.removeItem('luminom_subscription');
-        auth.signOut().then(() => {
-          window.location.replace('index.html');
-        }).catch(() => {
-          window.location.replace('index.html');
-        });
+        window.location.replace('index.html');
       }
     };
     window.Auth = Auth;
 
-    // Esperar a Firebase Auth antes de hacer CUALQUIER cosa
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        // Usuario autenticado - verificar/recuperar localStorage
-        let localSession = null;
-        try { localSession = JSON.parse(localStorage.getItem('luminom_session')); } catch(e) {}
+    // Validar sesión con el token del backend
+    (async function checkAuth() {
+      const token = localStorage.getItem('luminom_token');
+      const localSession = JSON.parse(localStorage.getItem('luminom_session') || 'null');
 
-        if (localSession && localSession.userId === user.uid) {
-          session = localSession;
-        } else {
-          // Recuperar de Firestore
-          try {
-            const userDoc = await db.collection('users').doc(user.uid).get();
-            if (userDoc.exists) {
-              const userData = userDoc.data();
-              session = {
-                userId: user.uid,
-                name: userData.name || user.email,
-                email: userData.email || user.email,
-                carrera: userData.carrera || ''
-              };
-            } else {
-              session = { userId: user.uid, name: user.email, email: user.email, carrera: '' };
-            }
-            localStorage.setItem('luminom_session', JSON.stringify(session));
-          } catch (error) {
-            session = { userId: user.uid, name: user.email || 'Estudiante', email: user.email || '', carrera: '' };
-            localStorage.setItem('luminom_session', JSON.stringify(session));
-          }
-        }
-        // Iniciar la app
-        initApp();
-      } else {
-        // NO autenticado - ir a login
-        localStorage.removeItem('luminom_session');
+      if (!token || !localSession) {
         window.location.replace('login.html?next=tutor');
+        return;
       }
-    });
+
+      // Usar la sesión local de inmediato (UX rápida) y validar en segundo plano
+      session = localSession;
+      initApp();
+
+      if (API) {
+        try {
+          const res = await fetch(API + '/api/auth/me', { headers: { Authorization: 'Bearer ' + token } });
+          if (res.status === 401) {
+            Auth.logout();
+            return;
+          }
+          if (res.ok) {
+            const u = await res.json();
+            session = { userId: u.id || u._id, name: u.name || u.email, email: u.email, carrera: u.carrera || '', role: u.role || 'user' };
+            localStorage.setItem('luminom_session', JSON.stringify(session));
+            document.getElementById('userName').textContent = session.name;
+            document.getElementById('welcomeName').textContent = session.name;
+          }
+        } catch (e) { /* backend dormido: seguimos con la sesión local */ }
+      }
+    })();
 
     function initApp() {
       document.getElementById('userName').textContent = session.name;
@@ -427,43 +397,24 @@
     let userSubscription = null;
     let userPlan = 'free'; // free, premium, lifetime
     
-    // Cargar suscripción desde Firestore
+    // Cargar suscripción (desde localStorage; el pago/plan se gestiona aparte)
     async function loadSubscription() {
       try {
-        const userDoc = await db.collection('users').doc(session.userId).get();
-        
-        if (userDoc.exists) {
-          const userData = userDoc.data();
-          userSubscription = userData.subscription || null;
-          
-          if (userSubscription && userSubscription.status === 'active') {
-            // Verificar si no ha expirado (solo para plan mensual)
-            if (userSubscription.plan === 'premium' && userSubscription.expiryDate !== 'never') {
-              const expiryDate = new Date(userSubscription.expiryDate);
-              if (expiryDate < new Date()) {
-                userPlan = 'free';
-                userSubscription = null;
-              } else {
-                userPlan = 'premium';
-              }
-            } else if (userSubscription.plan === 'lifetime') {
-              userPlan = 'lifetime';
-            } else {
-              userPlan = userSubscription.plan;
-            }
+        userSubscription = JSON.parse(localStorage.getItem('luminom_subscription') || 'null');
+        if (userSubscription && userSubscription.status === 'active') {
+          if (userSubscription.plan === 'premium' && userSubscription.expiryDate && userSubscription.expiryDate !== 'never') {
+            userPlan = new Date(userSubscription.expiryDate) < new Date() ? 'free' : 'premium';
+          } else if (userSubscription.plan === 'lifetime') {
+            userPlan = 'lifetime';
+          } else {
+            userPlan = userSubscription.plan || 'free';
           }
         }
-        
-        console.log('💎 Plan del usuario:', userPlan);
-        updatePlanBadge();
-        updateLimitBanner();
-        
-      } catch (error) {
-        console.error('Error al cargar suscripción:', error);
+      } catch (e) {
         userPlan = 'free';
-        updatePlanBadge();
-        updateLimitBanner();
       }
+      updatePlanBadge();
+      updateLimitBanner();
     }
     
     // Actualizar badge de plan en navegación
@@ -1414,44 +1365,10 @@ NUNCA inventes datos, fórmulas o teoremas que no existen.`;
 
     async function saveCurrentChat() {
       if (conversationHistory.length === 0) return;
-      
-      const session = Auth.getSession();
-      const title = conversationHistory[0]?.content.substring(0, 50) + '...';
-      
-      try {
-        console.log('💾 Guardando chat en Firebase...');
-        
-        if (currentChatId) {
-          // Actualizar chat existente en Firebase
-          await db.collection('chats').doc(currentChatId).update({
-            title,
-            messages: conversationHistory,
-            updatedAt: new Date().toISOString()
-          });
-          console.log('✅ Chat actualizado en Firebase:', currentChatId);
-        } else {
-          // Crear nuevo chat en Firebase
-          const docRef = await db.collection('chats').add({
-            userId: session.userId,
-            title,
-            messages: conversationHistory,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-          });
-          currentChatId = docRef.id;
-          console.log('✅ Nuevo chat creado en Firebase:', currentChatId);
-        }
-        
-        await loadChatHistory();
-      } catch (error) {
-        console.error('❌ Error al guardar chat en Firebase:', error);
-        console.error('Código de error:', error.code);
-        console.error('Mensaje:', error.message);
-        
-        // Fallback a localStorage si Firebase falla
-        console.log('⚠️ Usando localStorage como fallback...');
-        saveToLocalStorage();
-      }
+      // El backend ya persiste cada mensaje en MongoDB (POST /api/chat).
+      // Aquí guardamos el historial de la conversación local para el panel lateral.
+      saveToLocalStorage();
+      await loadChatHistory();
     }
 
     function saveToLocalStorage() {
@@ -1491,46 +1408,30 @@ NUNCA inventes datos, fórmulas o teoremas que no existen.`;
       showHistorySkeleton();
       
       try {
-        console.log('🔵 Cargando historial desde Firebase...');
-        
-        // Cargar desde Firebase SIN orderBy para evitar necesidad de índice
-        const snapshot = await db.collection('chats')
-          .where('userId', '==', session.userId)
-          .get();
-        
-        const userChats = [];
-        snapshot.forEach((doc) => {
-          userChats.push({
-            id: doc.id,
-            ...doc.data()
-          });
-        });
-        
-        // Filtrar por favoritos si está activo
-        let filteredChats = userChats;
+        const allChats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
+        const uid = session.userId;
+        let userChats = allChats.filter(c => !c.userId || c.userId === uid);
+
         if (typeof favoritesFilter !== 'undefined' && favoritesFilter === 'favorites') {
-          filteredChats = userChats.filter(chat => chat.isFavorite === true);
+          userChats = userChats.filter(chat => chat.isFavorite === true);
         }
-        
-        // Ordenar en JavaScript en lugar de Firestore
-        filteredChats.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-        
-        console.log(`✅ Cargados ${filteredChats.length} chats desde Firebase`);
-        
-        if (filteredChats.length === 0) {
-          const message = favoritesFilter === 'favorites' 
-            ? 'No tienes chats favoritos aún' 
+
+        userChats.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+
+        if (userChats.length === 0) {
+          const message = (typeof favoritesFilter !== 'undefined' && favoritesFilter === 'favorites')
+            ? 'No tienes chats favoritos aún'
             : 'Sin conversaciones previas';
           historyList.innerHTML = `<div class="history-item">${message}</div>`;
           return;
         }
-        
-        historyList.innerHTML = filteredChats.map(chat => {
+
+        historyList.innerHTML = userChats.map(chat => {
           const isFav = chat.isFavorite || false;
           return `
             <div class="history-item" onclick="loadChat('${chat.id}')">
               <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.2rem;">
-                <div style="font-weight:600;color:var(--navy);flex:1;">${chat.title}</div>
+                <div style="font-weight:600;color:var(--navy);flex:1;">${(chat.title || 'Conversación')}</div>
                 <span class="favorite-star" onclick="toggleFavorite('${chat.id}', event)" title="${isFav ? 'Quitar de favoritos' : 'Agregar a favoritos'}">
                   ${isFav ? '⭐' : '☆'}
                 </span>
@@ -1540,25 +1441,8 @@ NUNCA inventes datos, fórmulas o teoremas que no existen.`;
           `;
         }).join('');
       } catch (error) {
-        console.error('❌ Error al cargar historial de Firebase:', error);
-        console.error('Código de error:', error.code);
-        console.error('Mensaje:', error.message);
-        
-        // Mostrar mensaje al usuario
-        if (error.code === 'permission-denied') {
-          historyList.innerHTML = '<div class="history-item" style="color:#ff6b6b;">⚠️ Acceso denegado. Actualiza las reglas de Firebase.</div>';
-        } else if (error.code === 'failed-precondition') {
-          historyList.innerHTML = '<div class="history-item" style="color:#fbbf24;">⚠️ Firestore necesita un índice. Mira la consola para el enlace.</div>';
-          console.log('');
-          console.log('🔗 SOLUCIÓN: Haz click en el enlace de arriba para crear el índice automáticamente');
-          console.log('O ve a Firebase Console → Firestore → Índices y créalo manualmente');
-          console.log('');
-        } else {
-          historyList.innerHTML = '<div class="history-item">Sin conversaciones previas</div>';
-        }
-        
-        // NO usar localStorage como fallback - queremos que el usuario vea que Firebase no está funcionando
-        console.log('⚠️ No se usará localStorage - esperando configuración de Firebase');
+        console.error('Error al cargar historial:', error);
+        historyList.innerHTML = '<div class="history-item">Sin conversaciones previas</div>';
       }
     }
     
@@ -1602,67 +1486,27 @@ NUNCA inventes datos, fórmulas o teoremas que no existen.`;
       `).join('');
     }
 
-    async function loadChat(chatId) {
-      try {
-        // Cargar desde Firebase
-        const chatDoc = await db.collection('chats').doc(chatId).get();
-        
-        if (chatDoc.exists) {
-          const chatData = chatDoc.data();
-          currentChatId = chatId;
-          conversationHistory = chatData.messages;
-          
-          const messagesDiv = document.getElementById('messages');
-          messagesDiv.innerHTML = '';
-          
-          conversationHistory.forEach(msg => {
-            addMessage(msg.content, msg.role === 'user');
-          });
-        }
-      } catch (error) {
-        console.error('Error al cargar chat de Firebase:', error);
-        // Fallback a localStorage
-        const chats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
-        const chat = chats.find(c => c.id === chatId);
-        
-        if (!chat) return;
-        
-        currentChatId = chatId;
-        conversationHistory = chat.messages;
-        
-        const messagesDiv = document.getElementById('messages');
-        messagesDiv.innerHTML = '';
-        
-        conversationHistory.forEach(msg => {
-          addMessage(msg.content, msg.role === 'user');
-        });
-      }
+    function loadChat(chatId) {
+      const chats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
+      const chat = chats.find(c => c.id === chatId);
+      if (!chat) return;
+
+      currentChatId = chatId;
+      conversationHistory = chat.messages || [];
+
+      const messagesDiv = document.getElementById('messages');
+      messagesDiv.innerHTML = '';
+      conversationHistory.forEach(msg => addMessage(msg.content, msg.role === 'user'));
     }
 
-    async function deleteChat(chatId) {
+    function deleteChat(chatId) {
       if (!confirm('¿Eliminar esta conversación?')) return;
-      
-      try {
-        // Eliminar de Firebase
-        await db.collection('chats').doc(chatId).delete();
-        
-        if (currentChatId === chatId) {
-          newChat();
-        } else {
-          await loadChatHistory();
-        }
-      } catch (error) {
-        console.error('Error al eliminar chat de Firebase:', error);
-        // Fallback a localStorage
-        const chats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
-        const filtered = chats.filter(c => c.id !== chatId);
-        localStorage.setItem('luminom_chats', JSON.stringify(filtered));
-        
-        if (currentChatId === chatId) {
-          newChat();
-        } else {
-          loadFromLocalStorage();
-        }
+      const chats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
+      localStorage.setItem('luminom_chats', JSON.stringify(chats.filter(c => c.id !== chatId)));
+      if (currentChatId === chatId) {
+        newChat();
+      } else {
+        loadChatHistory();
       }
     }
 
@@ -1735,36 +1579,22 @@ NUNCA inventes datos, fórmulas o teoremas que no existen.`;
       `;
     }
     
-    // Aplicar skeleton screens al cargar chat
-    window.loadChat = async function(chatId) {
+    // Aplicar skeleton screens al cargar chat (desde localStorage)
+    window.loadChat = function(chatId) {
       try {
-        // Mostrar skeleton mientras carga
         showMessagesSkeleton();
-        
-        // Cargar desde Firebase
-        const chatDoc = await db.collection('chats').doc(chatId).get();
-        
-        if (!chatDoc.exists) {
-          console.log('⚠️ Chat no encontrado');
-          newChat();
-          return;
-        }
-        
-        const chat = chatDoc.data();
+        const chats = JSON.parse(localStorage.getItem('luminom_chats') || '[]');
+        const chat = chats.find(c => c.id === chatId);
+        if (!chat) { newChat(); return; }
+
         conversationHistory = chat.messages || [];
         currentChatId = chatId;
-        
-        // Renderizar mensajes reales
+
         const messagesDiv = document.getElementById('messages');
         messagesDiv.innerHTML = '';
-        
-        conversationHistory.forEach(msg => {
-          addMessage(msg.content, msg.role === 'user');
-        });
-        
-        console.log(`✅ Chat cargado: ${conversationHistory.length} mensajes`);
+        conversationHistory.forEach(msg => addMessage(msg.content, msg.role === 'user'));
       } catch (error) {
-        console.error('❌ Error al cargar chat:', error);
+        console.error('Error al cargar chat:', error);
         newChat();
       }
     };

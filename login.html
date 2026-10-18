@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Iniciar Sesión | Luminom IA</title>
+  <script src="config.js"></script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="theme-color" content="#0A1628" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -185,90 +186,67 @@
   </div>
 
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
+  <!-- Autenticación vía backend (Node + Express + MongoDB) -->
   <script>
     // ========================================
-    // FIREBASE INIT
+    // CONFIG BACKEND
     // ========================================
-    const firebaseConfig = {
-      apiKey: "AIzaSyDzS5dYHznoTUsYYxWxfcA5JAHPMOJkSMA",
-      authDomain: "luminom-ia.firebaseapp.com",
-      projectId: "luminom-ia",
-      storageBucket: "luminom-ia.firebasestorage.app",
-      messagingSenderId: "532433042280",
-      appId: "1:532433042280:web:ae5f09598957e2bf8a34dd"
-    };
+    const API = (window.LUMINOM_CONFIG && window.LUMINOM_CONFIG.BACKEND_URL || '').replace(/\/$/, '');
 
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-
-    // ========================================
-    // HELPER
-    // ========================================
     function getRedirectTarget() {
       const urlParams = new URLSearchParams(window.location.search);
       return (urlParams.get('next') || 'tutor') + '.html';
     }
 
+    async function apiPost(path, body) {
+      const res = await fetch(API + path, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.detail || `Error ${res.status}`);
+      return data;
+    }
+
+    function saveSession(data) {
+      localStorage.setItem('luminom_token', data.token);
+      localStorage.setItem('luminom_session', JSON.stringify({
+        userId: data.user.id || data.user._id,
+        name: data.user.name || data.user.email,
+        email: data.user.email,
+        carrera: data.user.carrera || '',
+        role: data.user.role || 'user',
+      }));
+    }
+
     // ========================================
-    // ESPERAR A FIREBASE AUTH ANTES DE MOSTRAR ALGO
-    // Esto evita el loop de redireccion
+    // SI YA HAY SESIÓN VÁLIDA, REDIRIGIR
     // ========================================
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        // Ya hay sesion en Firebase - recuperar datos y redirigir
-        console.log('✅ Usuario ya autenticado:', user.uid);
+    (async function initSession() {
+      const token = localStorage.getItem('luminom_token');
+      if (token && API) {
         try {
-          const userDoc = await db.collection('users').doc(user.uid).get();
-          if (userDoc.exists) {
-            const userData = userDoc.data();
-            const session = {
-              userId: user.uid,
-              name: userData.name || user.email,
-              email: userData.email || user.email,
-              carrera: userData.carrera || ''
-            };
-            localStorage.setItem('luminom_session', JSON.stringify(session));
-          }
-        } catch (e) {
-          console.error('Error recuperando datos:', e);
-        }
-        // Redirigir al tutor
-        window.location.replace(getRedirectTarget());
-      } else {
-        // NO hay sesion - limpiar localStorage viejo y mostrar formulario
-        localStorage.removeItem('luminom_session');
-        document.getElementById('loadingScreen').style.display = 'none';
-        document.getElementById('authWrap').classList.add('visible');
-
-        // Detectar tab inicial
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('tab') === 'register') {
-          document.querySelector('.tab.active').classList.remove('active');
-          document.querySelectorAll('.tab')[1].classList.add('active');
-          document.getElementById('loginForm').classList.remove('active');
-          document.getElementById('registerForm').classList.add('active');
-        }
+          const res = await fetch(API + '/api/auth/me', { headers: { Authorization: 'Bearer ' + token } });
+          if (res.ok) { window.location.replace(getRedirectTarget()); return; }
+        } catch (e) { /* token inválido o backend dormido */ }
       }
-    });
+      localStorage.removeItem('luminom_token');
+      localStorage.removeItem('luminom_session');
+      document.getElementById('loadingScreen').style.display = 'none';
+      document.getElementById('authWrap').classList.add('visible');
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('tab') === 'register') showTab('register');
+    })();
 
     // ========================================
-    // TAB SWITCHING
+    // TABS
     // ========================================
     function showTab(tabName) {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      if (event && event.target && event.target.classList.contains('tab')) {
-        event.target.classList.add('active');
-      } else {
-        const tabs = document.querySelectorAll('.tab');
-        if (tabName === 'login') tabs[0].classList.add('active');
-        else tabs[1].classList.add('active');
-      }
+      const tabs = document.querySelectorAll('.tab');
+      if (tabName === 'login') tabs[0].classList.add('active');
+      else tabs[1].classList.add('active');
       document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
       document.getElementById(tabName + 'Form').classList.add('active');
       document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
@@ -287,60 +265,29 @@
     // ========================================
     // LOGIN
     // ========================================
-    document.getElementById('formLogin').addEventListener('submit', async function(event) {
+    document.getElementById('formLogin').addEventListener('submit', async function (event) {
       event.preventDefault();
       const email = document.getElementById('loginEmail').value.trim();
       const password = document.getElementById('loginPassword').value;
       const submitBtn = this.querySelector('.btn-submit');
-
       document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
+      if (!email.includes('@')) { document.getElementById('loginEmailError').textContent = 'Email inválido'; return; }
 
-      if (!email.includes('@')) {
-        document.getElementById('loginEmailError').textContent = 'Email inválido';
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Entrando...';
-
+      submitBtn.disabled = true; submitBtn.textContent = 'Entrando...';
       try {
-        const userCredential = await auth.signInWithEmailAndPassword(email, password);
-        const user = userCredential.user;
-
-        // Obtener datos de Firestore
-        const userDoc = await db.collection('users').doc(user.uid).get();
-        let session;
-        if (userDoc.exists) {
-          const userData = userDoc.data();
-          session = { userId: user.uid, name: userData.name, email: userData.email, carrera: userData.carrera };
-        } else {
-          session = { userId: user.uid, name: email, email: email, carrera: '' };
-          await db.collection('users').doc(user.uid).set({ name: email, email, carrera: '', createdAt: new Date().toISOString() });
-        }
-
-        localStorage.setItem('luminom_session', JSON.stringify(session));
+        const data = await apiPost('/api/auth/login', { email, password });
+        saveSession(data);
         window.location.replace(getRedirectTarget());
-
       } catch (error) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Entrar';
-        let errorMsg = 'Error al iniciar sesión';
-        switch(error.code) {
-          case 'auth/user-not-found': errorMsg = 'No existe una cuenta con este correo'; break;
-          case 'auth/wrong-password': errorMsg = 'Contraseña incorrecta'; break;
-          case 'auth/invalid-email': errorMsg = 'Correo electrónico inválido'; break;
-          case 'auth/too-many-requests': errorMsg = 'Demasiados intentos. Intenta más tarde'; break;
-          case 'auth/invalid-credential': errorMsg = 'Correo o contraseña incorrectos'; break;
-          case 'auth/user-disabled': errorMsg = 'Esta cuenta ha sido deshabilitada'; break;
-        }
-        document.getElementById('loginPasswordError').textContent = errorMsg;
+        submitBtn.disabled = false; submitBtn.textContent = 'Entrar';
+        document.getElementById('loginPasswordError').textContent = error.message || 'Error al iniciar sesión';
       }
     });
 
     // ========================================
     // REGISTRO
     // ========================================
-    document.getElementById('formRegister').addEventListener('submit', async function(event) {
+    document.getElementById('formRegister').addEventListener('submit', async function (event) {
       event.preventDefault();
       const name = document.getElementById('registerName').value.trim();
       const email = document.getElementById('registerEmail').value.trim();
@@ -348,7 +295,6 @@
       const password = document.getElementById('registerPassword').value;
       const confirmPassword = document.getElementById('registerConfirmPassword').value;
       const submitBtn = this.querySelector('.btn-submit');
-
       document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
 
       if (name.length < 3) { document.getElementById('registerNameError').textContent = 'Nombre muy corto'; return; }
@@ -357,59 +303,26 @@
       if (password.length < 6) { document.getElementById('registerPasswordError').textContent = 'Mínimo 6 caracteres'; return; }
       if (password !== confirmPassword) { document.getElementById('registerConfirmError').textContent = 'Las contraseñas no coinciden'; return; }
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Creando cuenta...';
-
+      submitBtn.disabled = true; submitBtn.textContent = 'Creando cuenta...';
       try {
-        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-        const user = userCredential.user;
-
-        await db.collection('users').doc(user.uid).set({ name, email, carrera, createdAt: new Date().toISOString() });
-
-        const session = { userId: user.uid, name, email, carrera };
-        localStorage.setItem('luminom_session', JSON.stringify(session));
+        const data = await apiPost('/api/auth/register', { name, email, password, carrera });
+        saveSession(data);
         window.location.replace('tutor.html');
-
       } catch (error) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Crear cuenta';
-        let errorMsg = 'Error al registrar';
-        switch(error.code) {
-          case 'auth/email-already-in-use': errorMsg = 'Este correo ya está registrado'; break;
-          case 'auth/weak-password': errorMsg = 'La contraseña debe tener al menos 6 caracteres'; break;
-          case 'auth/invalid-email': errorMsg = 'Correo electrónico inválido'; break;
-        }
-        document.getElementById('registerEmailError').textContent = errorMsg;
+        submitBtn.disabled = false; submitBtn.textContent = 'Crear cuenta';
+        document.getElementById('registerEmailError').textContent = error.message || 'Error al registrar';
       }
     });
 
     // ========================================
-    // RECUPERAR CONTRASEÑA
+    // RECUPERAR CONTRASEÑA (aún no implementado en el backend)
     // ========================================
-    document.getElementById('formRecover').addEventListener('submit', async function(event) {
+    document.getElementById('formRecover').addEventListener('submit', function (event) {
       event.preventDefault();
-      const email = document.getElementById('recoverEmail').value.trim();
-      const submitBtn = this.querySelector('.btn-submit');
-
-      document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
-      if (!email.includes('@')) { document.getElementById('recoverEmailError').textContent = 'Email inválido'; return; }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
-
-      try {
-        await auth.sendPasswordResetEmail(email);
-        alert('✅ ¡Correo enviado! Revisa tu bandeja de entrada para restablecer tu contraseña.');
-        showTab('login');
-      } catch (error) {
-        let errorMsg = 'Error al enviar correo';
-        if (error.code === 'auth/user-not-found') errorMsg = 'No existe una cuenta con este correo';
-        document.getElementById('recoverEmailError').textContent = errorMsg;
-      }
-
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Enviar correo de recuperación';
+      alert('La recuperación de contraseña aún no está disponible. Contacta al administrador: ialuminom@gmail.com');
+      showTab('login');
     });
   </script>
 </body>
+
 </html>
