@@ -92,13 +92,14 @@ router.get(
 
     // Registros de los últimos 7 días
     const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
-    const [recent, freeN, premiumN, lifetimeN, suspendedN] = await Promise.all([
+    const [recent, premiumN, lifetimeN, suspendedN] = await Promise.all([
       Account.countDocuments({ createdAt: { $gte: since } }),
-      Account.countDocuments({ plan: 'free' }),
       Account.countDocuments({ plan: 'premium' }),
       Account.countDocuments({ plan: 'lifetime' }),
       Account.countDocuments({ status: 'suspended' }),
     ])
+    // "free" = todo lo que no es premium ni lifetime (incluye cuentas antiguas sin campo plan)
+    const freeN = total - premiumN - lifetimeN
 
     res.json({
       total_accounts: total,
