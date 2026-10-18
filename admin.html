@@ -162,15 +162,30 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // Verificar autenticación admin
-    const session = JSON.parse(localStorage.getItem('luminom_session') || 'null');
-    
-    if (!session || session.email !== 'admin@luminom.com') {
-      alert('⚠️ Acceso denegado. Solo el administrador puede acceder a este panel.');
-      window.location.href = 'index.html';
+    // ============================================
+    // CONTROL DE ACCESO — ROL ADMIN
+    // Lista de correos con permiso de administrador.
+    // Para dar admin a alguien, agrega su email aquí (en minúsculas).
+    // ============================================
+    const ADMIN_EMAILS = [
+      'admin@luminom.com',
+      'felipedamartinez@gmail.com'  // Daniel Leon
+    ];
+
+    function isAdmin(email) {
+      return typeof email === 'string' && ADMIN_EMAILS.includes(email.trim().toLowerCase());
     }
 
-    document.getElementById('adminName').textContent = session.name;
+    // Verificar autenticación admin
+    const session = JSON.parse(localStorage.getItem('luminom_session') || 'null');
+
+    if (!session || !isAdmin(session.email)) {
+      alert('⚠️ Acceso denegado. Solo los administradores pueden acceder a este panel.');
+      window.location.href = 'index.html';
+      throw new Error('Acceso denegado'); // detener el resto del script
+    }
+
+    document.getElementById('adminName').textContent = session.name || session.email;
 
     function logout() {
       localStorage.removeItem('luminom_session');

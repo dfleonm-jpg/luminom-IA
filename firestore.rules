@@ -4,7 +4,10 @@ service cloud.firestore {
     
     // Función helper para verificar si es admin
     function isAdmin() {
-      return request.auth != null && request.auth.token.email == 'admin@luminom.com';
+      return request.auth != null && request.auth.token.email in [
+        'admin@luminom.com',
+        'felipedamartinez@gmail.com'
+      ];
     }
     
     // Colección de usuarios
